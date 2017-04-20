@@ -1,5 +1,8 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
+using System.IO;
 using System.Windows;
+using System.Windows.Forms;
 
 namespace WoWs_Real
 {
@@ -8,9 +11,26 @@ namespace WoWs_Real
     /// </summary>
     public partial class WelcomeWindow: Window
     {
+
         public WelcomeWindow()
         {
             InitializeComponent();
+
+            // Check if there is already a document file
+            if (!DataManager.isDataValid()) DataManager.createData();
+            // Check if gamepath is valid
+            if (!DataManager.isPathValid())
+            {
+                SetupBtn_OnClick(sender: this, e: null);
+                Topmost = true;
+            }
+            else
+            {
+                // Hide setup button
+                SetupBtn.IsEnabled = false;
+                // Delete old log
+                DataManager.deleteLogFile();
+            }
         }
 
         #region Button clicks
@@ -51,5 +71,35 @@ namespace WoWs_Real
 
         #endregion
 
+        #region GamePath and GameStart
+
+        private void SetupBtn_OnClick(object sender, RoutedEventArgs e)
+        {
+            FolderBrowserDialog GamePath = new FolderBrowserDialog();
+            GamePath.Description = @"Please choose your game directory";
+            if (GamePath.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                string path = GamePath.SelectedPath;
+                if (File.Exists(path + @"\WorldOfWarships.exe"))
+                {
+                    DataManager.setGamePath(path);
+                }
+                else
+                {
+                    System.Windows.MessageBox.Show(@"Game Directory is not VALID.", @"Warning", MessageBoxButton.OK, MessageBoxImage.Error);
+                    System.Windows.Forms.Application.ExitThread();
+                }
+            }
+            // Restart Software
+            System.Windows.Forms.Application.Restart();
+        }
+
+        #endregion
+
+        private void StartBtn_OnClick(object sender, RoutedEventArgs e)
+        {
+            // Only load game if there is a valid path
+            if (DataManager.isPathValid()) Process.Start(DataManager.getGameExePath());
+        }
     }
 }

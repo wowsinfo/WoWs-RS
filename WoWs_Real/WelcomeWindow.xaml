@@ -13,17 +13,20 @@
                 <!-- Future UI -->
             </StackPanel>
             <StackPanel VerticalAlignment="Bottom">
-                <!-- Link to useful websites and Setting Btn -->
+                <!-- Link to useful websites and some buttons -->
                 <Grid Margin="0 3">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="15*" />
+                        <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
                     
                     <!-- Useful Link -->
                     <TextBlock Grid.Column="0" FontWeight="Bold" FontSize="20" Margin="0 5" TextAlignment="Center" Text="Useful Links"></TextBlock>
                     <!-- Settings -->
-                    <Button Margin="5 5 5 5" Grid.Column="1" Content="SSS"></Button>
+                    <Button Click="SetupBtn_OnClick" x:Name="SetupBtn" Margin="5 5 5 5" Grid.Column="1" Content="Setup"></Button>
+                    <!-- Start Game -->
+                    <Button Click="StartBtn_OnClick" x:Name="StartBtn" Margin="5 5 5 5" Grid.Column="2" Content="Start"></Button>
                 </Grid>
                 
                 <!-- Some useful links -->
