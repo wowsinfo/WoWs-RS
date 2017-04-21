@@ -51,7 +51,7 @@
                 
                 <!-- How to use -->
                 <TextBlock FontWeight="Bold" FontSize="16" Margin="0 3" Text="How to use"></TextBlock>
-                <TextBlock FontSize="14" Text="Open WoWs Real before WoWs Client is running. Otherwises, WoWs Real won't function properly." />
+                <TextBlock FontSize="14" Text="Open WoWs Real before WoWs Client is running and then click start to launch game." />
             </StackPanel>
         </StackPanel>
     </Border>

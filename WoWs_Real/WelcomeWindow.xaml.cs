@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using System.Timers;
 using System.Windows;
 using System.Windows.Forms;
+using MessageBox = System.Windows.MessageBox;
 
 namespace WoWs_Real
 {
@@ -12,9 +14,17 @@ namespace WoWs_Real
     public partial class WelcomeWindow: Window
     {
 
+        private static System.Timers.Timer RealTimer;
+
         public WelcomeWindow()
         {
             InitializeComponent();
+
+            // Get Ship Json
+            DataManager.getShipJson();
+
+            // Get Expected Json
+            ShipRating.getExpectedJson();
 
             // Check if there is already a document file
             if (!DataManager.isDataValid()) DataManager.createData();
@@ -31,7 +41,12 @@ namespace WoWs_Real
                 // Delete old log
                 DataManager.deleteLogFile();
             }
-        }
+
+            // Create a timer with 20 minutes interval
+            RealTimer = new System.Timers.Timer(2000);
+            // Hook up the Elapsed event for the timer. 
+            RealTimer.Elapsed += updatePlayerInformation;
+        }    
 
         #region Button clicks
 
@@ -69,6 +84,14 @@ namespace WoWs_Real
             Process.Start(@"http://aslain.com/index.php?/topic/2020-0640-aslains-wows-modpack-installer-wpicture-preview");
         }
 
+        private void StartBtn_OnClick(object sender, RoutedEventArgs e)
+        {
+            // Only load game if there is a valid path
+            if (DataManager.isPathValid()) Process.Start(DataManager.getGamePath() + @"\WoWSLauncher.exe");
+            // Start timer
+            RealTimer.Enabled = true;
+        }
+
         #endregion
 
         #region GamePath and GameStart
@@ -96,10 +119,27 @@ namespace WoWs_Real
 
         #endregion
 
-        private void StartBtn_OnClick(object sender, RoutedEventArgs e)
+        #region Timer
+
+        // Do this every 20 second
+        private void updatePlayerInformation(Object source, ElapsedEventArgs e)
         {
-            // Only load game if there is a valid path
-            if (DataManager.isPathValid()) Process.Start(DataManager.getGameExePath());
+            // Check for python.log
+            string log = DataManager.readLogFile();
+            if (log == String.Empty) return;
+
+            string player = @"";
+            // Get player data from log
+            string [,,] info = DataManager.getPlayerInfomation(DataManager.getCurrPlayerStr(log));
+            foreach (string sth in info)
+            {
+                player += sth + "\n";
+            }
+            MessageBox.Show(player);
+            RealTimer.Enabled = false;
         }
+
+        #endregion
+
     }
 }
