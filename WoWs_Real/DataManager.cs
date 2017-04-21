@@ -1,16 +1,35 @@
 ﻿using System;
 using System.IO;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace WoWs_Real
 {
     class DataManager
     {
+        // Path
         private static string DocumentFolder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
         private static string MyDocument = DocumentFolder + @"\WoWs_Real";
         private static string MyFile = MyDocument + @"\data.txt";
         private static string WOWS = @"\WorldOfWarships.exe";
         private static string LOG = @"\profile\python.log";
+
+        private static string ShipJson = @"";
+
+        // Expected battle count
+        private static int battleCount = 0;
+
+        // Regular expression pattern
+        private static string dataString = @"Avatar.onEnterWorld([\s\S]*?)BattleLogic";
+        private static string playerString = @"Name: (.*?) TeamId: (\d) ShipName: (.*?)_.+";
+        private static string shipString = @"""(\d+)"":{""ship_id_str"":""XXXX"",""name"":""(.*?)""";
+
+        // Data index
+        struct DataIndex
+        {
+            public static int name = 0;
+            public static int ship = 1;
+        }
 
         #region Data Validation
 
@@ -101,5 +120,125 @@ namespace WoWs_Real
 
         #endregion
 
+        #region Read python.py
+
+        public static string readLogFile()
+        {
+            Console.WriteLine(@"readLogFile");
+            string path = getGamePath() + LOG;
+            if (path != String.Empty)
+            {
+                try
+                {
+                    using (FileStream stream = File.Open(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+                    {
+                        using (StreamReader reader = new StreamReader(stream))
+                        {
+                            return reader.ReadToEnd();
+                        }
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    throw;
+                }
+                
+            }
+            return String.Empty;
+        }
+
+        #endregion
+
+        #region Get Current Player
+
+        public static string getCurrPlayerStr(string data)
+        {
+            Console.WriteLine(@"getCurrPlayerStr");
+            Regex dataRegex = new Regex(dataString);
+            Match dataMatch = dataRegex.Match(data);
+
+            // Only if it is greate than expected value
+            if (dataMatch.Groups.Count < battleCount) return String.Empty;
+
+            if (dataMatch.Groups.Count == 0)
+            {
+                battleCount++;
+                return String.Empty;
+            }
+            else
+            {
+                // Get string from data
+                return dataMatch.Groups[1].Value;
+            }
+        }
+
+        public static string[ , , ] getPlayerInfomation(string data)
+        {
+            Console.WriteLine(@"getPlayerInfomation");
+            string[ , , ] PlayerInfo = new string[2, 12, 2];
+
+            Regex playerRegex = new Regex(playerString);
+            MatchCollection playerMatchCollection = playerRegex.Matches(data);
+            int teamOne = -1;
+            int teamTwo = -1;
+            foreach (Match playerMatch in playerMatchCollection)
+            {
+                int teamId = 0;
+                if (Convert.ToInt16(playerMatch.Groups[2].Value) == 1)
+                {
+                    teamId = 1;
+                    teamOne++;
+                    // Team 1
+                    PlayerInfo[teamId, teamOne, 0] = playerMatch.Groups[1].Value;
+                    PlayerInfo[teamId, teamOne, 1] = playerMatch.Groups[3].Value;
+                }
+                else
+                {
+                    teamTwo++;
+                    // Team 0
+                    PlayerInfo[teamId, teamTwo, 0] = playerMatch.Groups[1].Value;
+                    PlayerInfo[teamId, teamTwo, 1] = playerMatch.Groups[3].Value;
+                }
+
+                
+            }
+
+            return PlayerInfo;
+        }
+
+        #endregion
+
+        #region Get Player Ship Name and ID
+
+        public static void getShipJson()
+        {
+            string DataFile = Environment.CurrentDirectory + @"\Data\ship.json";
+            if (!File.Exists(DataFile))
+            {
+                // Exit...
+                MessageBox.Show(@"Could not find ship.json", @"Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.ExitThread();
+            }
+            else
+            {
+                // Read it 
+                ShipJson = File.ReadAllText(DataFile);
+            }
+        }
+
+        public static string[] getPlayerShipInfo(string ship)
+        {
+            string[] ShipInfo = new string[2];
+
+            Regex shipRegex = new Regex(shipString);
+            Match shipMatch = shipRegex.Match(ship);
+            ShipInfo[0] = shipMatch.Groups[1].Value;
+            ShipInfo[1] = shipMatch.Groups[2].Value;
+
+            return ShipInfo;
+        } 
+
+        #endregion
     }
 }
