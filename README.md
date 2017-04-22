@@ -18,3 +18,7 @@ Player names are photoshopped.
 Simply share with your friends so that this software could help more people.
 
 You could also try my IOS App: [WoWs Info](https://itunes.apple.com/app/id1202750166).
+
+[Donate](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=LTVLXBS7K85XA&lc=AU&item_name=Donations&currency_code=AUD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted)
+
+Thank you for your support >_<
