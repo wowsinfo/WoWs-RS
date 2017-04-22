@@ -9,3 +9,12 @@ Get realtime statistic for all(24) players.
 WoWs Info is designed to get player statistic on your IOS devices. It is only useful when you are searching for one player.
 
 However, what if you want to know about your team and enemy team. Thats why WoWs Real is here to help.
+
+## Preview
+![alt text](https://raw.githubusercontent.com/HenryQuan/WoWs_Real/master/WoWs_Real/Sample.png "Screenshot")
+Player names are photoshopped.
+
+### Support me
+Simply share with your friends so that this software could help more people.
+
+You could also try my IOS App: [WoWs Info](https://itunes.apple.com/app/id1202750166).
