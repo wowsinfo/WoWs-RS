@@ -2,7 +2,7 @@
 using System.IO;
 using System.Windows.Forms;
 using System.Windows.Media;
-using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace WoWs_Real
 {
@@ -22,16 +22,16 @@ namespace WoWs_Real
             else
             {
                 // Read it 
-                ExpectedJson = JsonConvert.DeserializeObject(File.ReadAllText(DataFile));
+                ExpectedJson = JObject.Parse(File.ReadAllText(DataFile));
             }
         }
 
         public static double getRating(double battle, string shipId, double frag, double winrate, double damage)
         {
             // Visit http://wows-numbers.com/personal/rating for more information
-            double rDmg = damage / (Convert.ToDouble(ExpectedJson.data.shipId.average_damage_dealt));
-            double rWins = (winrate * 100) / (Convert.ToDouble(ExpectedJson.data.shipId.win_rate));
-            double rFrags = frag / (Convert.ToDouble(ExpectedJson.data.shipId.average_frags));
+            double rDmg = damage / (Convert.ToDouble(ExpectedJson["data"][shipId]["average_damage_dealt"]) * battle);
+            double rWins = (winrate * 100) / (Convert.ToDouble(ExpectedJson["data"][shipId]["win_rate"]));
+            double rFrags = frag / (Convert.ToDouble(ExpectedJson["data"][shipId]["average_frags"]) * battle);
 
             double nDMG = max(0, (rDmg - 0.4) / (1 - 0.4));
             double nFrags = max(0, (rFrags - 0.1) / (1 - 0.1));
@@ -58,16 +58,17 @@ namespace WoWs_Real
             return "Super Unicum";
         }
 
-        public static Color getRatingColorint(double rating)
+        public static Brush getRatingColor(double rating)
         {
-            if (rating < 750) return Color.FromRgb(254, 14, 0);
-            if (rating < 1100) return Color.FromRgb(254, 121, 3);
-            if (rating < 1350) return Color.FromRgb(255, 199, 31);
-            if (rating < 1550) return Color.FromRgb(68, 179, 0);
-            if (rating < 1750) return Color.FromRgb(94, 139, 47);
-            if (rating < 2100) return Color.FromRgb(2, 204, 205);
-            if (rating < 2450) return Color.FromRgb(208, 66, 243);
-            return Color.FromRgb(106, 13, 197);
+
+            if (rating < 750) return new SolidColorBrush(Color.FromRgb(254, 14, 0));
+            if (rating < 1100) return new SolidColorBrush(Color.FromRgb(254, 121, 3));
+            if (rating < 1350) return new SolidColorBrush(Color.FromRgb(255, 199, 31));
+            if (rating < 1550) return new SolidColorBrush(Color.FromRgb(68, 179, 0));
+            if (rating < 1750) return new SolidColorBrush(Color.FromRgb(94, 139, 47));
+            if (rating < 2100) return new SolidColorBrush(Color.FromRgb(2, 204, 205));
+            if (rating < 2450) return new SolidColorBrush(Color.FromRgb(208, 66, 243));
+            return new SolidColorBrush(Color.FromRgb(106, 13, 197));
         }
     }
 }

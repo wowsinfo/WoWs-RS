@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WoWs_Real"
         mc:Ignorable="d"
-        MinHeight="500" MinWidth="810"
-        Title="WoWs Real" Height="500" Width="810" WindowStartupLocation="CenterScreen">
+        MinHeight="550" MinWidth="810"
+        Title="WoWs Real" Height="550" Width="810" WindowStartupLocation="CenterScreen">
     <Border Padding="10">
         <StackPanel>
             <StackPanel>
@@ -16,15 +16,15 @@
                 <!-- Link to useful websites and some buttons -->
                 <Grid Margin="0 3">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="15*" />
                         <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="15*" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
                     
                     <!-- Useful Link -->
-                    <TextBlock Grid.Column="0" FontWeight="Bold" FontSize="20" Margin="0 5" TextAlignment="Center" Text="Useful Links"></TextBlock>
+                    <TextBlock Grid.Column="1" FontWeight="Bold" FontSize="20" Margin="0 5" TextAlignment="Center" Text="Useful Links"></TextBlock>
                     <!-- Settings -->
-                    <Button Click="SetupBtn_OnClick" x:Name="SetupBtn" Margin="5 5 5 5" Grid.Column="1" Content="Setup"></Button>
+                    <Button Click="SetupBtn_OnClick" x:Name="SetupBtn" Margin="5 5 5 5" Grid.Column="0" Content="Setup"></Button>
                     <!-- Start Game -->
                     <Button Click="StartBtn_OnClick" x:Name="StartBtn" Margin="5 5 5 5" Grid.Column="2" Content="Start"></Button>
                 </Grid>
@@ -50,8 +50,254 @@
                 </Grid>
                 
                 <!-- How to use -->
-                <TextBlock FontWeight="Bold" FontSize="16" Margin="0 3" Text="How to use"></TextBlock>
-                <TextBlock FontSize="14" Text="Open WoWs Real before WoWs Client is running and then click start to launch game." />
+                <TextBlock TextAlignment="Center" FontWeight="Bold" FontSize="16" Margin="0 3" Text="How to use"></TextBlock>
+                <TextBlock TextAlignment="Center" FontSize="14" Text="Open WoWs Real before WoWs Client is running and then click start to launch game." />
+                
+                <!-- Two Teams -->
+                <TextBlock FontSize="26" FontWeight="Bold" Text="REAL TIME STATISTIC" TextAlignment="Center"></TextBlock>
+                
+                <!-- TEAM 0 and TEAM 1 -->
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    
+                    <TextBlock Grid.Column="0" Text="TEAM 0" FontSize="20" FontWeight="Light" TextAlignment="Center"></TextBlock>
+                    <TextBlock Grid.Column="1" Text="TEAM 1" FontSize="20" FontWeight="Light" TextAlignment="Center"></TextBlock>
+                </Grid>
+
+                <!-- 24 Players -->
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Team 0 12 Players -->
+                    <StackPanel Grid.Column="0" Margin="5 5">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            
+                            <Label x:Name="Player1Label" Grid.Column="0"></Label>
+                            <Label x:Name="Player1RatingLabel" Grid.Column="1" HorizontalContentAlignment="Center"></Label>
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label x:Name="Player2Label" Grid.Column="0"></Label>
+                            <Label x:Name="Player2RatingLabel" Grid.Column="1" HorizontalContentAlignment="Center"></Label>
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label x:Name="Player3Label" Grid.Column="0"></Label>
+                            <Label x:Name="Player3RatingLabel" Grid.Column="1" HorizontalContentAlignment="Center"></Label>
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label x:Name="Player4Label" Grid.Column="0"></Label>
+                            <Label x:Name="Player4RatingLabel" Grid.Column="1" HorizontalContentAlignment="Center"></Label>
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label x:Name="Player5Label" Grid.Column="0"></Label>
+                            <Label x:Name="Player5RatingLabel" Grid.Column="1" HorizontalContentAlignment="Center"></Label>
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label x:Name="Player6Label" Grid.Column="0"></Label>
+                            <Label x:Name="Player6RatingLabel" Grid.Column="1" HorizontalContentAlignment="Center"></Label>
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label x:Name="Player7Label" Grid.Column="0"></Label>
+                            <Label x:Name="Player7RatingLabel" Grid.Column="1" HorizontalContentAlignment="Center"></Label>
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label x:Name="Player8Label" Grid.Column="0"></Label>
+                            <Label x:Name="Player8RatingLabel" Grid.Column="1" Content="" HorizontalContentAlignment="Center"></Label>
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label x:Name="Player9Label" Grid.Column="0"></Label>
+                            <Label x:Name="Player9RatingLabel" Grid.Column="1" HorizontalContentAlignment="Center"></Label>
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label x:Name="Player10Label" Grid.Column="0"></Label>
+                            <Label x:Name="Player10RatingLabel" Grid.Column="1" HorizontalContentAlignment="Center"></Label>
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label x:Name="Player11Label" Grid.Column="0"></Label>
+                            <Label x:Name="Player11RatingLabel" Grid.Column="1" HorizontalContentAlignment="Center"></Label>
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label x:Name="Player12Label" Grid.Column="0"></Label>
+                            <Label x:Name="Player12RatingLabel" Grid.Column="1" HorizontalContentAlignment="Center"></Label>
+                        </Grid>
+                    </StackPanel>
+
+                    <!-- Team 1 12 Players -->
+                    <StackPanel  Grid.Column="1" Margin="5 5">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="2*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label x:Name="Player13Label" Grid.Column="1" HorizontalContentAlignment="Right"></Label>
+                            <Label x:Name="Player13RatingLabel" Grid.Column="0" HorizontalContentAlignment="Center"></Label>
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="2*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label x:Name="Player14Label" Grid.Column="1" HorizontalContentAlignment="Right"></Label>
+                            <Label x:Name="Player14RatingLabel" Grid.Column="0" HorizontalContentAlignment="Center"></Label>
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="2*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label x:Name="Player15Label" Grid.Column="1" HorizontalContentAlignment="Right"></Label>
+                            <Label x:Name="Player15RatingLabel" Grid.Column="0" HorizontalContentAlignment="Center"></Label>
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="2*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label x:Name="Player16Label" Grid.Column="1" HorizontalContentAlignment="Right"></Label>
+                            <Label x:Name="Player16RatingLabel" Grid.Column="0" HorizontalContentAlignment="Center"></Label>
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="2*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label x:Name="Player17Label" Grid.Column="1" HorizontalContentAlignment="Right"></Label>
+                            <Label x:Name="Player17RatingLabel" Grid.Column="0" HorizontalContentAlignment="Center"></Label>
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="2*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label x:Name="Player18Label" Grid.Column="1" HorizontalContentAlignment="Right"></Label>
+                            <Label x:Name="Player18RatingLabel" Grid.Column="0" HorizontalContentAlignment="Center"></Label>
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="2*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label x:Name="Player19Label" Grid.Column="1" HorizontalContentAlignment="Right"></Label>
+                            <Label x:Name="Player19RatingLabel" Grid.Column="0" HorizontalContentAlignment="Center"></Label>
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="2*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label x:Name="Player20Label" Grid.Column="1" HorizontalContentAlignment="Right"></Label>
+                            <Label x:Name="Player20RatingLabel" Grid.Column="0" HorizontalContentAlignment="Center"></Label>
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="2*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label x:Name="Player21Label" Grid.Column="1" HorizontalContentAlignment="Right"></Label>
+                            <Label x:Name="Player21RatingLabel" Grid.Column="0" HorizontalContentAlignment="Center"></Label>
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="2*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label x:Name="Player22Label" Grid.Column="1" HorizontalContentAlignment="Right"></Label>
+                            <Label x:Name="Player22RatingLabel" Grid.Column="0" HorizontalContentAlignment="Center"></Label>
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="2*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label x:Name="Player23Label" Grid.Column="1" HorizontalContentAlignment="Right"></Label>
+                            <Label x:Name="Player23RatingLabel" Grid.Column="0" HorizontalContentAlignment="Center"></Label>
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="2*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label x:Name="Player24Label" Grid.Column="1" HorizontalContentAlignment="Right"></Label>
+                            <Label x:Name="Player24RatingLabel" Grid.Column="0" HorizontalContentAlignment="Center"></Label>
+                        </Grid>
+                    </StackPanel>
+                </Grid>
             </StackPanel>
         </StackPanel>
     </Border>

@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Net;
 using System.Text.RegularExpressions;
-using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace WoWs_Real
 {
     class API
     {
-        struct DataIndex
+        public struct DataIndex
         {
             public static int battle = 0;
             public static int id = 1;
@@ -58,7 +58,7 @@ namespace WoWs_Real
         {
             dynamic dataJson;
             string dataString = @"";
-            string[] ShipInfo = new string[4];
+            string[] ShipInfo = new string[5];
             string playerId = @"";
 
             using (var web = new WebClient())
@@ -71,13 +71,13 @@ namespace WoWs_Real
             if (dataString.Contains(@"battles"))
             {
                 // This is valid
-                dataJson = JsonConvert.DeserializeObject(dataString);
-                ShipInfo[0] = dataJson.data.playerId.pvp.battles;
+                dataJson = JObject.Parse(dataString);
+                ShipInfo[0] = dataJson["data"][playerId][0]["pvp"]["battles"];
                 ShipInfo[1] = ship;
-                double winrate = Convert.ToDouble(dataJson.data.playerId.pvp.wins) / Convert.ToDouble(dataJson.data.playerId.pvp.battles);
+                double winrate = Convert.ToDouble(dataJson["data"][playerId][0]["pvp"]["wins"]) / Convert.ToDouble(dataJson["data"][playerId][0]["pvp"]["battles"]);
                 ShipInfo[2] = winrate.ToString();
-                ShipInfo[3] = dataJson.data.playerId.pvp.frags;
-                ShipInfo[4] = dataJson.data.playerId.pvp.damage_dealt;
+                ShipInfo[3] = dataJson["data"][playerId][0]["pvp"]["frags"];
+                ShipInfo[4] = dataJson["data"][playerId][0]["pvp"]["damage_dealt"];
                 return ShipInfo;
             }
             return new string[0];

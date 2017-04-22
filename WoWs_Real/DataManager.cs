@@ -17,18 +17,19 @@ namespace WoWs_Real
         private static string ShipJson = @"";
 
         // Expected battle count
-        private static int battleCount = 0;
+        private static int battleCount = 1;
 
         // Regular expression pattern
         private static string dataString = @"Avatar.onEnterWorld([\s\S]*?)BattleLogic";
         private static string playerString = @"Name: (.*?) TeamId: (\d) ShipName: (.*?)_.+";
-        private static string shipString = @"""(\d+)"":{""ship_id_str"":""XXXX"",""name"":""(.*?)""";
 
         // Data index
-        struct DataIndex
+        public struct DataIndex
         {
             public static int name = 0;
             public static int ship = 1;
+            public static int shipId = 0;
+            public static int shipName = 1;
         }
 
         #region Data Validation
@@ -124,7 +125,6 @@ namespace WoWs_Real
 
         public static string readLogFile()
         {
-            Console.WriteLine(@"readLogFile");
             string path = getGamePath() + LOG;
             if (path != String.Empty)
             {
@@ -154,28 +154,20 @@ namespace WoWs_Real
 
         public static string getCurrPlayerStr(string data)
         {
-            Console.WriteLine(@"getCurrPlayerStr");
             Regex dataRegex = new Regex(dataString);
-            Match dataMatch = dataRegex.Match(data);
-
+            MatchCollection dataMatchCollection = dataRegex.Matches(data);
+            Console.WriteLine(dataMatchCollection.Count);
             // Only if it is greate than expected value
-            if (dataMatch.Groups.Count < battleCount) return String.Empty;
+            if (dataMatchCollection.Count != battleCount) return String.Empty;
 
-            if (dataMatch.Groups.Count == 0)
-            {
-                battleCount++;
-                return String.Empty;
-            }
-            else
-            {
-                // Get string from data
-                return dataMatch.Groups[1].Value;
-            }
+            battleCount++;
+            // Get string from data
+            Console.WriteLine(dataMatchCollection[dataMatchCollection.Count - 1].Groups[1].Value);
+            return dataMatchCollection[dataMatchCollection.Count - 1].Groups[1].Value;
         }
 
         public static string[ , , ] getPlayerInfomation(string data)
         {
-            Console.WriteLine(@"getPlayerInfomation");
             string[ , , ] PlayerInfo = new string[2, 12, 2];
 
             Regex playerRegex = new Regex(playerString);
@@ -200,10 +192,7 @@ namespace WoWs_Real
                     PlayerInfo[teamId, teamTwo, 0] = playerMatch.Groups[1].Value;
                     PlayerInfo[teamId, teamTwo, 1] = playerMatch.Groups[3].Value;
                 }
-
-                
             }
-
             return PlayerInfo;
         }
 
@@ -230,14 +219,18 @@ namespace WoWs_Real
         public static string[] getPlayerShipInfo(string ship)
         {
             string[] ShipInfo = new string[2];
-
-            Regex shipRegex = new Regex(shipString);
-            Match shipMatch = shipRegex.Match(ship);
+            Regex shipRegex = new Regex(getShipString(ship));
+            Match shipMatch = shipRegex.Match(ShipJson);
             ShipInfo[0] = shipMatch.Groups[1].Value;
             ShipInfo[1] = shipMatch.Groups[2].Value;
 
             return ShipInfo;
-        } 
+        }
+
+        private static string getShipString(string ship)
+        {
+            return @"""(\d+)"":{""ship_id_str"":""" + ship + @""",""name"":""(.*?)""";
+        }
 
         #endregion
     }
