@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:WoWs_Real"
         mc:Ignorable="d"
         MinHeight="550" MinWidth="810"
-        Title="WoWs Real" Height="550" Width="810" WindowStartupLocation="CenterScreen">
+        Title="WoWs Real" Height="550" Width="810" WindowStartupLocation="CenterScreen" Icon="WoWs_Real.ico">
     <Border Padding="10">
         <StackPanel>
             <StackPanel>
@@ -54,7 +54,7 @@
                 <TextBlock TextAlignment="Center" FontSize="14" Text="Open WoWs Real before WoWs Client is running and then click start to launch game." />
                 
                 <!-- Two Teams -->
-                <TextBlock FontSize="26" FontWeight="Bold" Text="REAL TIME STATISTIC" TextAlignment="Center"></TextBlock>
+                <TextBlock x:Name="UpdateIndicator" FontSize="26" FontWeight="Bold" Text="REAL TIME STATISTIC" TextAlignment="Center"></TextBlock>
                 
                 <!-- TEAM 0 and TEAM 1 -->
                 <Grid>

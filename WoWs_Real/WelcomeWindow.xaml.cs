@@ -111,6 +111,7 @@ namespace WoWs_Real
             if (DataManager.isPathValid()) Process.Start(DataManager.getGamePath() + @"\WoWSLauncher.exe");
             // Start timer
             RealTimer.Enabled = true;
+            UpdateIndicator.Text = "SYSTEM ONLINE";
         }
 
         #endregion
@@ -145,16 +146,30 @@ namespace WoWs_Real
         // Do this every 20 second
         private void updatePlayerInformation()
         {
+            this.Dispatcher.Invoke(() =>
+            {
+                UpdateIndicator.Text = "CHECKING FOR UPDATES";
+            });
+            
             // Check for python.log
             string log = DataManager.readLogFile();
             if (log == String.Empty)
             {
+                this.Dispatcher.Invoke(() =>
+                {
+                    UpdateIndicator.Text = "NO UPDATES";
+                });
                 Console.WriteLine(@"Log is empty");
                 return;
             }
             string dataString = DataManager.getCurrPlayerStr(log);
             if (dataString == String.Empty)
             {
+                this.Dispatcher.Invoke(() =>
+                {
+                    UpdateIndicator.Text = "NO NEW BATTLES";
+                });
+                
                 Console.WriteLine(@"dataString is Empty.");
                 return;
             }
@@ -170,6 +185,11 @@ namespace WoWs_Real
 
             for (i = 0; i < 24; i++)
             {
+                this.Dispatcher.Invoke(() =>
+                {
+                    UpdateIndicator.Text = "UPDATING PLAYER " + i;
+                });
+
                 if (i < 12)
                 {
                     team = 0;
@@ -229,6 +249,7 @@ namespace WoWs_Real
             this.Dispatcher.Invoke(() =>
             {
                 this.displayData();
+                UpdateIndicator.Text = "DATA UPDATED";
                 Console.WriteLine(@"Data updated");
             });
 
@@ -268,7 +289,7 @@ namespace WoWs_Real
                 else
                 {
                     // Team 1
-                    if (playerLabel != null) playerLabel.Content = getLabelString(1, i - 12);
+                    if (playerLabel != null) playerLabel.Content = getLabelString(1, i);
                     if (playerRatingLabel != null)
                     {
                         string battle = PlayerInformation[1, i - 12, PlayerBattle];
@@ -301,13 +322,28 @@ namespace WoWs_Real
 
         private string getLabelString(int team, int index)
         {
-            string name = PlayerInformation[team, index, PlayerName];
-            string ship = PlayerInformation[team, index, PlayerShipName];
-            string battle = PlayerInformation[team, index, PlayerBattle];
-            string winrate = PlayerInformation[team, index, PlayerWinrate];
-            if (battle == "" || winrate == "") return name + "   " + ship;
-            return name + "   " + ship + "   " +  battle + " | " + winrate;
+            if (index < 12)
+            {
+                // Team 0
+                string name = PlayerInformation[team, index, PlayerName];
+                string ship = PlayerInformation[team, index, PlayerShipName];
+                string battle = PlayerInformation[team, index, PlayerBattle];
+                string winrate = PlayerInformation[team, index, PlayerWinrate];
+                if (battle == "" || winrate == "") return ship + "   " + name;
+                return ship + "   " + name + "   " + battle + " | " + winrate + "%";
+            }
+            else
+            {
+                // Team 1
+                string name = PlayerInformation[team, index - 12, PlayerName];
+                string ship = PlayerInformation[team, index - 12, PlayerShipName];
+                string battle = PlayerInformation[team, index - 12, PlayerBattle];
+                string winrate = PlayerInformation[team, index - 12, PlayerWinrate];
+                if (battle == "" || winrate == "") return name + "   " + ship;
+                return winrate + "% | " + battle + "   " + name + "  " + ship;
+            }
         }
+
         #endregion
     }
 }
