@@ -9,3 +9,5 @@ By using [Personal Rating](https://wows-numbers.com/personal/rating), the rating
 WoWs Info R checks whether a battle starts every 20-30 seconds so there will be delay. 
 # WoWs Info
 There might be collaborations between WoWs Info R and WoWs Info IOS/Android. It will be done through QR code.
+
+[中文简介](https://github.com/HenryQuan/WoWs_Info_R/blob/RedoEverything/%E7%AE%80%E4%BB%8B.md)
