@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WoWs_Real_R
+namespace WoWs_Info_R
 {
     public partial class LinksWindow : Form
     {

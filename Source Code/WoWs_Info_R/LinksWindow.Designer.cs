@@ -40,7 +40,7 @@
             // label_intro
             // 
             this.label_intro.AutoSize = true;
-            this.label_intro.Location = new System.Drawing.Point(33, 54);
+            this.label_intro.Location = new System.Drawing.Point(43, 45);
             this.label_intro.Name = "label_intro";
             this.label_intro.Size = new System.Drawing.Size(247, 13);
             this.label_intro.TabIndex = 0;
@@ -48,6 +48,9 @@
             // 
             // link_wows_info_ios
             // 
+            this.link_wows_info_ios.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.link_wows_info_ios.AutoSize = true;
             this.link_wows_info_ios.Location = new System.Drawing.Point(197, 99);
             this.link_wows_info_ios.Name = "link_wows_info_ios";
@@ -93,7 +96,7 @@
             // link_sea_group
             // 
             this.link_sea_group.AutoSize = true;
-            this.link_sea_group.Location = new System.Drawing.Point(197, 259);
+            this.link_sea_group.Location = new System.Drawing.Point(197, 261);
             this.link_sea_group.Name = "link_sea_group";
             this.link_sea_group.Size = new System.Drawing.Size(58, 13);
             this.link_sea_group.TabIndex = 1;
@@ -104,7 +107,7 @@
             // link_aslian_modpack
             // 
             this.link_aslian_modpack.AutoSize = true;
-            this.link_aslian_modpack.Location = new System.Drawing.Point(197, 299);
+            this.link_aslian_modpack.Location = new System.Drawing.Point(197, 306);
             this.link_aslian_modpack.Name = "link_aslian_modpack";
             this.link_aslian_modpack.Size = new System.Drawing.Size(93, 13);
             this.link_aslian_modpack.TabIndex = 1;
