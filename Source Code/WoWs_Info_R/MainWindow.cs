@@ -28,9 +28,10 @@ namespace WoWs_Info_R
             linksW.Show();
         }
 
-        private void title_Click(object sender, EventArgs e)
+        private void About_Click(object sender, EventArgs e)
         {
-
+            About about = new About();
+            about.Show();
         }
     }
 }
