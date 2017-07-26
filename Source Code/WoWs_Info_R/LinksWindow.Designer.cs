@@ -1,4 +1,4 @@
-﻿namespace WoWs_Real_R
+﻿namespace WoWs_Info_R
 {
     partial class LinksWindow
     {
@@ -96,7 +96,7 @@
             // link_sea_group
             // 
             this.link_sea_group.AutoSize = true;
-            this.link_sea_group.Location = new System.Drawing.Point(197, 261);
+            this.link_sea_group.Location = new System.Drawing.Point(197, 265);
             this.link_sea_group.Name = "link_sea_group";
             this.link_sea_group.Size = new System.Drawing.Size(58, 13);
             this.link_sea_group.TabIndex = 1;

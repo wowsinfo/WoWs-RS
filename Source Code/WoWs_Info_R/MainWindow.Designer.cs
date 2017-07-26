@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.Settings = new System.Windows.Forms.Button();
             this.About = new System.Windows.Forms.Button();
             this.Links = new System.Windows.Forms.Button();
