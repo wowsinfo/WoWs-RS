@@ -48,9 +48,6 @@
             // 
             // link_wows_info_ios
             // 
-            this.link_wows_info_ios.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.link_wows_info_ios.AutoSize = true;
             this.link_wows_info_ios.Location = new System.Drawing.Point(197, 99);
             this.link_wows_info_ios.Name = "link_wows_info_ios";
