@@ -1,4 +1,4 @@
-﻿namespace WoWs_Real_R
+﻿namespace WoWs_Info_R
 {
     partial class MainWindow
     {
