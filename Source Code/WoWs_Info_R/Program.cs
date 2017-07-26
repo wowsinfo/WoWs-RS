@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WoWs_Real_R
+namespace WoWs_Info_R
 {
     static class Program
     {
