@@ -11,11 +11,11 @@ namespace Classes
     public class Links : LinkLabel
     {
         public string _Url { get; set; }
-        public Links(string text,string name, string URL)
+        public Links(string text,string name, string URL, int x, int y)
         {
             _Url = URL;
             AutoSize = true;
-            Location = new System.Drawing.Point(197, 139);
+            Location = new System.Drawing.Point(x, y);
             Name = name;
             Size = new System.Drawing.Size(117, 13);
             TabIndex = 1;
