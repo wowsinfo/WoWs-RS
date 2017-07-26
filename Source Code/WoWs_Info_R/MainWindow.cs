@@ -27,5 +27,10 @@ namespace WoWs_Info_R
             LinksWindow linksW = new LinksWindow();
             linksW.Show();
         }
+
+        private void title_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

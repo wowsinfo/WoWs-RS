@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.Settings = new System.Windows.Forms.Button();
             this.About = new System.Windows.Forms.Button();
             this.Links = new System.Windows.Forms.Button();
+            this.title = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // Settings
@@ -62,11 +62,23 @@
             this.Links.UseVisualStyleBackColor = false;
             this.Links.Click += new System.EventHandler(this.Links_Load);
             // 
+            // title
+            // 
+            this.title.AutoSize = true;
+            this.title.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.title.Location = new System.Drawing.Point(295, 54);
+            this.title.Name = "title";
+            this.title.Size = new System.Drawing.Size(465, 55);
+            this.title.TabIndex = 1;
+            this.title.Text = "Real Time Statistics";
+            this.title.Click += new System.EventHandler(this.title_Click);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1032, 530);
+            this.Controls.Add(this.title);
             this.Controls.Add(this.Links);
             this.Controls.Add(this.About);
             this.Controls.Add(this.Settings);
@@ -74,6 +86,7 @@
             this.Text = "WoWs Info R";
             this.Load += new System.EventHandler(this.MainWindow_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -82,6 +95,7 @@
         private System.Windows.Forms.Button Settings;
         private System.Windows.Forms.Button About;
         private System.Windows.Forms.Button Links;
+        private System.Windows.Forms.Label title;
     }
 }
 
