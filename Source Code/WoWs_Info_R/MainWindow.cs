@@ -24,14 +24,20 @@ namespace WoWs_Info_R
 
         private void Links_Load(object sender, EventArgs e)
         {
-            LinksWindow linksW = new LinksWindow();
-            linksW.Show();
+            Links links = new Links();
+            links.Show();
         }
 
         private void About_Click(object sender, EventArgs e)
         {
             About about = new About();
             about.Show();
+        }
+
+        private void Settings_Click(object sender, EventArgs e)
+        {
+            Settings settings = new Settings();
+            settings.Show();
         }
     }
 }

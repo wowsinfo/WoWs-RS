@@ -44,6 +44,7 @@
             this.Settings.Size = new System.Drawing.Size(62, 62);
             this.Settings.TabIndex = 0;
             this.Settings.UseVisualStyleBackColor = false;
+            this.Settings.Click += new System.EventHandler(this.Settings_Click);
             // 
             // About
             // 
