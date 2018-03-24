@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Drawing;
+using Console = Colorful.Console;
 
 namespace WRInfo
 {
@@ -10,7 +8,7 @@ namespace WRInfo
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Welcome to World of Warship Real-time Information");
+            Console.WriteAscii("WRInfo 1.0", Color.FromArgb(33, 150, 243));
             Console.Read();
         }
     }
