@@ -82,12 +82,14 @@ namespace WRInfo
                 var gamePath = Console.ReadLine();
                 Console.WriteLine(strings.validate_gamepath + "<<" + gamePath + ">>\n", Color.White);
                 Thread.Sleep(500);
-
-                if (File.Exists(gamePath + "/WorldOfWarships.exe") && File.Exists(gamePath + "/preferences.xml"))
+                var preferencePath = gamePath + "/preferences.xml";
+                if (File.Exists(gamePath + "/WorldOfWarships.exe") && File.Exists(preferencePath))
                 {
                     Console.WriteLine(strings.path_valid, Colour.WGreen);
                     Settings.Default.GamePath = gamePath;
                     isValid = true;
+
+                    DataManager.LoadNameAndServer(preferencePath);
                     AnyKeyToContinue();
                 }
                 else

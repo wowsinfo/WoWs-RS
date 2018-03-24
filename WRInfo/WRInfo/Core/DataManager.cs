@@ -1,5 +1,7 @@
 ﻿using System;
 using System.IO;
+using System.Xml;
+using Console = Colorful.Console;
 
 namespace WRInfo.Core
 {
@@ -26,6 +28,23 @@ namespace WRInfo.Core
         {
             if (!Directory.Exists(this.targetDir)) return true;
             else return false;
+        }
+
+        /// <summary>
+        /// Loading user's name and current from preferences.xml
+        /// </summary>
+        /// <param name="path"></param>
+        public static void LoadNameAndServer(string path)
+        {
+            // Getting user server and name
+            var perference = new XmlDocument();
+            perference.Load(path);
+            var credential = perference.GetElementsByTagName("net_credentials");
+            var nodes = credential[0].ChildNodes;
+            var name = nodes[0].ChildNodes[2].InnerText.Replace("\t", string.Empty);
+            var server = nodes[3].InnerText.Replace("\t", string.Empty);
+            Console.WriteAscii(name);
+            Console.WriteLine(server);
         }
 
         /// <summary>
