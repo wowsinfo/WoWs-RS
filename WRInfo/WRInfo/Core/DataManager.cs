@@ -27,5 +27,16 @@ namespace WRInfo.Core
             if (!Directory.Exists(this.targetDir)) return true;
             else return false;
         }
+
+        /// <summary>
+        /// Download a file with name to path
+        /// </summary>
+        /// <param name="data"></param>
+        /// <param name="path"></param>
+        /// <param name="name"></param>
+        public static void SaveJsonToPathWithName(string data, string path, string name)
+        {
+
+        }
     }
 }

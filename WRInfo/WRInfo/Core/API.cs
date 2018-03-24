@@ -8,6 +8,12 @@ namespace WRInfo
 {
     class API
     {
+        /// <summary>
+        /// Download and format data properly and save it under data folder
+        /// </summary>
+        public static void PullData()
+        {
 
+        }
     }
 }

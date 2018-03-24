@@ -141,10 +141,19 @@
   <data name="path_valid" xml:space="preserve">
     <value>Gamepath is valid ^_^</value>
   </data>
+  <data name="pr" xml:space="preserve">
+    <value>Personal Rating...</value>
+  </data>
+  <data name="pull_api" xml:space="preserve">
+    <value>Pulling data from WoWs API</value>
+  </data>
   <data name="validate_gamepath" xml:space="preserve">
     <value>Checking for path </value>
   </data>
   <data name="welcome" xml:space="preserve">
     <value>Welcome to WRInfo</value>
+  </data>
+  <data name="whatis_pr" xml:space="preserve">
+    <value>Personal Rating is measure of skill in World of Warships. It measures performance in every warship and compares it to certain expected values. Differences between actual and expected values are used to calculate final Personal Rating value.</value>
   </data>
 </root>

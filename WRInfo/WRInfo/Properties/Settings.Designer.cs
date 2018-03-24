@@ -34,5 +34,17 @@ namespace WRInfo.Properties {
                 this["GamePath"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string ServerVersion {
+            get {
+                return ((string)(this["ServerVersion"]));
+            }
+            set {
+                this["ServerVersion"] = value;
+            }
+        }
     }
 }

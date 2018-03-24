@@ -133,6 +133,24 @@ namespace WRInfo.Resouces {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Personal Rating....
+        /// </summary>
+        internal static string pr {
+            get {
+                return ResourceManager.GetString("pr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pulling data from WoWs API.
+        /// </summary>
+        internal static string pull_api {
+            get {
+                return ResourceManager.GetString("pull_api", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Checking for path .
         /// </summary>
         internal static string validate_gamepath {
@@ -147,6 +165,15 @@ namespace WRInfo.Resouces {
         internal static string welcome {
             get {
                 return ResourceManager.GetString("welcome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Personal Rating is measure of skill in World of Warships. It measures performance in every warship and compares it to certain expected values. Differences between actual and expected values are used to calculate final Personal Rating value..
+        /// </summary>
+        internal static string whatis_pr {
+            get {
+                return ResourceManager.GetString("whatis_pr", resourceCulture);
             }
         }
     }

@@ -103,6 +103,7 @@ namespace WRInfo
         static void PullDataFromAPI()
         {
             Console.WriteAscii(strings.api, Colour.WOrange);
+            Console.WriteLine(strings.pull_api, Color.White);
         }
     }
 }

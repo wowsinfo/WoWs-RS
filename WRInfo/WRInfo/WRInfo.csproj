@@ -52,6 +52,8 @@
     <Compile Include="Colour.cs" />
     <Compile Include="Core\API.cs" />
     <Compile Include="Core\DataManager.cs" />
+    <Compile Include="Core\PersonalRating.cs" />
+    <Compile Include="Core\Updater.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
@@ -78,6 +80,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>strings.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Value.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
