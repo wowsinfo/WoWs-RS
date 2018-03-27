@@ -21,8 +21,9 @@ namespace WRInfo
         static void Main(string[] args)
         {
             AppLaunch();
-            
-            Console.Read();
+            Console.ReadKey();
+            // Save data before app closed
+            Settings.Default.Save();
         }
 
         /// <summary>
@@ -38,12 +39,13 @@ namespace WRInfo
             if (dataManager.FirstLaunch())
             {
                 WelcomeMessage();
+                LanguageSelection();
                 SetupGamePath();
                 PullDataFromAPI();
             }
             else
             {
-                // Load data
+                // Show Menu
             }
         }
 
@@ -53,9 +55,21 @@ namespace WRInfo
         static void AnyKeyToContinue()
         {
             // Waiting for user input to proceed to next level
-            Console.Write(strings.anykey_continue);
+            Console.Write("> ");
             Console.ReadKey();
             Console.Clear();
+        }
+
+        /// <summary>
+        /// Choose user's perfered language (English, Chinese or Japanese)
+        /// </summary>
+        static void LanguageSelection()
+        {
+            Console.WriteAscii(strings.language, Colour.WYellow);
+            Console.WriteLine(strings.only_threelanguages, Color.White);
+            Console.Write("1. English\n2. 简体中文\n3. 日本語\n> ");
+            var language = Console.ReadLine();
+            AnyKeyToContinue();
         }
 
         /// <summary>
@@ -78,9 +92,9 @@ namespace WRInfo
             Console.WriteAscii(strings.gamepath, Colour.WRed);
             while (!isValid)
             {
-                Console.Write(strings.enter_gamepath, Color.White);
+                Console.Write("> ");
                 var gamePath = Console.ReadLine();
-                Console.WriteLine(strings.validate_gamepath + "<<" + gamePath + ">>\n", Color.White);
+                Console.WriteLine(strings.validate_gamepath + "<<" + gamePath + ">>\n");
                 Thread.Sleep(500);
                 var preferencePath = gamePath + "/preferences.xml";
                 if (File.Exists(gamePath + "/WorldOfWarships.exe") && File.Exists(preferencePath))
@@ -90,7 +104,7 @@ namespace WRInfo
                     isValid = true;
 
                     var info = DataManager.LoadNameAndServer(preferencePath);
-                    Console.WriteAscii("Hi " + info.Name, Color.White);
+                    Console.WriteAscii("Hi " + info.Name);
                     AnyKeyToContinue();
                 }
                 else
@@ -106,12 +120,11 @@ namespace WRInfo
         static void PullDataFromAPI()
         {
             var isValid = false;
-            Console.WriteAscii(strings.api, Colour.WOrange);
+            Console.WriteAscii(strings.api);
 
             while (!isValid)
             {
-                Console.WriteLine("1. RU\t2. EU\t3. NA\t4. ASIA");
-                Console.Write(strings.choose_server, Color.White);
+                Console.Write("1. RU\t2. EU\t3. NA\t4. ASIA\n> ", Color.White);
 
                 try
                 {
@@ -144,6 +157,7 @@ namespace WRInfo
 
             // Start downloading data
             Console.WriteLine("\n" + strings.pull_api, Color.White);
+            API.PullData();
         }
     }
 }

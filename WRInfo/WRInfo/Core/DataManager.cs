@@ -52,9 +52,9 @@ namespace WRInfo.Core
         /// <param name="data"></param>
         /// <param name="path"></param>
         /// <param name="name"></param>
-        public static void SaveJsonToPathWithName(string data, string path, string name)
+        public static void SaveJsonToPathWithName(string data, string path)
         {
-
+            File.WriteAllText(path, data);
         }
     }
 }

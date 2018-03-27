@@ -15,5 +15,8 @@ namespace WRInfo
         static public string ServerVersion = "https://api.worldofwarships.{0}/wows/encyclopedia/info/?application_id=" + ApplicationID + "&fields=game_version";
         static public string Warships = "https://api.worldofwarships.{0}/wows/encyclopedia/ships/?application_id=" + ApplicationID + "&fields=name%2Cship_id%2Cship_id_str&language=en";
         static public string PRJson = "https://wows-numbers.com/personal/rating/expected/json/";
+
+        static public string personalRating = "pr.json";
+        static public string warshipJson = "warship.json";
     }
 }

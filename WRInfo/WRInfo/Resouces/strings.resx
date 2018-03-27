@@ -126,17 +126,38 @@
   <data name="api" xml:space="preserve">
     <value>API</value>
   </data>
-  <data name="choose_server" xml:space="preserve">
-    <value>Choose your server: </value>
+  <data name="complete" xml:space="preserve">
+    <value>Completed...</value>
   </data>
-  <data name="enter_gamepath" xml:space="preserve">
-    <value>Please enter your game path: </value>
+  <data name="curr_version" xml:space="preserve">
+    <value>Game Version -&gt; </value>
+  </data>
+  <data name="download_pr" xml:space="preserve">
+    <value>Downloading personal rating...</value>
+  </data>
+  <data name="download_warships" xml:space="preserve">
+    <value>Downloading warship information...</value>
+  </data>
+  <data name="fatal_error" xml:space="preserve">
+    <value> -&gt; fatal error, program will exit</value>
   </data>
   <data name="gamepath" xml:space="preserve">
     <value>GamePath</value>
   </data>
+  <data name="has_update" xml:space="preserve">
+    <value>New version is found -&gt; </value>
+  </data>
   <data name="introduction" xml:space="preserve">
     <value>WRInfo is an useful tool to help you understand your teammates and opponents. This program will provide statistics for all players. However, if it is a HIDDEN account, no information will be shown.</value>
+  </data>
+  <data name="language" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="no_update" xml:space="preserve">
+    <value>It is up to date</value>
+  </data>
+  <data name="only_threelanguages" xml:space="preserve">
+    <value>If your language is not on the list, apologies for that. You are welcomed to submit a pull request for more languages</value>
   </data>
   <data name="path_notvalid" xml:space="preserve">
     <value>Sorry, this path is not valid. Please enter it again &gt;_&lt;</value>

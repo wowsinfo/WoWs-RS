@@ -88,20 +88,47 @@ namespace WRInfo.Resouces {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Choose your server: .
+        ///   Looks up a localized string similar to Completed....
         /// </summary>
-        internal static string choose_server {
+        internal static string complete {
             get {
-                return ResourceManager.GetString("choose_server", resourceCulture);
+                return ResourceManager.GetString("complete", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please enter your game path: .
+        ///   Looks up a localized string similar to Game Version -&gt; .
         /// </summary>
-        internal static string enter_gamepath {
+        internal static string curr_version {
             get {
-                return ResourceManager.GetString("enter_gamepath", resourceCulture);
+                return ResourceManager.GetString("curr_version", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Downloading personal rating....
+        /// </summary>
+        internal static string download_pr {
+            get {
+                return ResourceManager.GetString("download_pr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Downloading warship information....
+        /// </summary>
+        internal static string download_warships {
+            get {
+                return ResourceManager.GetString("download_warships", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to  -&gt; fatal error, program will exit.
+        /// </summary>
+        internal static string fatal_error {
+            get {
+                return ResourceManager.GetString("fatal_error", resourceCulture);
             }
         }
         
@@ -115,11 +142,47 @@ namespace WRInfo.Resouces {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to New version is found -&gt; .
+        /// </summary>
+        internal static string has_update {
+            get {
+                return ResourceManager.GetString("has_update", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to WRInfo is an useful tool to help you understand your teammates and opponents. This program will provide statistics for all players. However, if it is a HIDDEN account, no information will be shown..
         /// </summary>
         internal static string introduction {
             get {
                 return ResourceManager.GetString("introduction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Language.
+        /// </summary>
+        internal static string language {
+            get {
+                return ResourceManager.GetString("language", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to It is up to date.
+        /// </summary>
+        internal static string no_update {
+            get {
+                return ResourceManager.GetString("no_update", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to If your language is not on the list, apologies for that. You are welcomed to submit a pull request for more languages.
+        /// </summary>
+        internal static string only_threelanguages {
+            get {
+                return ResourceManager.GetString("only_threelanguages", resourceCulture);
             }
         }
         
