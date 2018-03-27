@@ -98,7 +98,7 @@ namespace WRInfo
                             });
                             Console.WriteLine("P" + i + "...");
                         }
-                        DataManager.SaveJsonToPathWithName(warship.ToString(), CurrDir + "/" + Value.warshipJson);
+                        DataManager.SaveJsonToPathWithName(warship.ToString(), CurrDir + "/data/" + Value.warshipJson);
                         Console.WriteLine(strings.complete);
                     }
                 }
@@ -120,7 +120,7 @@ namespace WRInfo
                 try
                 {
                     var data = client.DownloadString(Value.PRJson);
-                    DataManager.SaveJsonToPathWithName(data, CurrDir + "/" + Value.personalRating);
+                    DataManager.SaveJsonToPathWithName(data, CurrDir + "/data/" + Value.personalRating);
                     Console.WriteLine(strings.complete);
                 }
                 catch (Exception e)

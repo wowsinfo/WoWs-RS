@@ -7,6 +7,7 @@ using WRInfo.Core;
 using WRInfo.Resouces;
 using WRInfo.Properties;
 using Console = Colorful.Console;
+using System.Diagnostics;
 
 namespace WRInfo
 {
@@ -17,11 +18,13 @@ namespace WRInfo
         /// Show some kind reminder for user
         /// </summary>
         static int battleCount = 0;
+        static Color[] list = new Color[] { Colour.WBlue, Colour.WGreen, Colour.WOrange, Colour.WPurple, Colour.WRed,
+               Colour.WYellow, Color.White, Color.Turquoise, Color.Silver, Color.Orchid, Color.Brown, Color.Azure,
+               Color.Pink, Color.Teal, Color.Violet, Color.Lime };
 
         static void Main(string[] args)
         {
             AppLaunch();
-            Console.ReadKey();
             // Save data before app closed
             Settings.Default.Save();
         }
@@ -36,19 +39,93 @@ namespace WRInfo
         static void AppLaunch()
         {
             DataManager dataManager = new DataManager(Directory.GetCurrentDirectory());
-            if (dataManager.FirstLaunch())
+            var first = dataManager.FirstLaunch();
+            if (first) Reset();
+
+            if (!first)
             {
-                WelcomeMessage();
-                LanguageSelection();
-                SetupGamePath();
-                PullDataFromAPI();
+                // Checking for update and local data
             }
-            else
+
+            // Show Menu
+            ShowMenu();
+            var input = "";
+            while (input != "exit")
             {
-                // Show Menu
+                Console.Write("> ");
+                input = Console.ReadLine();
+                switch (input)
+                {
+                    case "clear": Console.Clear(); break;
+                    case "menu": ShowMenu(); break;
+                    case "reset": Reset(); break;
+                    case "server": PullDataFromAPI(); break;
+                    case "path": SetupGamePath(); break;
+                    case "language": LanguageSelection(); break;
+                    case "help": ShowUsage(); break;
+                    case "wows":
+                        Process.Start(String.Format(Value.WoWs, Settings.Default.APIDomain)); break;
+                    case "facebook": Process.Start(Value.Facebook); break;
+                    case "number": Process.Start(Value.Number); break;
+                    case "github": Process.Start(Value.Github); break;
+                }
             }
         }
+        
+        #region Menu
+        /// <summary>
+        /// Show Main menu
+        /// </summary>
+        static void ShowMenu()
+        {
+            Console.Clear();
+            Random rnd = new Random();
+            Console.WriteAscii(strings.wrinfo, list[rnd.Next(0, list.Length)]);
+            Console.WriteLine("Version " + Value.VERSION);
+        }
 
+        /// <summary>
+        /// Show all possible commands
+        /// </summary>
+        static void ShowUsage()
+        {
+            Console.WriteLine("start (sec)\t");
+            Console.WriteLine("help\t");
+            Console.WriteLine("menu\t");
+            Console.WriteLine("language\t");
+            Console.WriteLine("server\t");
+            Console.WriteLine("path\t");
+            Console.WriteLine("clear\t");
+            Console.WriteLine("reset\t");
+            Console.WriteLine("resetall\t");
+            Console.WriteLine("exit\t");
+            Console.WriteLine("wows\t");
+            Console.WriteLine("facebook\t");
+            Console.WriteLine("number\t");
+            Console.WriteLine("github\t");
+        }
+
+        /// <summary>
+        /// Reset or setup everything
+        /// </summary>
+        static void Reset()
+        {
+            // Reset or setup data
+            Console.Clear();
+            WelcomeMessage();
+
+            LanguageSelection();
+            AnyKeyToContinue();
+
+            SetupGamePath();
+            AnyKeyToContinue();
+
+            PullDataFromAPI();
+            ShowMenu();
+        }
+        #endregion
+
+        #region Functiions
         /// <summary>
         /// Press any key to continue this program
         /// </summary>
@@ -69,7 +146,6 @@ namespace WRInfo
             Console.WriteLine(strings.only_threelanguages, Color.White);
             Console.Write("1. English\n2. 简体中文\n3. 日本語\n> ");
             var language = Console.ReadLine();
-            AnyKeyToContinue();
         }
 
         /// <summary>
@@ -104,8 +180,7 @@ namespace WRInfo
                     isValid = true;
 
                     var info = DataManager.LoadNameAndServer(preferencePath);
-                    Console.WriteAscii("Hi " + info.Name);
-                    AnyKeyToContinue();
+                    Console.WriteAscii("Hi " + info.Name, Color.White);
                 }
                 else
                 {
@@ -160,4 +235,5 @@ namespace WRInfo
             API.PullData();
         }
     }
+    #endregion
 }

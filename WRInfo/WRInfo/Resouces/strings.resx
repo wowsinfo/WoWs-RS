@@ -183,4 +183,7 @@
   <data name="whatis_pr" xml:space="preserve">
     <value>Personal Rating is measure of skill in World of Warships. It measures performance in every warship and compares it to certain expected values. Differences between actual and expected values are used to calculate final Personal Rating value.</value>
   </data>
+  <data name="wrinfo" xml:space="preserve">
+    <value>WRInfo</value>
+  </data>
 </root>

@@ -8,6 +8,7 @@ namespace WRInfo
 {
     class Value
     {
+        static public string VERSION = "1.0";
         static public string ApplicationID = "e8b46cbc33f242c78725bd6a7562788a";
 
         static public string PlayerSearch = "https://api.worldofwarships.{0}/wows/account/list/?application_id=" + ApplicationID  + "&search={1}&type=exact&language=en&fields=account_id";
@@ -18,5 +19,10 @@ namespace WRInfo
 
         static public string personalRating = "pr.json";
         static public string warshipJson = "warship.json";
+
+        static public string Github = "https://github.com/HenryQuan/WRInfo-Console-Edition";
+        static public string Facebook = "https://www.facebook.com/wowsdevblog/";
+        static public string WoWs = "https://worldofwarships.{0}/";
+        static public string Number = "https://wows-numbers.com/";
     }
 }

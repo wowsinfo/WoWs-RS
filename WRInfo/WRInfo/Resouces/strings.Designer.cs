@@ -257,5 +257,14 @@ namespace WRInfo.Resouces {
                 return ResourceManager.GetString("whatis_pr", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to WRInfo.
+        /// </summary>
+        internal static string wrinfo {
+            get {
+                return ResourceManager.GetString("wrinfo", resourceCulture);
+            }
+        }
     }
 }

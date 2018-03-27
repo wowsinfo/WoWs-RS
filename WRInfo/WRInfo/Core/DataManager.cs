@@ -26,7 +26,12 @@ namespace WRInfo.Core
         /// <returns></returns>
         public bool FirstLaunch()
         {
-            if (!Directory.Exists(this.targetDir)) return true;
+            if (!Directory.Exists(this.targetDir))
+            {
+                // Create a data folder
+                Directory.CreateDirectory(this.targetDir);
+                return true;
+            }
             else return false;
         }
 
