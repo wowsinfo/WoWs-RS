@@ -88,6 +88,15 @@ namespace WRInfo.Resouces {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Choose your server: .
+        /// </summary>
+        internal static string choose_server {
+            get {
+                return ResourceManager.GetString("choose_server", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please enter your game path: .
         /// </summary>
         internal static string enter_gamepath {
@@ -142,11 +151,20 @@ namespace WRInfo.Resouces {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Pulling data from WoWs API.
+        ///   Looks up a localized string similar to Pulling data from WoWs API....
         /// </summary>
         internal static string pull_api {
             get {
                 return ResourceManager.GetString("pull_api", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Input not valid.
+        /// </summary>
+        internal static string server_notvalid {
+            get {
+                return ResourceManager.GetString("server_notvalid", resourceCulture);
             }
         }
         

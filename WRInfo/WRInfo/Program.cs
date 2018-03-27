@@ -89,7 +89,8 @@ namespace WRInfo
                     Settings.Default.GamePath = gamePath;
                     isValid = true;
 
-                    DataManager.LoadNameAndServer(preferencePath);
+                    var info = DataManager.LoadNameAndServer(preferencePath);
+                    Console.WriteAscii("Hi " + info.Name, Color.White);
                     AnyKeyToContinue();
                 }
                 else
@@ -104,8 +105,45 @@ namespace WRInfo
         /// </summary>
         static void PullDataFromAPI()
         {
+            var isValid = false;
             Console.WriteAscii(strings.api, Colour.WOrange);
-            Console.WriteLine(strings.pull_api, Color.White);
+
+            while (!isValid)
+            {
+                Console.WriteLine("1. RU\t2. EU\t3. NA\t4. ASIA");
+                Console.Write(strings.choose_server, Color.White);
+
+                try
+                {
+                    var server = Convert.ToInt16(Console.ReadLine());
+                    if (server < 1 || server > 4)
+                    {
+                        // Not valid
+                        Console.WriteLine(strings.server_notvalid + "\n", Colour.WYellow);
+                    }
+                    else
+                    {
+                        // Setup domain
+                        var domain = "asia";
+                        switch (server)
+                        {
+                            case 1: domain = "ru"; break;
+                            case 2: domain = "eu"; break;
+                            case 3: domain = "com"; break;
+                        }
+                        Settings.Default.APIDomain = domain;
+                        isValid = true;
+                    }
+                }
+                catch
+                {
+                    // Not valid
+                    Console.WriteLine(strings.server_notvalid + " -_-\n", Colour.WRed);
+                }
+            }
+
+            // Start downloading data
+            Console.WriteLine("\n" + strings.pull_api, Color.White);
         }
     }
 }

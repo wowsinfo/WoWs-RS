@@ -126,6 +126,9 @@
   <data name="api" xml:space="preserve">
     <value>API</value>
   </data>
+  <data name="choose_server" xml:space="preserve">
+    <value>Choose your server: </value>
+  </data>
   <data name="enter_gamepath" xml:space="preserve">
     <value>Please enter your game path: </value>
   </data>
@@ -145,7 +148,10 @@
     <value>Personal Rating...</value>
   </data>
   <data name="pull_api" xml:space="preserve">
-    <value>Pulling data from WoWs API</value>
+    <value>Pulling data from WoWs API...</value>
+  </data>
+  <data name="server_notvalid" xml:space="preserve">
+    <value>Input not valid</value>
   </data>
   <data name="validate_gamepath" xml:space="preserve">
     <value>Checking for path </value>
