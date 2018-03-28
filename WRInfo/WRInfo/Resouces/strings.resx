@@ -132,6 +132,9 @@
   <data name="curr_version" xml:space="preserve">
     <value>Game Version -&gt; </value>
   </data>
+  <data name="developer" xml:space="preserve">
+    <value> (Developer)</value>
+  </data>
   <data name="download_pr" xml:space="preserve">
     <value>Downloading personal rating...</value>
   </data>
@@ -153,6 +156,9 @@
   <data name="language" xml:space="preserve">
     <value>Language</value>
   </data>
+  <data name="no_log" xml:space="preserve">
+    <value>Where is your python.log? Please at least open your game once before using this program</value>
+  </data>
   <data name="no_update" xml:space="preserve">
     <value>It is up to date</value>
   </data>
@@ -165,6 +171,9 @@
   <data name="path_valid" xml:space="preserve">
     <value>Gamepath is valid ^_^</value>
   </data>
+  <data name="player" xml:space="preserve">
+    <value>Players</value>
+  </data>
   <data name="pr" xml:space="preserve">
     <value>Personal Rating...</value>
   </data>
@@ -174,8 +183,17 @@
   <data name="server_notvalid" xml:space="preserve">
     <value>Input not valid</value>
   </data>
+  <data name="team0" xml:space="preserve">
+    <value>Team 0</value>
+  </data>
+  <data name="team1" xml:space="preserve">
+    <value>Team 1</value>
+  </data>
   <data name="validate_gamepath" xml:space="preserve">
     <value>Checking for path </value>
+  </data>
+  <data name="website_link" xml:space="preserve">
+    <value>--- Websites ---</value>
   </data>
   <data name="welcome" xml:space="preserve">
     <value>Welcome to WRInfo</value>

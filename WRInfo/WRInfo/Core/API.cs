@@ -1,21 +1,76 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 using Newtonsoft.Json;
 using WRInfo.Properties;
 using WRInfo.Resouces;
 using WRInfo.Core;
 using System.IO;
 using Newtonsoft.Json.Linq;
+using System.Text;
 
 namespace WRInfo
 {
     class API
     {
         private static string CurrDir = Directory.GetCurrentDirectory();
+
+        /// <summary>
+        /// Get PlayerInfo for player with name xxx
+        /// </summary>
+        /// <returns></returns>
+        public static PlayerInfo GetPlayerInfo(string name, string shipID)
+        {
+            var playerID = "";
+            using (var client = new WebClient())
+            {
+                try
+                {
+                    var data = client.DownloadString(String.Format(Value.PlayerSearch, Settings.Default.APIDomain, name));
+                    dynamic json = JsonConvert.DeserializeObject(data);
+                    // Somtimes, player hides their stat
+                    
+                    if (json.status == "ok" && json.meta.count == 1)
+                    {
+                        playerID = (string) json.data[0].account_id;
+                        // Console.WriteLine(playerID);
+                    }
+                }
+                catch (Exception e)
+                {
+                    FatalError(e, "API::CheckGameUpdate");
+                }
+            }
+            return GetInfoForID(playerID, shipID);
+        }
+
+        /// <summary>
+        /// Get information for a player
+        /// </summary>
+        /// <returns></returns>
+        private static PlayerInfo GetInfoForID(string playerID, string shipID)
+        {
+            PlayerInfo info = null;
+            using (var client = new WebClient())
+            {
+                try
+                {
+                    var data = client.DownloadString(String.Format(Value.PlayerShip, Settings.Default.APIDomain, playerID, shipID));
+                    dynamic json = JsonConvert.DeserializeObject(data);
+                    // Somtimes, player hides their stat
+                    if (json.status == "ok" && json.meta.hidden == null)
+                    {
+                        var player = json.data[playerID][0].pvp;
+                        info = new PlayerInfo((int)player.battles, (int)player.wins, 
+                            (int)player.frags, (int)player.damage_dealt);
+                    }
+                }
+                catch (Exception e)
+                {
+                    FatalError(e, "API::CheckGameUpdate");
+                }
+            }
+            return info;
+        }
 
         /// <summary>
         /// Download and format data properly and save it under data folder
@@ -77,6 +132,7 @@ namespace WRInfo
             Console.WriteLine(strings.download_warships);
             using (var client = new WebClient())
             {
+                client.Encoding = Encoding.UTF8;
                 try
                 {
                     var api = String.Format(Value.Warships, Settings.Default.APIDomain);
@@ -98,7 +154,7 @@ namespace WRInfo
                             });
                             Console.WriteLine("P" + i + "...");
                         }
-                        DataManager.SaveJsonToPathWithName(warship.ToString(), CurrDir + "/data/" + Value.warshipJson);
+                        DataManager.SaveJsonToPathWithName(JsonConvert.SerializeObject(warship), CurrDir + "/data/" + Value.warshipJson);
                         Console.WriteLine(strings.complete);
                     }
                 }

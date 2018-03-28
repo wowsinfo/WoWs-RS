@@ -106,6 +106,15 @@ namespace WRInfo.Resouces {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to  (Developer).
+        /// </summary>
+        internal static string developer {
+            get {
+                return ResourceManager.GetString("developer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Downloading personal rating....
         /// </summary>
         internal static string download_pr {
@@ -169,6 +178,15 @@ namespace WRInfo.Resouces {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Where is your python.log? Please at least open your game once before using this program.
+        /// </summary>
+        internal static string no_log {
+            get {
+                return ResourceManager.GetString("no_log", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to It is up to date.
         /// </summary>
         internal static string no_update {
@@ -205,6 +223,15 @@ namespace WRInfo.Resouces {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Players.
+        /// </summary>
+        internal static string player {
+            get {
+                return ResourceManager.GetString("player", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Personal Rating....
         /// </summary>
         internal static string pr {
@@ -232,11 +259,38 @@ namespace WRInfo.Resouces {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Team 0.
+        /// </summary>
+        internal static string team0 {
+            get {
+                return ResourceManager.GetString("team0", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Team 1.
+        /// </summary>
+        internal static string team1 {
+            get {
+                return ResourceManager.GetString("team1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Checking for path .
         /// </summary>
         internal static string validate_gamepath {
             get {
                 return ResourceManager.GetString("validate_gamepath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to --- Websites ---.
+        /// </summary>
+        internal static string website_link {
+            get {
+                return ResourceManager.GetString("website_link", resourceCulture);
             }
         }
         

@@ -19,6 +19,5 @@ namespace WRInfo
             this.name = name;
             this.server = server;
         }
-
     }
 }
