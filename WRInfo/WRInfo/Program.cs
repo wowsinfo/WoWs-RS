@@ -62,6 +62,13 @@ namespace WRInfo
             if (!first)
             {
                 // Checking for update and local data
+                API.PullData();
+
+                // Reset if data is damaged
+                if (dataManager.NeedReset()) PullDataFromAPI();
+
+                // Check for program update
+                DataManager.CheckForGithubUpdate();
             }
 
             // Show Menu
@@ -101,7 +108,7 @@ namespace WRInfo
             Random rnd = new Random();
             Console.WriteAscii(strings.wrinfo, list[rnd.Next(0, list.Length)]);
             Console.WriteLine(Settings.Default.GamePath);
-            Console.WriteLine("Version " + Value.VERSION);
+            Console.WriteLine("v" + Value.VERSION);
         }
 
         /// <summary>
