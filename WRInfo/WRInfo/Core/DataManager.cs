@@ -61,5 +61,29 @@ namespace WRInfo.Core
         {
             File.WriteAllText(path, data);
         }
+
+        /// <summary>
+        /// Read log file
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        public static string ReadLogFile(string path)
+        {
+            var log = "";
+            try
+            {
+                using (FileStream stream = File.Open(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+                {
+                    log = new StreamReader(stream).ReadToEnd();
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("DataManager::ReadLogFile\n" + e);
+                Console.ReadKey();
+                Environment.Exit(1);
+            }
+            return log;
+        }
     }
 }

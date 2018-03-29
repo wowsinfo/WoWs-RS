@@ -34,9 +34,14 @@ namespace WRInfo
         static void Main(string[] args)
         {
             AppLaunch();
-            // Save data before app closed
             Settings.Default.Save();
         }
+
+        /// <summary>
+        /// Save data before software closes
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
 
         /// <summary>
         /// Show some animations with fake loading and real update checking
@@ -92,6 +97,7 @@ namespace WRInfo
             Console.Clear();
             Random rnd = new Random();
             Console.WriteAscii(strings.wrinfo, list[rnd.Next(0, list.Length)]);
+            Console.WriteLine(Settings.Default.GamePath);
             Console.WriteLine("Version " + Value.VERSION);
         }
 
@@ -148,7 +154,7 @@ namespace WRInfo
                 var logpath = gamepath + "/profile/python.log";
                 if (File.Exists(logpath))
                 {
-                    string python_log = File.ReadAllText(logpath);
+                    string python_log = DataManager.ReadLogFile(logpath);
                     Regex BattleRegex = new Regex(Value.BattleRegex);
                     MatchCollection Battles = BattleRegex.Matches(python_log);
                     var count = Battles.Count;
@@ -197,7 +203,8 @@ namespace WRInfo
 
         private static void CheckPlayerInfo(string log)
         {
-            Console.WriteAscii(strings.player);
+            Console.Clear();
+            Console.WriteAscii(strings.player, Colour.WYellow);
             Regex PlayerRegex = new Regex(Value.PlayerRegex);
             MatchCollection Players = PlayerRegex.Matches(log);
 
@@ -210,11 +217,11 @@ namespace WRInfo
                 // Add reminder for the people you met today
                 if (nameList.Contains(name))
                 {
-                    Console.Write(name + "  ......  !! ");
+                    Console.Write(name + "  ......  !! ", Color.Gray);
                 }   
                 else
                 {
-                    Console.Write(name);
+                    Console.Write(name, Color.Gray);
                     nameList.Add(name);
                 }
 
@@ -250,10 +257,8 @@ namespace WRInfo
             }
 
             // Show Team overview
-            Console.WriteAscii(strings.team0);
-            PlayerInfo.ShowTeamOverview(team0List);
-            Console.WriteAscii(strings.team1);
-            PlayerInfo.ShowTeamOverview(team1List);
+            Console.WriteAscii("Team 0       Team 1", Colour.WBlue);
+            PlayerInfo.ShowTeamOverview(team0List, team1List);
         }
 
         /// <summary>

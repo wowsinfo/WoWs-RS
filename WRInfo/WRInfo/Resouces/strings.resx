@@ -183,12 +183,6 @@
   <data name="server_notvalid" xml:space="preserve">
     <value>Input not valid</value>
   </data>
-  <data name="team0" xml:space="preserve">
-    <value>Team 0</value>
-  </data>
-  <data name="team1" xml:space="preserve">
-    <value>Team 1</value>
-  </data>
   <data name="validate_gamepath" xml:space="preserve">
     <value>Checking for path </value>
   </data>

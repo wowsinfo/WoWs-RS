@@ -82,6 +82,8 @@ namespace WRInfo
                 GetWarships();
                 GetPersonalRating();
             }
+            // Save data
+            Settings.Default.Save();
         }
 
         /// <summary>

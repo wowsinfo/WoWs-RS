@@ -259,24 +259,6 @@ namespace WRInfo.Resouces {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Team 0.
-        /// </summary>
-        internal static string team0 {
-            get {
-                return ResourceManager.GetString("team0", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Team 1.
-        /// </summary>
-        internal static string team1 {
-            get {
-                return ResourceManager.GetString("team1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Checking for path .
         /// </summary>
         internal static string validate_gamepath {
