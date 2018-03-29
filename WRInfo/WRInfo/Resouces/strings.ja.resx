@@ -118,52 +118,52 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="agreement" xml:space="preserve">
-    <value>Please do respect all players and DO NOT EVER judge any players base on their stat</value>
+    <value>他のプレーヤーを尊重し、データよりの評価はごご遠慮ください</value>
   </data>
   <data name="api" xml:space="preserve">
     <value>API</value>
   </data>
   <data name="complete" xml:space="preserve">
-    <value>Completed...</value>
+    <value>完了しました。。</value>
   </data>
   <data name="curr_version" xml:space="preserve">
-    <value>Game Version -&gt; </value>
+    <value>ゲームバージョン -&gt; </value>
   </data>
   <data name="developer" xml:space="preserve">
-    <value> (Developer)</value>
+    <value> (開発者)</value>
   </data>
   <data name="download_pr" xml:space="preserve">
-    <value>Downloading personal rating...</value>
+    <value>PRのデータをダウンロードしています。。</value>
   </data>
   <data name="download_warships" xml:space="preserve">
-    <value>Downloading warship information...</value>
+    <value>軍艦のデータをダウンロードしています。。</value>
   </data>
   <data name="gamepath" xml:space="preserve">
     <value>GamePath</value>
   </data>
   <data name="has_update" xml:space="preserve">
-    <value>New version is found -&gt; </value>
+    <value>新しいバージョン -&gt; </value>
   </data>
   <data name="introduction" xml:space="preserve">
-    <value>WRInfo is an useful tool to help you understand your teammates and opponents. This program will provide statistics for all players. However, if it is a HIDDEN account, no information will be shown.</value>
+    <value>WRInfoはチームメイトや相手のデータを見せるし、便利なプログラムです。しかし、とあるプレーヤーはデータをは隠すかもしれません</value>
   </data>
   <data name="language" xml:space="preserve">
     <value>Language</value>
   </data>
   <data name="no_log" xml:space="preserve">
-    <value>Where is your python.log? Please at least open your game once before using this program</value>
+    <value>python.logはどこですか。。</value>
   </data>
   <data name="no_update" xml:space="preserve">
-    <value>It is up to date</value>
+    <value>アップデートはありません</value>
   </data>
   <data name="only_threelanguages" xml:space="preserve">
-    <value>If your language is not on the list, apologies for that. You are welcomed to submit a pull request for more languages</value>
+    <value>している言語はないなら、pull requestが大歓迎です！</value>
   </data>
   <data name="path_notvalid" xml:space="preserve">
-    <value>Sorry, this path is not valid. Please enter it again &gt;_&lt;</value>
+    <value>すみませんがこのパスは無効です。 もう一度入力してください。</value>
   </data>
   <data name="path_valid" xml:space="preserve">
-    <value>Gamepath is valid ^_^</value>
+    <value>パスは有効です ^_^</value>
   </data>
   <data name="player" xml:space="preserve">
     <value>Players</value>
@@ -172,16 +172,16 @@
     <value>Personal Rating...</value>
   </data>
   <data name="pull_api" xml:space="preserve">
-    <value>Pulling data from WoWs API...</value>
+    <value>APIからデータをダウンロードしています。。</value>
   </data>
   <data name="server_notvalid" xml:space="preserve">
-    <value>Input not valid</value>
+    <value>入力は無効です &gt;_&lt;</value>
   </data>
   <data name="validate_gamepath" xml:space="preserve">
-    <value>Checking for path </value>
+    <value>パスをチェックしています。。</value>
   </data>
   <data name="website_link" xml:space="preserve">
-    <value>--- Websites ---</value>
+    <value>--- サイト ---</value>
   </data>
   <data name="welcome" xml:space="preserve">
     <value>Welcome to WRInfo</value>

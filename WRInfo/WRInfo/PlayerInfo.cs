@@ -71,13 +71,13 @@ namespace WRInfo
             if (team0)
             {
                 Console.Write("{0, 25}  ", this.name, Color.White);
-                Console.Write("{0, 15}  ", this.shipname, this.rating);
+                Console.Write("{0, 18}  ", this.shipname, this.rating);
                 Console.Write("{0, 5}  {1, 4}%  {2, 6}", this.battle, this.winrate, this.ability, Color.White);
             }
             else
             {
                 Console.Write("{0, -6}  %{1, -4}  {2, -5}", this.ability, this.winrate, this.battle, Color.White);
-                Console.Write("  {0, -15}", this.shipname, this.rating);
+                Console.Write("  {0, -18}", this.shipname, this.rating);
                 Console.Write("  {0, -25}", this.name, Color.White);
             }
         }
@@ -103,6 +103,7 @@ namespace WRInfo
             double team0Win = 0, team1Win = 0, team0AP = 0, team1AP = 0;
             if (team0Count == team1Count)
             {
+                Console.WriteAscii("Team 0       Team 1", Colour.WBlue);
                 // This is normal mode
                 for (var i = 0; i < team0.Count; i++)
                 {
@@ -134,6 +135,23 @@ namespace WRInfo
             else
             {
                 // Training room or Operation
+                Console.WriteAscii("? ? ?", Colour.WBlue);
+                ShowTeamOverviewSmall(team0);
+                Console.WriteLine("");
+                ShowTeamOverviewSmall(team1);
+            }
+        }
+
+        public static void ShowTeamOverviewSmall(List<PlayerInfo> list)
+        {
+            list.Sort(delegate (PlayerInfo prev, PlayerInfo next)
+            {
+                return (prev.ability < next.ability) ? 1 : -1;
+            });
+            foreach (var player in list)
+            {
+                player.ShowPlayer(true);
+                Console.WriteLine("\n");
             }
         }
 

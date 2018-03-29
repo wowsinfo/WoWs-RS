@@ -70,15 +70,6 @@ namespace WRInfo.Resouces {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please press any key to continue....
-        /// </summary>
-        internal static string anykey_continue {
-            get {
-                return ResourceManager.GetString("anykey_continue", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to API.
         /// </summary>
         internal static string api {
@@ -129,15 +120,6 @@ namespace WRInfo.Resouces {
         internal static string download_warships {
             get {
                 return ResourceManager.GetString("download_warships", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to  -&gt; fatal error, program will exit.
-        /// </summary>
-        internal static string fatal_error {
-            get {
-                return ResourceManager.GetString("fatal_error", resourceCulture);
             }
         }
         
@@ -282,15 +264,6 @@ namespace WRInfo.Resouces {
         internal static string welcome {
             get {
                 return ResourceManager.GetString("welcome", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Personal Rating is measure of skill in World of Warships. It measures performance in every warship and compares it to certain expected values. Differences between actual and expected values are used to calculate final Personal Rating value..
-        /// </summary>
-        internal static string whatis_pr {
-            get {
-                return ResourceManager.GetString("whatis_pr", resourceCulture);
             }
         }
         

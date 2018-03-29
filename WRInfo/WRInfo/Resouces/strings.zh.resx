@@ -118,70 +118,70 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="agreement" xml:space="preserve">
-    <value>Please do respect all players and DO NOT EVER judge any players base on their stat</value>
+    <value>请尊重每一个玩家，不要用数据来评价玩家</value>
   </data>
   <data name="api" xml:space="preserve">
     <value>API</value>
   </data>
   <data name="complete" xml:space="preserve">
-    <value>Completed...</value>
+    <value>完成。。</value>
   </data>
   <data name="curr_version" xml:space="preserve">
-    <value>Game Version -&gt; </value>
+    <value>游戏版本 -&gt;</value>
   </data>
   <data name="developer" xml:space="preserve">
-    <value> (Developer)</value>
+    <value> (开发者)</value>
   </data>
   <data name="download_pr" xml:space="preserve">
-    <value>Downloading personal rating...</value>
+    <value>下载PR数据。。</value>
   </data>
   <data name="download_warships" xml:space="preserve">
-    <value>Downloading warship information...</value>
+    <value>下载战舰数据。。</value>
   </data>
   <data name="gamepath" xml:space="preserve">
     <value>GamePath</value>
   </data>
   <data name="has_update" xml:space="preserve">
-    <value>New version is found -&gt; </value>
+    <value>发现新版本 -&gt; </value>
   </data>
   <data name="introduction" xml:space="preserve">
-    <value>WRInfo is an useful tool to help you understand your teammates and opponents. This program will provide statistics for all players. However, if it is a HIDDEN account, no information will be shown.</value>
+    <value>WRinfo可以帮助你了解你的队友和对手。这个程序会提供所有玩有的数据，但是有些玩家会隐藏他们的数据所以并不可以看到全部玩家的数据</value>
   </data>
   <data name="language" xml:space="preserve">
     <value>Language</value>
   </data>
   <data name="no_log" xml:space="preserve">
-    <value>Where is your python.log? Please at least open your game once before using this program</value>
+    <value>没有发现python.log。。</value>
   </data>
   <data name="no_update" xml:space="preserve">
-    <value>It is up to date</value>
+    <value>已经是最新版本</value>
   </data>
   <data name="only_threelanguages" xml:space="preserve">
-    <value>If your language is not on the list, apologies for that. You are welcomed to submit a pull request for more languages</value>
+    <value>如果你的语言不在列表上，十分抱歉。WRInfo欢迎pull request来增加更多的语言。</value>
   </data>
   <data name="path_notvalid" xml:space="preserve">
-    <value>Sorry, this path is not valid. Please enter it again &gt;_&lt;</value>
+    <value>路径无效，请重新数据</value>
   </data>
   <data name="path_valid" xml:space="preserve">
-    <value>Gamepath is valid ^_^</value>
+    <value>路径有效 ^_^</value>
   </data>
   <data name="player" xml:space="preserve">
     <value>Players</value>
   </data>
   <data name="pr" xml:space="preserve">
-    <value>Personal Rating...</value>
+    <value>PR数据。。</value>
   </data>
   <data name="pull_api" xml:space="preserve">
-    <value>Pulling data from WoWs API...</value>
+    <value>从官方API获取数据。。</value>
   </data>
   <data name="server_notvalid" xml:space="preserve">
-    <value>Input not valid</value>
+    <value>输入无效</value>
   </data>
   <data name="validate_gamepath" xml:space="preserve">
-    <value>Checking for path </value>
+    <value>检查路径。。</value>
   </data>
   <data name="website_link" xml:space="preserve">
-    <value>--- Websites ---</value>
+    <value>--- 网站 ---</value>
   </data>
   <data name="welcome" xml:space="preserve">
     <value>Welcome to WRInfo</value>

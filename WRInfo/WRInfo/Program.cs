@@ -10,6 +10,7 @@ using System.Diagnostics;
 using System.Text.RegularExpressions;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using System.Globalization;
 
 namespace WRInfo
 {
@@ -33,6 +34,8 @@ namespace WRInfo
 
         static void Main(string[] args)
         {
+            // Update language
+            Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo(Settings.Default.Language);
             AppLaunch();
             Settings.Default.Save();
         }
@@ -115,7 +118,6 @@ namespace WRInfo
             Console.WriteLine("path\t");
             Console.WriteLine("clear\t");
             Console.WriteLine("reset\t");
-            Console.WriteLine("resetall\t");
             Console.WriteLine("exit\t");
 
             Console.WriteLine("\n" + strings.website_link);
@@ -176,7 +178,7 @@ namespace WRInfo
                             var difference = (DateTime.Now - lastBattledDate).TotalSeconds;
 
                             // TODO: CHANGE THIS BACK HENRY DONT FORGET
-                            if (difference > 300)
+                            if (difference < 300)
                             {
                                 CheckPlayerInfo(python_log);
                             }
@@ -204,6 +206,8 @@ namespace WRInfo
         private static void CheckPlayerInfo(string log)
         {
             Console.Clear();
+            team0List = new List<PlayerInfo> { };
+            team1List = new List<PlayerInfo> { };
             Console.WriteAscii(strings.player, Colour.WYellow);
             Regex PlayerRegex = new Regex(Value.PlayerRegex);
             MatchCollection Players = PlayerRegex.Matches(log);
@@ -257,7 +261,6 @@ namespace WRInfo
             }
 
             // Show Team overview
-            Console.WriteAscii("Team 0       Team 1", Colour.WBlue);
             PlayerInfo.ShowTeamOverview(team0List, team1List);
         }
 
@@ -276,14 +279,10 @@ namespace WRInfo
         {
             // Reset or setup data
             Console.Clear();
-            WelcomeMessage();
 
             LanguageSelection();
-            AnyKeyToContinue();
-
+            WelcomeMessage();
             SetupGamePath();
-            AnyKeyToContinue();
-
             PullDataFromAPI();
             ShowMenu();
         }
@@ -306,10 +305,42 @@ namespace WRInfo
         /// </summary>
         private static void LanguageSelection()
         {
+            var isValid = false;
             Console.WriteAscii(strings.language, Colour.WYellow);
-            Console.WriteLine(strings.only_threelanguages, Color.White);
-            Console.Write("1. English\n2. 简体中文\n3. 日本語\n> ");
-            var language = Console.ReadLine();
+            while (!isValid)
+            {
+                Console.WriteLine(strings.only_threelanguages, Color.White);
+                Console.Write("1. English\n2. 简体中文\n3. 日本語\n> ");
+                try
+                {
+                    var selection = Convert.ToInt16(Console.ReadLine());
+                    if (selection < 1 || selection > 4)
+                    {
+                        // Not valid
+                        Console.WriteLine(strings.server_notvalid + "\n", Colour.WYellow);
+                    }
+                    else
+                    {
+                        // Setup domain
+                        var lang = "en";
+                        switch (selection)
+                        {
+                            case 1: lang = "en"; break;
+                            case 2: lang = "zh"; break;
+                            case 3: lang = "ja"; break;
+                        }
+                        Settings.Default.Language = lang;
+                        Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo(lang);
+                        isValid = true;
+                    }
+                }
+                catch
+                {
+                    // Not valid
+                    Console.WriteLine(strings.server_notvalid + " -_-\n", Colour.WRed);
+                }
+            }
+            
         }
 
         /// <summary>
