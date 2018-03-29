@@ -368,6 +368,7 @@ namespace WRInfo
         {
             var isValid = false;
             Console.WriteAscii(strings.gamepath, Colour.WRed);
+            Console.WriteLine(strings.enter_gamepath);
             while (!isValid)
             {
                 Console.Write("> ");
@@ -377,12 +378,9 @@ namespace WRInfo
                 var preferencePath = gamePath + "/preferences.xml";
                 if (File.Exists(gamePath + "/WorldOfWarships.exe") && File.Exists(preferencePath))
                 {
-                    Console.WriteLine(strings.path_valid, Colour.WGreen);
+                    Console.WriteLine(strings.path_valid);
                     Settings.Default.GamePath = gamePath;
                     isValid = true;
-
-                    var info = DataManager.LoadNameAndServer(preferencePath);
-                    Console.WriteAscii("Hi " + info.Name, Color.White);
                 }
                 else
                 {
@@ -397,7 +395,7 @@ namespace WRInfo
         private static void PullDataFromAPI()
         {
             var isValid = false;
-            Console.WriteAscii(strings.api);
+            Console.WriteAscii(strings.api, Color.White);
 
             while (!isValid)
             {

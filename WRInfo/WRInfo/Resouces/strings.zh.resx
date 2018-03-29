@@ -138,6 +138,9 @@
   <data name="download_warships" xml:space="preserve">
     <value>下载战舰数据。。</value>
   </data>
+  <data name="enter_gamepath" xml:space="preserve">
+    <value>请将游戏目录复制到下面</value>
+  </data>
   <data name="gamepath" xml:space="preserve">
     <value>GamePath</value>
   </data>

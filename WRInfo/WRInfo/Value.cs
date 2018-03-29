@@ -8,7 +8,7 @@ namespace WRInfo
 {
     class Value
     {
-        static public string VERSION = "1.0.1";
+        static public string VERSION = "1.0.2";
         static public string ApplicationID = "e8b46cbc33f242c78725bd6a7562788a";
 
         static public string PlayerSearch = "https://api.worldofwarships.{0}/wows/account/list/?application_id=" + ApplicationID  + "&search={1}&type=exact&language=en&fields=account_id";
@@ -35,7 +35,7 @@ namespace WRInfo
 
         // Developer
         static public string MYNAME = "HenryQuan";
-        static public string GithubRelease = "https://github.com/HenryQuan/WRInfo-Console-Edition/releases";
+        static public string GithubRelease = "https://github.com/HenryQuan/WRInfo-Console-Edition/releases/latest";
         static public string DownloadLink = "https://github.com/HenryQuan/WRInfo-Console-Edition/releases/download/";
     }
 }

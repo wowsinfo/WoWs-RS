@@ -138,6 +138,9 @@
   <data name="download_warships" xml:space="preserve">
     <value>Downloading warship information...</value>
   </data>
+  <data name="enter_gamepath" xml:space="preserve">
+    <value>Please paste your game path below</value>
+  </data>
   <data name="gamepath" xml:space="preserve">
     <value>GamePath</value>
   </data>

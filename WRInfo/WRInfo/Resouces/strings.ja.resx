@@ -138,6 +138,9 @@
   <data name="download_warships" xml:space="preserve">
     <value>軍艦のデータをダウンロードしています。。</value>
   </data>
+  <data name="enter_gamepath" xml:space="preserve">
+    <value>ゲームのパスを入力してください</value>
+  </data>
   <data name="gamepath" xml:space="preserve">
     <value>GamePath</value>
   </data>

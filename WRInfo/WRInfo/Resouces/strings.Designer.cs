@@ -124,6 +124,15 @@ namespace WRInfo.Resouces {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please paste your game path below.
+        /// </summary>
+        internal static string enter_gamepath {
+            get {
+                return ResourceManager.GetString("enter_gamepath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to GamePath.
         /// </summary>
         internal static string gamepath {
