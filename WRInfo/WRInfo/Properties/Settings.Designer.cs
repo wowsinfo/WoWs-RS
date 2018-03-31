@@ -37,19 +37,7 @@ namespace WRInfo.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string ServerVersion {
-            get {
-                return ((string)(this["ServerVersion"]));
-            }
-            set {
-                this["ServerVersion"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("asia")]
         public string APIDomain {
             get {
                 return ((string)(this["APIDomain"]));

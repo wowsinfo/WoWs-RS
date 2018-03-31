@@ -168,7 +168,12 @@ namespace WRInfo
                     MatchCollection Battles = BattleRegex.Matches(python_log);
                     var count = Battles.Count;
                     // No battle is found, Waah
-                    if (count == 0) break;
+                    if (count == 0)
+                    {
+                        Console.WriteLine("> ZERO <");
+                        break;
+                    }
+                        
                     if (count != battleCount)
                     {
                         // This is the last battle that we care about
@@ -205,6 +210,7 @@ namespace WRInfo
                 {
                     // Never play this game or you deleted it just to break this program
                     Console.WriteLine("-_-\n" + strings.no_log);
+                    Console.ReadKey();
                     Environment.Exit(1);
                 }
             }

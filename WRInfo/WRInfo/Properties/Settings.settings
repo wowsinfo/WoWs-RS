@@ -5,11 +5,8 @@
     <Setting Name="GamePath" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="ServerVersion" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
     <Setting Name="APIDomain" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">asia</Value>
     </Setting>
     <Setting Name="GameVersion" Type="System.String" Scope="User">
       <Value Profile="(Default)" />

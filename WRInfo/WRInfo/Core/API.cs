@@ -37,7 +37,7 @@ namespace WRInfo
                 }
                 catch (Exception e)
                 {
-                    FatalError(e, "API::CheckGameUpdate");
+                    FatalError(e, "API::GetPlayerInfo");
                 }
             }
             return GetInfoForID(playerID, shipID);
@@ -66,7 +66,7 @@ namespace WRInfo
                 }
                 catch (Exception e)
                 {
-                    FatalError(e, "API::CheckGameUpdate");
+                    FatalError(e, "API::GetInfoForID");
                 }
             }
             return info;
