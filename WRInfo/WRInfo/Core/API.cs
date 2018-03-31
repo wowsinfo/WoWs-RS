@@ -59,9 +59,17 @@ namespace WRInfo
                     // Somtimes, player hides their stat
                     if (json.status == "ok" && json.meta.hidden == null)
                     {
-                        var player = json.data[playerID][0].pvp;
-                        info = new PlayerInfo((int)player.battles, (int)player.wins, 
-                            (int)player.frags, (int)player.damage_dealt);
+                        var player = json.data[playerID];
+                        if (player == null) {
+                            // First time playing that ship, lol
+                            info = new PlayerInfo(0, 0, 0, 0);
+                        }
+                        else
+                        {
+                            player = player[0].pvp;
+                            info = new PlayerInfo((int)player.battles, (int)player.wins,
+                                (int)player.frags, (int)player.damage_dealt);
+                        }
                     }
                 }
                 catch (Exception e)
