@@ -108,14 +108,13 @@ namespace WRInfo
             if (team0Count == team1Count)
             {
                 Console.WriteAscii("Team 0       Team 1", Colour.WBlue);
-                // Ignore the best player and get average of other players
-                for (var i = 1; i < team0.Count; i++)
+                for (var i = 0; i < team0.Count; i++)
                 {
                     var player0 = team0[i];
                     var player1 = team1[i];
 
-                    // Ignore last player
-                    if (i != team0.Count)
+                    // Ignore the best / worst player and get average of other players
+                    if (i != team0.Count || i != 0)
                     { 
                         if (player0.ability == 0)
                         {
@@ -147,12 +146,12 @@ namespace WRInfo
                     Console.WriteLine("\n");
                 }
                 // Print extra information
-                Console.WriteLine("Team 0 - {0, 4}% - {1} - {2}", 
+                Console.WriteLine("Team 0 - {0, 4}% - {1}", 
                     GetRoundValue(team0Win, team0Count), 
-                    GetRoundValue(team0AP, team0Count), team0Count, Colour.WYellow);
-                Console.WriteLine("Team 1 - {0, 4}% - {1} - {2}", 
+                    GetRoundValue(team0AP, team0Count), Colour.WYellow);
+                Console.WriteLine("Team 1 - {0, 4}% - {1}", 
                     GetRoundValue(team1Win, team0Count), 
-                    GetRoundValue(team1AP, team0Count), team1Count, Colour.WYellow);
+                    GetRoundValue(team1AP, team0Count), Colour.WYellow);
             } 
             else
             {
