@@ -1,9 +1,11 @@
 # WRInfo Console Edition
-~~Logo coming soon~~
+<img src="https://raw.githubusercontent.com/HenryQuan/WRInfo-Console-Edition/master/Logo/logos/WRInfo-Logo%400.5x.png" width="200px" height="200px" />
 
 中文介绍 日本語 (soon)
 
-Open source real time player info for [World of Warships](http://worldofwarships.com). This program is written in C# and works for Windows 7+ (probably)
+Open source real time player info for [World of Warships](http://worldofwarships.com). This program is written in C# and works for Windows 7+ (probably) and does not work for Mac because of colorful console framework
+
+**Please respect all players and do not judge others base on their stats. If you could not agree this, this program is not for you. Please DO NOT download it**
 
 ## How does it work
 This program get information from python.log and detects update every 20 seconds. If there is a new battle, it will check for all players id and get their ship statistics. [Personal Rating](https://wows-numbers.com/personal/rating) is calculated to show how skilled a player is. **Ability Point** is then calculated to show how experienced a player is
@@ -16,10 +18,13 @@ This program get information from python.log and detects update every 20 seconds
 
 ## Features
 - Realtime statistic
-- Support all game modes
+- Support all game modes and servers
 - Lightweight (size < 2m, ram < 40m)
 - Command line
+- No installation
 - Auto update
+
+This program should work for all future versions unless there are changes to the game structure or wargaming api. Updates are only for bug fixing and algorithmn updates
 
 ## Run this project
 - Replace you application id inside Value.cs
@@ -28,6 +33,6 @@ If you do not have one, request one [here](https://developers.wargaming.net/)
 - Click run inside Visual Studio
 
 ## Support me
-Simply share with your friends so that this program could help more players or [Donate](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=LTVLXBS7K85XA&lc=AU&item_name=Donations&currency_code=AUD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted)
+Simply share with your friends so that this program could help more players
 
 Thank you for your support >_<
