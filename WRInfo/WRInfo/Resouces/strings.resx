@@ -123,6 +123,9 @@
   <data name="api" xml:space="preserve">
     <value>API</value>
   </data>
+  <data name="colour_meaning" xml:space="preserve">
+    <value>Purple &gt; Cyan &gt; Green &gt; Yellow &gt; Orange &gt; Red</value>
+  </data>
   <data name="complete" xml:space="preserve">
     <value>Completed...</value>
   </data>

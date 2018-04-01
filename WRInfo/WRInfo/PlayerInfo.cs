@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using WRInfo.Resouces;
 using Console = Colorful.Console;
 
 namespace WRInfo
@@ -97,28 +98,47 @@ namespace WRInfo
                 return (prev.ability < next.ability) ? 1 : -1;
             });
 
+            // Show what colour means
+            Console.WriteLine("\nPersonal Rating\n" + strings.colour_meaning + "\n");
+
             // Calculate team 0 and team 1 average win rate and ability point
-            int team0Count = team0.Count;
-            int team1Count = team1.Count;
+            int team0Count = team0.Count - 2;
+            int team1Count = team1.Count - 2;
             double team0Win = 0, team1Win = 0, team0AP = 0, team1AP = 0;
             if (team0Count == team1Count)
             {
                 Console.WriteAscii("Team 0       Team 1", Colour.WBlue);
-                // This is normal mode
-                for (var i = 0; i < team0.Count; i++)
+                // Ignore the best player and get average of other players
+                for (var i = 1; i < team0.Count; i++)
                 {
                     var player0 = team0[i];
                     var player1 = team1[i];
 
-                    // This player hides stat
-                    if (player0.ability == 0) team0Count--;
-                    else if (player1.ability == 0) team1Count--;
-                    else
-                    {
-                        team0Win += player0.Winrate;
-                        team1Win += player1.Winrate;
-                        team0AP += player0.Ability;
-                        team1AP += player1.Ability;
+                    // Ignore last player
+                    if (i != team0.Count)
+                    { 
+                        if (player0.ability == 0)
+                        {
+                            // Ignore player 0
+                            team1Win += player1.Winrate;
+                            team1AP += player1.Ability;
+                            team0Count--;
+                        }
+                        else if (player1.ability == 0)
+                        {
+                            // Ignore player 1
+                            team0Win += player0.Winrate;
+                            team0AP += player0.Ability;
+                            team1Count--;
+                        }
+                        else
+                        {
+                            // Add both players
+                            team0Win += player0.Winrate;
+                            team0AP += player0.Ability;
+                            team1Win += player1.Winrate;
+                            team1AP += player1.Ability;
+                        }
                     }
 
                     player0.ShowPlayer(true);
@@ -127,10 +147,12 @@ namespace WRInfo
                     Console.WriteLine("\n");
                 }
                 // Print extra information
-                Console.WriteLine("Team 0 - {0, 4}% - {1}", 
-                    GetRoundValue(team0Win, team0Count), GetRoundValue(team0AP, team0Count), Colour.WYellow);
-                Console.WriteLine("Team 1 - {0, 4}% - {1}", 
-                    GetRoundValue(team1Win, team0Count), GetRoundValue(team1AP, team0Count), Colour.WYellow);
+                Console.WriteLine("Team 0 - {0, 4}% - {1} - {2}", 
+                    GetRoundValue(team0Win, team0Count), 
+                    GetRoundValue(team0AP, team0Count), team0Count, Colour.WYellow);
+                Console.WriteLine("Team 1 - {0, 4}% - {1} - {2}", 
+                    GetRoundValue(team1Win, team0Count), 
+                    GetRoundValue(team1AP, team0Count), team1Count, Colour.WYellow);
             } 
             else
             {

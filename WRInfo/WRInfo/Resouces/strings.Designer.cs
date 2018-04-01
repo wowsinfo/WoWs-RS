@@ -79,6 +79,15 @@ namespace WRInfo.Resouces {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Purple &gt; Cyan &gt; Green &gt; Yellow &gt; Orange &gt; Red.
+        /// </summary>
+        internal static string colour_meaning {
+            get {
+                return ResourceManager.GetString("colour_meaning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Completed....
         /// </summary>
         internal static string complete {

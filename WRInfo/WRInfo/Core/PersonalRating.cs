@@ -25,7 +25,15 @@ namespace WRInfo.Core
             var nWins = Math.Max(0, (rWins - 0.7) / (1 - 0.7));
 
             int PR = (int)(700 * nDmg + 300 * nFrags + 150 * nWins);
-            info.AddPrAblityPoint((int)(PR * info.Battle / 100), GetRatingColour(PR));
+            info.AddPrAblityPoint(CalAbilityPoint(PR, info.Battle), GetRatingColour(PR));
+        }
+
+        private static int CalAbilityPoint(double pr, double battle)
+        {
+            if (battle == 0) return 1;
+            var adjustment = Math.Sqrt(battle) / 7;
+            if (adjustment < 1) adjustment = 1;
+            return (int)(Math.Round(adjustment * pr));
         }
 
         private static Color GetRatingColour(int pr)
