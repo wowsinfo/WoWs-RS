@@ -16,7 +16,7 @@ namespace WRInfo
         public static Color Bad = WRed;
         public static Color BelowAverage = Color.Orange;
         public static Color Average = WYellow;
-        public static Color Good = Color.FromArgb(121, 175, 95);
+        public static Color Good = Color.LightGreen;
         public static Color VeryGood = WGreen;
         public static Color Great = Color.Cyan;
         public static Color Unicum = Color.Magenta;
