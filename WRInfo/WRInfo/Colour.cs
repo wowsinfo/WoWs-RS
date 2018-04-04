@@ -14,12 +14,12 @@ namespace WRInfo
         // Personal Rating colours
         // TODO: Change their value later DONT FORGET
         public static Color Bad = WRed;
-        public static Color BelowAverage = Color.FromArgb(218, 118, 49);
+        public static Color BelowAverage = Color.Orange;
         public static Color Average = WYellow;
         public static Color Good = Color.FromArgb(121, 175, 95);
         public static Color VeryGood = WGreen;
-        public static Color Great = Color.FromArgb(63, 179, 157);
-        public static Color Unicum = Color.FromArgb(170, 75, 197);
-        public static Color SuperUnicum = WPurple;
+        public static Color Great = Color.Cyan;
+        public static Color Unicum = Color.Magenta;
+        public static Color SuperUnicum = Color.Purple;
     }
 }

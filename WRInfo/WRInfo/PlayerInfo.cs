@@ -116,14 +116,14 @@ namespace WRInfo
                     // Ignore the best / worst player and get average of other players
                     if (i > 0 && i < team0.Count - 1)
                     { 
-                        if (player0.ability == 0)
+                        if (player0.battle == 0)
                         {
                             // Ignore player 0
                             team1Win += player1.Winrate;
                             team1AP += player1.Ability;
                             team0Count--;
                         }
-                        else if (player1.ability == 0)
+                        else if (player1.battle == 0)
                         {
                             // Ignore player 1
                             team0Win += player0.Winrate;
