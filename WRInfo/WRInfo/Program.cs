@@ -69,6 +69,9 @@ namespace WRInfo
 
                 // Check for program update
                 DataManager.CheckForGithubUpdate();
+
+                // Check for game path
+                if (Settings.Default.GamePath == "") SetupGamePath();
             }
 
             // Show Menu
@@ -189,7 +192,7 @@ namespace WRInfo
                             // Checking date difference in seconds if it is less than 5 mins consider a battle
                             var difference = (DateTime.Now - lastBattledDate).TotalSeconds;
 
-                            if (difference < 300)
+                            if (difference < 600)
                             {
                                 CheckPlayerInfo(python_log);
                             }
@@ -374,6 +377,8 @@ namespace WRInfo
             var isValid = false;
             Console.WriteAscii(strings.gamepath, Colour.WRed);
             Console.WriteLine(strings.enter_gamepath);
+            // Open my computer for user
+            Process.Start("explorer.exe", "");
             while (!isValid)
             {
                 Console.Write("> ");
@@ -385,6 +390,7 @@ namespace WRInfo
                 {
                     Console.WriteLine(strings.path_valid);
                     Settings.Default.GamePath = gamePath;
+                    Settings.Default.Save();
                     isValid = true;
                 }
                 else

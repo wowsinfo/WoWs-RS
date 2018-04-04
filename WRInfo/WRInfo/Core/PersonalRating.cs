@@ -31,7 +31,7 @@ namespace WRInfo.Core
         private static int CalAbilityPoint(double pr, double battle)
         {
             if (battle == 0) return 1;
-            var adjustment = Math.Sqrt(battle) / 7;
+            var adjustment = Math.Log10(battle);
             if (adjustment < 1) adjustment = 1;
             return (int)(Math.Round(adjustment * pr));
         }

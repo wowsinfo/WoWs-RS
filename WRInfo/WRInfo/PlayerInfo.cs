@@ -114,7 +114,7 @@ namespace WRInfo
                     var player1 = team1[i];
 
                     // Ignore the best / worst player and get average of other players
-                    if (i != team0.Count || i != 0)
+                    if (i > 0 && i < team0.Count - 1)
                     { 
                         if (player0.ability == 0)
                         {
