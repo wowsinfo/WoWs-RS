@@ -16,20 +16,22 @@ namespace WRInfo
         private double winrate;
         private double avg_damage;
         private double avg_frag;
+        private double win;
 
         private int ability;
         private Color rating = Color.Gray;
+        private Color WeMeetAgain = Color.White;
 
         // Get essentail data
         public double Avg_frag { get => avg_frag; }
         public double Avg_damage { get => avg_damage; }
         public double Winrate { get => winrate; }
         public double Battle { get => battle; }
-        public int Ability { get => ability; }
 
         public PlayerInfo(int battle, int win, int frag, int damage)
         {
             this.battle = battle;
+            this.win = win;
             this.winrate = GetWinRate(win, battle);
             this.avg_damage = GetRoundValue(damage, battle);
             this.avg_frag = GetRoundValue(frag, battle);
@@ -65,21 +67,29 @@ namespace WRInfo
         }
 
         /// <summary>
+        /// Indicate player you meet today
+        /// </summary>
+        public void AddWeMeetAgain()
+        {
+            this.WeMeetAgain = Colour.WYellow;
+        }
+
+        /// <summary>
         /// Print this player's information
         /// </summary>
         public void ShowPlayer(bool team0)
         {
             if (team0)
             {
-                Console.Write("{0, 25}  ", this.name, Color.White);
-                Console.Write("{0, 18}  ", this.shipname, this.rating);
+                Console.Write("{0, 25}  ", this.name, this.WeMeetAgain);
+                Console.Write("{0, 20}  ", this.shipname, this.rating);
                 Console.Write("{0, 5}  {1, 4}%  {2, 6}", this.battle, this.winrate, this.ability, Color.White);
             }
             else
             {
                 Console.Write("{0, -6}  %{1, -4}  {2, -5}", this.ability, this.winrate, this.battle, Color.White);
-                Console.Write("  {0, -18}", this.shipname, this.rating);
-                Console.Write("  {0, -25}", this.name, Color.White);
+                Console.Write("  {0, -20}", this.shipname, this.rating);
+                Console.Write("  {0, -25}", this.name, this.WeMeetAgain);
             }
         }
 
@@ -98,16 +108,17 @@ namespace WRInfo
                 return (prev.ability < next.ability) ? 1 : -1;
             });
 
-            // Show what colour means
-            Console.WriteLine("\nPersonal Rating\n" + strings.colour_meaning + "\n");
-
             // Calculate team 0 and team 1 average win rate and ability point
             int team0Count = team0.Count - 2;
             int team1Count = team1.Count - 2;
-            double team0Win = 0, team1Win = 0, team0AP = 0, team1AP = 0;
+            double team0Win = 0, team0Total = 0, team0AP = 0;
+            double team1Win = 0, team1Total = 0, team1AP = 0;
             if (team0Count == team1Count)
             {
                 Console.WriteAscii("Team 0       Team 1", Colour.WBlue);
+                // What each value means?
+                Console.WriteLine("{0} - {1} - {2} - {3} - {4}\n", strings.player_name, strings.ship_name,
+                    strings.battle_count, strings.win_rate, strings.ability_point);
                 for (var i = 0; i < team0.Count; i++)
                 {
                     var player0 = team0[i];
@@ -119,24 +130,28 @@ namespace WRInfo
                         if (player0.battle == 0)
                         {
                             // Ignore player 0
-                            team1Win += player1.Winrate;
-                            team1AP += player1.Ability;
+                            team1Win += player1.win;
+                            team1Total += player1.battle;
+                            team1AP += player1.ability;
                             team0Count--;
                         }
                         else if (player1.battle == 0)
                         {
                             // Ignore player 1
-                            team0Win += player0.Winrate;
-                            team0AP += player0.Ability;
+                            team0Win += player0.win;
+                            team0Total += player0.battle;
+                            team0AP += player0.ability;
                             team1Count--;
                         }
                         else
                         {
                             // Add both players
-                            team0Win += player0.Winrate;
-                            team0AP += player0.Ability;
-                            team1Win += player1.Winrate;
-                            team1AP += player1.Ability;
+                            team0Win += player0.win;
+                            team0Total += player0.battle;
+                            team0AP += player0.ability;
+                            team1Win += player1.win;
+                            team1Total += player1.battle;
+                            team1AP += player1.ability;
                         }
                     }
 
@@ -146,12 +161,12 @@ namespace WRInfo
                     Console.WriteLine("\n");
                 }
                 // Print extra information
-                Console.WriteLine("Team 0 - {0, 4}% - {1}", 
-                    GetRoundValue(team0Win, team0Count), 
+                Console.WriteLine("Team 0 - {0, 4}% - {1}",
+                    GetWinRate(team0Win, team0Total), 
                     GetRoundValue(team0AP, team0Count), Colour.WYellow);
-                Console.WriteLine("Team 1 - {0, 4}% - {1}", 
-                    GetRoundValue(team1Win, team0Count), 
-                    GetRoundValue(team1AP, team0Count), Colour.WYellow);
+                Console.WriteLine("Team 1 - {0, 4}% - {1}",
+                    GetWinRate(team1Win, team1Total), 
+                    GetRoundValue(team1AP, team1Count), Colour.WYellow);
             } 
             else
             {
@@ -161,9 +176,13 @@ namespace WRInfo
                 Console.WriteLine("");
                 ShowTeamOverviewSmall(team1);
             }
+
+            // Show what colour means
+            Console.WriteLine("\nPersonal Rating\n" + strings.colour_meaning + "\n");
+            Console.WriteLine(strings.grey_player, Color.Gray);
         }
 
-        public static void ShowTeamOverviewSmall(List<PlayerInfo> list)
+        private static void ShowTeamOverviewSmall(List<PlayerInfo> list)
         {
             list.Sort(delegate (PlayerInfo prev, PlayerInfo next)
             {
@@ -201,6 +220,11 @@ namespace WRInfo
         private static double GetWinRate(int win, int battle)
         {
             return Math.Round((double)win * 1000 / (double)battle) / 10;
+        }
+
+        private static double GetWinRate(double win, double battle)
+        {
+            return Math.Round(win * 1000 / battle) / 10;
         }
     }
 }

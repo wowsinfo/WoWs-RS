@@ -61,6 +61,15 @@ namespace WRInfo.Resouces {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to AP.
+        /// </summary>
+        internal static string ability_point {
+            get {
+                return ResourceManager.GetString("ability_point", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please do respect all players and DO NOT EVER judge any players base on their stat.
         /// </summary>
         internal static string agreement {
@@ -75,6 +84,15 @@ namespace WRInfo.Resouces {
         internal static string api {
             get {
                 return ResourceManager.GetString("api", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Battle.
+        /// </summary>
+        internal static string battle_count {
+            get {
+                return ResourceManager.GetString("battle_count", resourceCulture);
             }
         }
         
@@ -142,6 +160,15 @@ namespace WRInfo.Resouces {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to - Enter help to show instructions.
+        /// </summary>
+        internal static string enter_help {
+            get {
+                return ResourceManager.GetString("enter_help", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to GamePath.
         /// </summary>
         internal static string gamepath {
@@ -151,11 +178,110 @@ namespace WRInfo.Resouces {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Grey player hides their stat.
+        /// </summary>
+        internal static string grey_player {
+            get {
+                return ResourceManager.GetString("grey_player", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to New version is found -&gt; .
         /// </summary>
         internal static string has_update {
             get {
                 return ResourceManager.GetString("has_update", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to - Clear console.
+        /// </summary>
+        internal static string help_clear {
+            get {
+                return ResourceManager.GetString("help_clear", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to - Exit WRInfo.
+        /// </summary>
+        internal static string help_exit {
+            get {
+                return ResourceManager.GetString("help_exit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to - Start World of Warships.
+        /// </summary>
+        internal static string help_gamestart {
+            get {
+                return ResourceManager.GetString("help_gamestart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to - Show help (what you are reading now).
+        /// </summary>
+        internal static string help_help {
+            get {
+                return ResourceManager.GetString("help_help", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to - Change WRInfo language.
+        /// </summary>
+        internal static string help_language {
+            get {
+                return ResourceManager.GetString("help_language", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to - Show main menu.
+        /// </summary>
+        internal static string help_menu {
+            get {
+                return ResourceManager.GetString("help_menu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to - Change game path.
+        /// </summary>
+        internal static string help_path {
+            get {
+                return ResourceManager.GetString("help_path", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to - Reset whole program.
+        /// </summary>
+        internal static string help_reset {
+            get {
+                return ResourceManager.GetString("help_reset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to - Change WRInfo server and data will be redownloaded.
+        /// </summary>
+        internal static string help_server {
+            get {
+                return ResourceManager.GetString("help_server", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to - Start real time stat checker.
+        /// </summary>
+        internal static string help_start {
+            get {
+                return ResourceManager.GetString("help_start", resourceCulture);
             }
         }
         
@@ -232,6 +358,15 @@ namespace WRInfo.Resouces {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Player.
+        /// </summary>
+        internal static string player_name {
+            get {
+                return ResourceManager.GetString("player_name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Personal Rating....
         /// </summary>
         internal static string pr {
@@ -259,6 +394,15 @@ namespace WRInfo.Resouces {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ship.
+        /// </summary>
+        internal static string ship_name {
+            get {
+                return ResourceManager.GetString("ship_name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Checking for path .
         /// </summary>
         internal static string validate_gamepath {
@@ -282,6 +426,15 @@ namespace WRInfo.Resouces {
         internal static string welcome {
             get {
                 return ResourceManager.GetString("welcome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to WR.
+        /// </summary>
+        internal static string win_rate {
+            get {
+                return ResourceManager.GetString("win_rate", resourceCulture);
             }
         }
         

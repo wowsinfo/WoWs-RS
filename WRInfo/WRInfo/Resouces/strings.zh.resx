@@ -117,11 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ability_point" xml:space="preserve">
+    <value>AP</value>
+  </data>
   <data name="agreement" xml:space="preserve">
     <value>请尊重每一个玩家，不要用数据来评价玩家</value>
   </data>
   <data name="api" xml:space="preserve">
     <value>API</value>
+  </data>
+  <data name="battle_count" xml:space="preserve">
+    <value>场数</value>
   </data>
   <data name="colour_meaning" xml:space="preserve">
     <value>紫色 &gt; 青色 &gt; 绿色 &gt; 黄色 &gt; 橘色 &gt; 红色</value>
@@ -144,11 +150,47 @@
   <data name="enter_gamepath" xml:space="preserve">
     <value>请将游戏目录复制到下面</value>
   </data>
+  <data name="enter_help" xml:space="preserve">
+    <value>- 输入 help 获取帮助</value>
+  </data>
   <data name="gamepath" xml:space="preserve">
     <value>GamePath</value>
   </data>
+  <data name="grey_player" xml:space="preserve">
+    <value>灰色的玩家隐藏了数据</value>
+  </data>
   <data name="has_update" xml:space="preserve">
     <value>发现新版本 -&gt; </value>
+  </data>
+  <data name="help_clear" xml:space="preserve">
+    <value>- 清屏 </value>
+  </data>
+  <data name="help_exit" xml:space="preserve">
+    <value>- 退出WRInfo</value>
+  </data>
+  <data name="help_gamestart" xml:space="preserve">
+    <value>- 启动战舰世界</value>
+  </data>
+  <data name="help_help" xml:space="preserve">
+    <value>- 显示帮助（正在阅读中。。）</value>
+  </data>
+  <data name="help_language" xml:space="preserve">
+    <value>- 切换语言</value>
+  </data>
+  <data name="help_menu" xml:space="preserve">
+    <value>- 显示主菜单</value>
+  </data>
+  <data name="help_path" xml:space="preserve">
+    <value>- 改变游戏路径</value>
+  </data>
+  <data name="help_reset" xml:space="preserve">
+    <value>- 重设WRInfo</value>
+  </data>
+  <data name="help_server" xml:space="preserve">
+    <value>- 切换服务器，全部数据会重新下载</value>
+  </data>
+  <data name="help_start" xml:space="preserve">
+    <value>- 开始实时数据查询</value>
   </data>
   <data name="introduction" xml:space="preserve">
     <value>WRinfo可以帮助你了解你的队友和对手。这个程序会提供所有玩有的数据，但是有些玩家会隐藏他们的数据所以并不可以看到全部玩家的数据</value>
@@ -174,6 +216,9 @@
   <data name="player" xml:space="preserve">
     <value>Players</value>
   </data>
+  <data name="player_name" xml:space="preserve">
+    <value>玩家</value>
+  </data>
   <data name="pr" xml:space="preserve">
     <value>PR数据。。</value>
   </data>
@@ -183,6 +228,9 @@
   <data name="server_notvalid" xml:space="preserve">
     <value>输入无效</value>
   </data>
+  <data name="ship_name" xml:space="preserve">
+    <value>战舰</value>
+  </data>
   <data name="validate_gamepath" xml:space="preserve">
     <value>检查路径。。</value>
   </data>
@@ -191,6 +239,9 @@
   </data>
   <data name="welcome" xml:space="preserve">
     <value>Welcome to WRInfo</value>
+  </data>
+  <data name="win_rate" xml:space="preserve">
+    <value>WR</value>
   </data>
   <data name="wrinfo" xml:space="preserve">
     <value>WRInfo</value>

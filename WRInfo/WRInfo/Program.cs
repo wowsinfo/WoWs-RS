@@ -79,7 +79,7 @@ namespace WRInfo
             var input = "";
             while (input != "exit")
             {
-                Console.Write("> ");
+                Console.Write("WRInfo> ");
                 input = Console.ReadLine();
                 switch (input)
                 {
@@ -112,6 +112,7 @@ namespace WRInfo
             Console.WriteAscii(strings.wrinfo, list[rnd.Next(0, list.Length)]);
             Console.WriteLine(Settings.Default.GamePath);
             Console.WriteLine("v" + Value.VERSION);
+            Console.WriteLine("\n" + strings.enter_help);
         }
 
         /// <summary>
@@ -119,22 +120,22 @@ namespace WRInfo
         /// </summary>
         private static void ShowUsage()
         {
-            Console.WriteLine("start\t");
-            Console.WriteLine("gamestart\t");
-            Console.WriteLine("help\t");
-            Console.WriteLine("menu\t");
-            Console.WriteLine("language\t");
-            Console.WriteLine("server\t");
-            Console.WriteLine("path\t");
-            Console.WriteLine("clear\t");
-            Console.WriteLine("reset\t");
-            Console.WriteLine("exit\t");
+            Console.WriteLine("start\t\t" + strings.help_start);
+            Console.WriteLine("gamestart\t" + strings.help_gamestart);
+            Console.WriteLine("help\t\t" + strings.help_help);
+            Console.WriteLine("menu\t\t" + strings.help_menu);
+            Console.WriteLine("language\t" + strings.help_language);
+            Console.WriteLine("server\t\t" + strings.help_server);
+            Console.WriteLine("path\t\t" + strings.help_path);
+            Console.WriteLine("clear\t\t" + strings.help_clear);
+            Console.WriteLine("reset\t\t" + strings.help_reset);
+            Console.WriteLine("exit\t\t" + strings.help_exit);
 
             Console.WriteLine("\n" + strings.website_link);
-            Console.WriteLine("wows\t");
-            Console.WriteLine("facebook\t");
-            Console.WriteLine("number\t");
-            Console.WriteLine("github\t");
+            Console.WriteLine("wows\t\t");
+            Console.WriteLine("facebook\t\t");
+            Console.WriteLine("number\t\t");
+            Console.WriteLine("github\t\t");
         }
 
         /// <summary>
@@ -169,15 +170,14 @@ namespace WRInfo
                     string python_log = DataManager.ReadLogFile(logpath);
                     Regex BattleRegex = new Regex(Value.BattleRegex);
                     MatchCollection Battles = BattleRegex.Matches(python_log);
+
                     var count = Battles.Count;
-                    // No battle is found, Waah
                     if (count == 0)
                     {
+                        // No battle is found, Waah
                         Console.WriteLine("> ZERO <");
-                        break;
                     }
-                        
-                    if (count != battleCount)
+                    else if (count != battleCount)
                     {
                         // This is the last battle that we care about
                         python_log = Battles[count - 1].Value;
@@ -234,9 +234,11 @@ namespace WRInfo
                 var ship = player.Groups[3].Value;
 
                 // Add reminder for the people you met today
+                var metBefore = false;
                 if (nameList.Contains(name))
                 {
                     Console.Write(name + "  ......  !! ", Color.Gray);
+                    metBefore = true;
                 }   
                 else
                 {
@@ -266,6 +268,8 @@ namespace WRInfo
                     // Calculate personal rating
                     PersonalRating.CalPersonalRating(info, shipID, prJson);
                 }
+
+                if (metBefore) info.AddWeMeetAgain();
 
                 // Insert into team
                 if (team == "0") team0List.Add(info);
@@ -310,7 +314,7 @@ namespace WRInfo
         private static void AnyKeyToContinue()
         {
             // Waiting for user input to proceed to next level
-            Console.Write("> ");
+            Console.Write("WRInfo> ");
             Console.ReadKey();
             Console.Clear();
         }
@@ -325,7 +329,7 @@ namespace WRInfo
             while (!isValid)
             {
                 Console.WriteLine(strings.only_threelanguages, Color.White);
-                Console.Write("1. English\n2. 简体中文\n3. 日本語\n> ");
+                Console.Write("1. English\n2. 简体中文\n3. 日本語\nWRInfo> ");
                 try
                 {
                     var selection = Convert.ToInt16(Console.ReadLine());
@@ -345,6 +349,7 @@ namespace WRInfo
                             case 3: lang = "ja"; break;
                         }
                         Settings.Default.Language = lang;
+                        Settings.Default.Save();
                         Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo(lang);
                         isValid = true;
                     }
@@ -381,7 +386,7 @@ namespace WRInfo
             Process.Start("explorer.exe", "");
             while (!isValid)
             {
-                Console.Write("> ");
+                Console.Write("WRInfo> ");
                 var gamePath = Console.ReadLine();
                 Console.WriteLine(strings.validate_gamepath + "<<" + gamePath + ">>\n");
                 Thread.Sleep(500);
@@ -410,7 +415,7 @@ namespace WRInfo
 
             while (!isValid)
             {
-                Console.Write("1. RU\t2. EU\t3. NA\t4. ASIA\n> ", Color.White);
+                Console.Write("1. RU\t2. EU\t3. NA\t4. ASIA\nWRINfo> ", Color.White);
 
                 try
                 {
