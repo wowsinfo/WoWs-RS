@@ -35,4 +35,6 @@ If you do not have one, request one [here](https://developers.wargaming.net/)
 ## Support me
 Simply share with your friends so that this program could help more players
 
+BTC: 1QC2jwyuEFCxXBH68e8vGeTjp6ce3T4r1q
+
 Thank you for your support >_<
