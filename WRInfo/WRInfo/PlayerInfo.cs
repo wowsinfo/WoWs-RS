@@ -130,28 +130,20 @@ namespace WRInfo
                         if (player0.battle == 0)
                         {
                             // Ignore player 0
-                            team1Win += player1.win;
-                            team1Total += player1.battle;
-                            team1AP += player1.ability;
+                            CalAvgData(ref team1Win, ref team1Total, ref team1AP, player1);
                             team0Count--;
                         }
                         else if (player1.battle == 0)
                         {
                             // Ignore player 1
-                            team0Win += player0.win;
-                            team0Total += player0.battle;
-                            team0AP += player0.ability;
+                            CalAvgData(ref team0Win, ref team0Total, ref team0AP, player0);
                             team1Count--;
                         }
                         else
                         {
                             // Add both players
-                            team0Win += player0.win;
-                            team0Total += player0.battle;
-                            team0AP += player0.ability;
-                            team1Win += player1.win;
-                            team1Total += player1.battle;
-                            team1AP += player1.ability;
+                            CalAvgData(ref team1Win, ref team1Total, ref team1AP, player1);
+                            CalAvgData(ref team0Win, ref team0Total, ref team0AP, player0);
                         }
                     }
 
@@ -161,10 +153,10 @@ namespace WRInfo
                     Console.WriteLine("\n");
                 }
                 // Print extra information
-                Console.WriteLine("Team 0 - {0, 4}% - {1}",
+                Console.WriteLine("Team 0 - {0, 3}% - {1}",
                     GetWinRate(team0Win, team0Total), 
                     GetRoundValue(team0AP, team0Count), Colour.WYellow);
-                Console.WriteLine("Team 1 - {0, 4}% - {1}",
+                Console.WriteLine("Team 1 - {0, 3}% - {1}",
                     GetWinRate(team1Win, team1Total), 
                     GetRoundValue(team1AP, team1Count), Colour.WYellow);
             } 
@@ -193,6 +185,20 @@ namespace WRInfo
                 player.ShowPlayer(true);
                 Console.WriteLine("\n");
             }
+        }
+
+        /// <summary>
+        /// Calculate team average data
+        /// </summary>
+        /// <param name="Win"></param>
+        /// <param name="Total"></param>
+        /// <param name="AP"></param>
+        /// <param name="Player"></param>
+        private static void CalAvgData(ref double Win, ref double Total, ref double AP, PlayerInfo Player)
+        {
+            Win += Player.win;
+            Total += Player.battle;
+            AP += Player.ability;
         }
 
         /// <summary>

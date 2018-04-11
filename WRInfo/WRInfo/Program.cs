@@ -94,13 +94,12 @@ namespace WRInfo
                     case "help": ShowUsage(); break;
                     case "wows":
                         Process.Start(String.Format(Value.WoWs, Settings.Default.APIDomain)); break;
-                    case "facebook": Process.Start(Value.Facebook); break;
-                    case "number": Process.Start(Value.Number); break;
-                    case "github": Process.Start(Value.Github); break;
+                    default:
+                        ShowWebsite(input); break;
                 }
             }
         }
-        
+
         #region Menu
         /// <summary>
         /// Show Main menu
@@ -113,6 +112,31 @@ namespace WRInfo
             Console.WriteLine(Settings.Default.GamePath);
             Console.WriteLine("v" + Value.VERSION);
             Console.WriteLine("\n" + strings.enter_help);
+        }
+
+        /// <summary>
+        /// Show website here
+        /// </summary>
+        /// <param name="input"></param>
+        private static void ShowWebsite(string input)
+        {
+            var url = "";
+            var domain = Settings.Default.APIDomain;
+            switch (input)
+            {
+                case "wows": url = String.Format(Value.WoWs, domain); break;
+                case "facebook": url = Value.Facebook; break;
+                case "wows number":
+                    if (domain == "eu") domain = "";
+                    url = String.Format(Value.Number, domain + "."); break;
+                case "wows today": url = String.Format(Value.Today, domain); break;
+                case "player ranking": url = Value.PlayerRanking; break;
+                case "sea group": url = Value.SeaGroup; break;
+                case "daily bounce": url = Value.DailyBounce; break;
+                case "github": url = Value.Github; break;
+            }
+            // Open browser
+            if (url != "") Process.Start(url);
         }
 
         /// <summary>
@@ -134,8 +158,12 @@ namespace WRInfo
             Console.WriteLine("\n" + strings.website_link);
             Console.WriteLine("wows\t\t");
             Console.WriteLine("facebook\t\t");
-            Console.WriteLine("number\t\t");
-            Console.WriteLine("github\t\t");
+            Console.WriteLine("wows number\t\t", Color.LightBlue);
+            Console.WriteLine("wows today\t\t", Color.Red);
+            Console.WriteLine("player ranking\t\t");
+            Console.WriteLine("sea group\t\t");
+            Console.WriteLine("daily bounce\t\t");
+            Console.WriteLine("github\t\t", Color.LightPink);
         }
 
         /// <summary>
@@ -175,7 +203,7 @@ namespace WRInfo
                     if (count == 0)
                     {
                         // No battle is found, Waah
-                        Console.WriteLine("> ZERO <");
+                        Console.WriteLine("EMPTY LOG, STAND BY...");
                     }
                     else if (count != battleCount)
                     {
