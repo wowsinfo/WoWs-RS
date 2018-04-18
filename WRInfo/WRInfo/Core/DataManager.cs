@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Dynamic;
 using System.IO;
 using System.Net;
 using System.Text.RegularExpressions;
-using System.Xml;
 using WRInfo.Resouces;
 
 namespace WRInfo.Core
