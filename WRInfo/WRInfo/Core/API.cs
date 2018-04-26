@@ -3,7 +3,6 @@ using System.Net;
 using Newtonsoft.Json;
 using WRInfo.Properties;
 using WRInfo.Resouces;
-using WRInfo.Core;
 using System.IO;
 using Newtonsoft.Json.Linq;
 using System.Text;

@@ -199,7 +199,7 @@
     <value>Language</value>
   </data>
   <data name="no_log" xml:space="preserve">
-    <value>Where is your python.log? Please at least open your game once before using this program</value>
+    <value>Where is your python.log?</value>
   </data>
   <data name="no_update" xml:space="preserve">
     <value>It is up to date</value>

@@ -5,7 +5,7 @@ using System.Net;
 using System.Text.RegularExpressions;
 using WRInfo.Resouces;
 
-namespace WRInfo.Core
+namespace WRInfo
 {
     class DataManager
     {

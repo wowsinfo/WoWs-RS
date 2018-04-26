@@ -2,7 +2,6 @@
 using System.Threading;
 using System.IO;
 using System.Drawing;
-using WRInfo.Core;
 using WRInfo.Resouces;
 using WRInfo.Properties;
 using Console = Colorful.Console;
@@ -203,7 +202,8 @@ namespace WRInfo
                     if (count == 0)
                     {
                         // No battle is found, Waah
-                        Console.WriteLine("EMPTY LOG, STAND BY...");
+                        Console.Clear();
+                        Console.Write("Standby ...");
                     }
                     else if (count != battleCount)
                     {
@@ -231,18 +231,17 @@ namespace WRInfo
                         }
                         battleCount = count;
                     }
-
-                    // Rest for 20 seconds WRInfo >_<
-                    GC.Collect();
-                    Thread.Sleep(20000);
                 }
                 else
                 {
                     // Never play this game or you deleted it just to break this program
-                    Console.WriteLine("-_-\n" + strings.no_log);
-                    Console.ReadKey();
-                    Environment.Exit(1);
+                    Console.Clear();
+                    Console.Write(strings.no_log);
                 }
+
+                // Rest for 15 seconds WRInfo >_<
+                GC.Collect();
+                Thread.Sleep(15000);
             }
         }
 
@@ -316,7 +315,18 @@ namespace WRInfo
         /// </summary>
         private static void RemoveExtraLog()
         {
-            // TODO: I dont have any extra log nooooow
+            var logPath = Settings.Default.GamePath + "/profile/";
+            var i = 1;
+            while (true)
+            {
+                var file = logPath + "python_" + i++ + ".log";
+                if (File.Exists(file))
+                {
+                    // Remove this file
+                    File.Delete(file);
+                }
+                else break;
+            }
         }
 
         /// <summary>

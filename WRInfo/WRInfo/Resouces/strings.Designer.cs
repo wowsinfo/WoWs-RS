@@ -304,7 +304,7 @@ namespace WRInfo.Resouces {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Where is your python.log? Please at least open your game once before using this program.
+        ///   Looks up a localized string similar to Where is your python.log?.
         /// </summary>
         internal static string no_log {
             get {
