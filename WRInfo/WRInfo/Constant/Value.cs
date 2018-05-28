@@ -2,7 +2,7 @@
 {
     class Value
     {
-        static public string VERSION = "1.0.3.2";
+        static public string VERSION = "1.0.3.2.1";
         static public string ApplicationID = "e8b46cbc33f242c78725bd6a7562788a";
 
         static public string PlayerSearch = "https://api.worldofwarships.{0}/wows/account/list/?application_id=" + ApplicationID  + "&search={1}&type=exact&language=en&fields=account_id";

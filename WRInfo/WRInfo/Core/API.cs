@@ -89,6 +89,15 @@ namespace WRInfo
                 GetWarships();
                 GetPersonalRating();
             }
+            else
+            {
+                // Having 1/16 chance to update personal rating
+                Random rnd = new Random();
+                if (rnd.Next(16) == 0)
+                {
+                    GetPersonalRating();
+                }
+            }
             // Save data
             Settings.Default.Save();
         }
