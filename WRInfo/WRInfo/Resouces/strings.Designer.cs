@@ -439,6 +439,17 @@ namespace WRInfo.Resouces {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to WoWs Info
+        ///IOS: https://itunes.apple.com/app/id1202750166
+        ///Android: https://play.google.com/store/apps/details?id=com.yihengquan.wowsinfo.
+        /// </summary>
+        internal static string wows_info {
+            get {
+                return ResourceManager.GetString("wows_info", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to WRInfo.
         /// </summary>
         internal static string wrinfo {

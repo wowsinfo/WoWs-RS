@@ -243,6 +243,11 @@
   <data name="win_rate" xml:space="preserve">
     <value>WR</value>
   </data>
+  <data name="wows_info" xml:space="preserve">
+    <value>WoWs Info
+苹果系统: https://itunes.apple.com/app/id1202750166
+安卓系统: https://play.google.com/store/apps/details?id=com.yihengquan.wowsinfo</value>
+  </data>
   <data name="wrinfo" xml:space="preserve">
     <value>WRInfo</value>
   </data>

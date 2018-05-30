@@ -65,9 +65,16 @@ namespace WRInfo
                         }
                         else
                         {
+                            // Get player clan tag
+                            var clan = client.DownloadString(String.Format(Value.PlayerClan, Settings.Default.APIDomain, playerID));
+                            dynamic clanJson = JsonConvert.DeserializeObject(clan);
+                            var clanInfo = clanJson["data"][playerID];
+                            var clanTag = "";
+                            if (!(clanInfo == null || clanInfo.clan == null)) clanTag = (String)clanInfo.clan.tag;
+
                             player = player[0].pvp;
                             info = new PlayerInfo((int)player.battles, (int)player.wins,
-                                (int)player.frags, (int)player.damage_dealt);
+                                (int)player.frags, (int)player.damage_dealt, clanTag);
                         }
                     }
                 }
@@ -91,9 +98,9 @@ namespace WRInfo
             }
             else
             {
-                // Having 1/16 chance to update personal rating
+                // Having 1/33 chance to update personal rating
                 Random rnd = new Random();
-                if (rnd.Next(16) == 0)
+                if (rnd.Next(33) == 0)
                 {
                     GetPersonalRating();
                 }

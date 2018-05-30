@@ -11,6 +11,7 @@ namespace WRInfo
     {
         private string name;
         private string shipname;
+        private string clanName;
 
         private double battle;
         private double winrate;
@@ -35,6 +36,16 @@ namespace WRInfo
             this.winrate = GetWinRate(win, battle);
             this.avg_damage = GetRoundValue(damage, battle);
             this.avg_frag = GetRoundValue(frag, battle);
+        }
+
+        public PlayerInfo(int battle, int win, int frag, int damage, String clan)
+        {
+            this.battle = battle;
+            this.win = win;
+            this.winrate = GetWinRate(win, battle);
+            this.avg_damage = GetRoundValue(damage, battle);
+            this.avg_frag = GetRoundValue(frag, battle);
+            this.clanName = clan;
         }
 
         // For players who hide their stat
@@ -62,7 +73,8 @@ namespace WRInfo
         /// <param name="shipName"></param>
         public void AddNames(string name, string shipName)
         {
-            this.name = name;
+            var clanTag = this.clanName == "" ? "" : String.Format("[{0}] ", this.clanName);
+            this.name = clanTag + name;
             this.shipname = shipName;
         }
 

@@ -110,6 +110,8 @@ namespace WRInfo
             Console.WriteAscii(strings.wrinfo, list[rnd.Next(0, list.Length)]);
             Console.WriteLine(Settings.Default.GamePath);
             Console.WriteLine("v" + Value.VERSION);
+
+            Console.WriteLine("\n" + strings.wows_info);
             Console.WriteLine("\n" + strings.enter_help);
         }
 
@@ -220,7 +222,7 @@ namespace WRInfo
                             // Checking date difference in seconds if it is less than 5 mins consider a battle
                             var difference = (DateTime.Now - lastBattledDate).TotalSeconds;
 
-                            if (difference < 600)
+                            if (difference > 600)
                             {
                                 CheckPlayerInfo(python_log);
                             }
