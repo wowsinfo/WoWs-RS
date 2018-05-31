@@ -222,7 +222,7 @@ namespace WRInfo
                             // Checking date difference in seconds if it is less than 5 mins consider a battle
                             var difference = (DateTime.Now - lastBattledDate).TotalSeconds;
 
-                            if (difference > 600)
+                            if (difference < 600)
                             {
                                 CheckPlayerInfo(python_log);
                             }
