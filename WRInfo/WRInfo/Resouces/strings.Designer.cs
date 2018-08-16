@@ -450,7 +450,7 @@ namespace WRInfo.Resouces {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to WRInfo.
+        ///   Looks up a localized string similar to WRInfo Let&apos;s Go.
         /// </summary>
         internal static string wrinfo {
             get {

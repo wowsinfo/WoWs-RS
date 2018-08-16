@@ -28,7 +28,7 @@
         // Regular expressions
         static public string BattleRegex = @"Avatar.onEnterWorld((.|\n)*?)BattleLogic";
         static public string MapRegex = @"onGeometryMapped\(\) MapName: \d*_(.*)\n";
-        static public string PlayerRegex = @"player: Id: \d+ Name: (.+?) TeamId: (\d) ShipName: (\w+?)_\w+";
+        static public string PlayerRegex = @"Id: (\d+) TeamId: (\d) ShipName: (\w+?)_\w+";
         static public string DateRegex = @"\[S] \[(.*)?\s(\d*:\d*:\d*)]";
         static public string VersionRegex = @"<span class=""css-truncate-target"">(.+?)<\/span>";
         static public string DownloadRegex = @"<a href=""\/HenryQuan\/WRInfo-Console-Edition\/releases\/download\/(.+?)""";

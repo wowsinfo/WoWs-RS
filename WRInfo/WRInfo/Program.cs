@@ -222,7 +222,7 @@ namespace WRInfo
                             // Checking date difference in seconds if it is less than 5 mins consider a battle
                             var difference = (DateTime.Now - lastBattledDate).TotalSeconds;
 
-                            if (difference < 600)
+                            if (difference > 600)
                             {
                                 CheckPlayerInfo(python_log);
                             }
@@ -258,25 +258,25 @@ namespace WRInfo
 
             foreach (Match player in Players)
             {
-                var name = player.Groups[1].Value;
+                var id = player.Groups[1].Value;
                 var team = player.Groups[2].Value;
                 var ship = player.Groups[3].Value;
 
                 // Add reminder for the people you met today
                 var metBefore = false;
-                if (nameList.Contains(name))
+                if (nameList.Contains(id))
                 {
-                    Console.Write(name + "  ......  !! ", Color.Gray);
+                    Console.Write(id + "  ......  !! ", Color.Gray);
                     metBefore = true;
                 }   
                 else
                 {
-                    Console.Write(name, Color.Gray);
-                    nameList.Add(name);
+                    Console.Write(id, Color.Gray);
+                    nameList.Add(id);
                 }
 
                 // Wah, my user meet me. What should I do??
-                if (name == Value.MYNAME) Console.WriteLine(strings.developer);
+                if (id == Value.MYNAME) Console.WriteLine(strings.developer);
                 else Console.WriteLine();
 
                 // Get ship name and ship id
@@ -286,14 +286,14 @@ namespace WRInfo
                 var shipName = Ship.Groups[2].Value;
 
                 // Search for player stat
-                PlayerInfo info = API.GetPlayerInfo(name, shipID);
+                PlayerInfo info = API.GetPlayerInfo(id, shipID);
                 if (info == null)
                 {
-                    info = new PlayerInfo(name, shipName);
+                    info = new PlayerInfo(id, shipName);
                 }
                 else
                 {
-                    info.AddNames(name, shipName);
+                    info.AddNames(id, shipName);
                     // Calculate personal rating
                     PersonalRating.CalPersonalRating(info, shipID, prJson);
                 }

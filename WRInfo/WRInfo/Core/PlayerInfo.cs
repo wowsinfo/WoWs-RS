@@ -11,7 +11,7 @@ namespace WRInfo
     {
         private string name;
         private string shipname;
-        private string clanName;
+        private string clanName = "";
 
         private double battle;
         private double winrate;
@@ -73,7 +73,7 @@ namespace WRInfo
         /// <param name="shipName"></param>
         public void AddNames(string name, string shipName)
         {
-            var clanTag = this.clanName.Length < 2 ? "" : String.Format("[{0}]", this.clanName);
+            var clanTag = this.clanName == "" ? "" : String.Format("[{0}]", this.clanName);
             this.name = clanTag + name;
             this.shipname = shipName;
         }

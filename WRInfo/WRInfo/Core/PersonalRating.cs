@@ -15,7 +15,8 @@ namespace WRInfo
         {
             // Visit https://wows-numbers.com/personal/rating for more explanation
             var ship = json.data[shipID];
-            if (ship == null && ship.win_rate == null) return;
+            Console.WriteLine(ship);
+            if (ship == null || ship.Count == 0) return;
             var rDmg = info.Avg_damage / (double)ship.average_damage_dealt;
             var rWins = info.Winrate / (double)ship.win_rate;
             var rFrags = info.Avg_frag / (double)ship.average_frags;
