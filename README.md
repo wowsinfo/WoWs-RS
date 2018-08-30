@@ -1,6 +1,9 @@
 # WRInfo Console Edition
 <img src="https://raw.githubusercontent.com/HenryQuan/WRInfo-Console-Edition/master/Logo/logos/WRInfo-Logo%400.5x.png" width="200px" height="200px" />
 
+# This is not working anymore (ask wargaming for the reason)
+**I might remake this but proabbaly not**
+
 中文介绍 日本語 (soon)
 
 Open source real time player info for [World of Warships](http://worldofwarships.com). This program is written in C# and works for Windows 7+ (probably) and does not work for Mac because of colorful console framework
