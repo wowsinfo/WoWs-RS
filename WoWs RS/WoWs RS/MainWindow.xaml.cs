@@ -1,16 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using System.Windows;
+using WoWs_RS.Core;
 
 namespace WoWs_RS
 {
@@ -22,6 +11,11 @@ namespace WoWs_RS
         public MainWindow()
         {
             InitializeComponent();
+
+            // Always check for Path, Domain, Language and Version
+            // If they are lost, we have to get it again
+            var manager = new DataManager();
+            manager.checkPath();
         }
     }
 }
