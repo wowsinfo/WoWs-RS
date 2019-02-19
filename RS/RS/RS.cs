@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Net;
 using System.Net.Sockets;
 using System.Windows.Forms;
@@ -11,11 +12,19 @@ namespace RS
     public partial class RS : Form
     {
         private string IP = "0.0.0.0";
-        private static int port = 8605; 
+        private static int port = 8605;
+        private string gamePath = "";
 
         public RS()
         {
             InitializeComponent();
+
+            // Deal with game path
+            if (ValidatePath())
+            {
+                // Make sure replay is on
+                EnableReplay();
+            }
 
             // Get current IP address
             this.IP = GetIPAddress();
@@ -37,6 +46,53 @@ namespace RS
         #endregion
 
         #region Utils
+        private bool ValidatePath()
+        {
+            // Check if we have a game path
+            gamePath = Properties.Settings.Default.path;
+            Console.WriteLine("-> " + gamePath);
+            if (File.Exists(gamePath + @"\WorldOfWarships.exe"))
+            {
+                Properties.Settings.Default.path = gamePath;
+                Properties.Settings.Default.Save();
+                return true;
+            }
+            return false;
+        }
+
+        private void EnableReplay()
+        {
+            string path = gamePath + @"\preferences.xml";
+            var replay = false;
+            var scriptLine = 0;
+
+            // XmlDocument is so bad... I have to change it manually
+            var xml = File.ReadAllLines(path);
+            for (var i = 0; i < xml.Length; i++)
+            {
+                var line = xml[i];
+                if (line.Contains("<isReplayEnabled>"))
+                {
+                    // Replay is enabled
+                    replay = true;
+                    break;
+                }
+                else if (line.Contains("</scriptsPreferences>"))
+                {
+                    // Record this line to add our script later
+                    scriptLine = i;
+                    break;
+                }
+            }
+
+            if (!replay)
+            {
+                // Enable replay
+                xml[scriptLine] = "		<isReplayEnabled>	true	</isReplayEnabled>\n" + xml[scriptLine];
+                File.WriteAllLines(path, xml);
+            }
+        }
+
         private string GetIPAddress()
         {
             string localIP;
