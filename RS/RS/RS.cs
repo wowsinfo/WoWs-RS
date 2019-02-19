@@ -4,6 +4,8 @@ using System.Drawing;
 using System.IO;
 using System.Net;
 using System.Net.Sockets;
+using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 using NetFwTypeLib;
 
@@ -11,6 +13,8 @@ namespace RS
 {
     public partial class RS : Form
     {
+        static HttpListener listener = new HttpListener();
+
         private string IP = "0.0.0.0";
         private static int port = 8605;
         private string gamePath = "";
@@ -18,13 +22,6 @@ namespace RS
         public RS()
         {
             InitializeComponent();
-
-            // Deal with game path
-            if (ValidatePath())
-            {
-                // Make sure replay is on
-                EnableReplay();
-            }
 
             // Get current IP address
             this.IP = GetIPAddress();
@@ -41,11 +38,60 @@ namespace RS
 
         private void startBtn_Click(object sender, EventArgs e)
         {
-            ipLabel.ForeColor = Color.Green;
+            // Deal with game path
+            if (ValidatePath())
+            {
+                // Make sure replay is on
+                EnableReplay();
+
+                var address = $"http://{this.IP}:{port}/";
+                // Add the address you want to use
+                listener.Prefixes.Add(address);
+                listener.Start(); // start server (Run application as Administrator!)
+                Console.WriteLine("IP Address -> " + this.IP);
+                // Start the game
+                Process.Start(gamePath + @"\WorldOfWarships.exe");
+
+                var response = new Thread(ResponseThread);
+                response.Start(); // start the response thread
+
+                ipLabel.ForeColor = Color.Green;
+            }
+            else
+            {
+                MessageBox.Show("Enter your game path first", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         #endregion
 
         #region Utils
+        private void ResponseThread()
+        {
+            var rand = new Random();
+            while (true)
+            {
+                Console.WriteLine("Request received");
+                var context = listener.GetContext();
+
+                var ARENA = gamePath + @"\replays\tempArenaInfo.json";
+                string json = "[]";
+
+                // Grab the file we want and send it
+                if (File.Exists(ARENA))
+                {
+                    var curr = File.GetLastWriteTime(ARENA).ToString();
+                    // Get this file and send it as bytes
+                    json = File.ReadAllText(ARENA);
+                }
+
+                byte[] responseArray = Encoding.UTF8.GetBytes(json); // get the bytes to response
+                context.Response.OutputStream.Write(responseArray, 0, responseArray.Length); // write bytes to the output stream
+                context.Response.KeepAlive = false; // set the KeepAlive bool to false
+                context.Response.Close(); // close the connection
+            }
+        }
+
         private bool ValidatePath()
         {
             // Check if we have a game path
@@ -134,7 +180,8 @@ namespace RS
             }
             catch (Exception e)
             {
-                MessageBox.Show("Error", "Failed to add port to firewall. This is the error message.\n" + e.Message);
+                MessageBox.Show("Failed to add port to firewall. This is the error message.\n" + e.Message, 
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.ExitThread();
             }
         }
