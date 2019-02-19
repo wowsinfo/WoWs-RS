@@ -38,6 +38,11 @@ namespace RS
             Process.Start("https://github.com/HenryQuan/WoWs-RS");
         }
 
+        private void checkForUpdateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://github.com/HenryQuan/WoWs-RS/releases/latest");
+        }
+
         private void startBtn_Click(object sender, EventArgs e)
         {
             // Deal with game path

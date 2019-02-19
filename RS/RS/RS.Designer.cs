@@ -34,6 +34,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.githubToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.githubMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.checkForUpdateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -79,24 +80,32 @@
             this.githubToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(537, 40);
+            this.menuStrip1.Size = new System.Drawing.Size(537, 42);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // githubToolStripMenuItem
             // 
             this.githubToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.checkForUpdateToolStripMenuItem,
             this.githubMenu});
             this.githubToolStripMenuItem.Name = "githubToolStripMenuItem";
-            this.githubToolStripMenuItem.Size = new System.Drawing.Size(92, 36);
+            this.githubToolStripMenuItem.Size = new System.Drawing.Size(92, 38);
             this.githubToolStripMenuItem.Text = "About";
             // 
             // githubMenu
             // 
             this.githubMenu.Name = "githubMenu";
-            this.githubMenu.Size = new System.Drawing.Size(186, 38);
+            this.githubMenu.Size = new System.Drawing.Size(324, 38);
             this.githubMenu.Text = "Github";
             this.githubMenu.Click += new System.EventHandler(this.githubMenu_Click);
+            // 
+            // checkForUpdateToolStripMenuItem
+            // 
+            this.checkForUpdateToolStripMenuItem.Name = "checkForUpdateToolStripMenuItem";
+            this.checkForUpdateToolStripMenuItem.Size = new System.Drawing.Size(324, 38);
+            this.checkForUpdateToolStripMenuItem.Text = "Check for update";
+            this.checkForUpdateToolStripMenuItem.Click += new System.EventHandler(this.checkForUpdateToolStripMenuItem_Click);
             // 
             // RS
             // 
@@ -127,6 +136,7 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem githubToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem githubMenu;
+        private System.Windows.Forms.ToolStripMenuItem checkForUpdateToolStripMenuItem;
     }
 }
 
