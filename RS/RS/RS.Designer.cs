@@ -40,21 +40,24 @@
             // startBtn
             // 
             this.startBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.startBtn.Location = new System.Drawing.Point(368, 126);
+            this.startBtn.Location = new System.Drawing.Point(393, 142);
             this.startBtn.Name = "startBtn";
-            this.startBtn.Size = new System.Drawing.Size(132, 30);
+            this.startBtn.Size = new System.Drawing.Size(132, 38);
             this.startBtn.TabIndex = 0;
             this.startBtn.Text = "Start";
             this.startBtn.UseVisualStyleBackColor = true;
+            this.startBtn.Click += new System.EventHandler(this.startBtn_Click);
             // 
             // ipLabel
             // 
-            this.ipLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.ipLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.ipLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ipLabel.Location = new System.Drawing.Point(12, 62);
+            this.ipLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 22.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ipLabel.ForeColor = System.Drawing.Color.Tomato;
+            this.ipLabel.Location = new System.Drawing.Point(12, 57);
             this.ipLabel.Name = "ipLabel";
-            this.ipLabel.Size = new System.Drawing.Size(487, 50);
+            this.ipLabel.Size = new System.Drawing.Size(511, 67);
             this.ipLabel.TabIndex = 1;
             this.ipLabel.Text = "0.0.0.0";
             this.ipLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -63,9 +66,10 @@
             // 
             this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(13, 125);
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(13, 142);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(349, 31);
+            this.textBox1.Size = new System.Drawing.Size(373, 38);
             this.textBox1.TabIndex = 2;
             // 
             // menuStrip1
@@ -75,7 +79,7 @@
             this.githubToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(513, 42);
+            this.menuStrip1.Size = new System.Drawing.Size(537, 40);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -98,13 +102,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(513, 169);
+            this.ClientSize = new System.Drawing.Size(537, 186);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.ipLabel);
             this.Controls.Add(this.startBtn);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
+            this.MinimumSize = new System.Drawing.Size(563, 257);
             this.Name = "RS";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "WoWs RS";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
