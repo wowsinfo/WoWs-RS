@@ -23,6 +23,8 @@ namespace RS
         {
             InitializeComponent();
 
+            pathBox.Text = Properties.Settings.Default.path;
+
             // Get current IP address
             this.IP = GetIPAddress();
             ipLabel.Text = this.IP;
@@ -56,10 +58,11 @@ namespace RS
                 response.Start(); // start the response thread
 
                 ipLabel.ForeColor = Color.Green;
+                startBtn.Enabled = false;
             }
             else
             {
-                MessageBox.Show("Enter your game path first", "Error",
+                MessageBox.Show("Path is not valid", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -95,7 +98,7 @@ namespace RS
         private bool ValidatePath()
         {
             // Check if we have a game path
-            gamePath = Properties.Settings.Default.path;
+            gamePath = pathBox.Text;
             Console.WriteLine("-> " + gamePath);
             if (File.Exists(gamePath + @"\WorldOfWarships.exe"))
             {
