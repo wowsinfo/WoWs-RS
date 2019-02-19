@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
 using System.Drawing;
-using System.Linq;
 using System.Net;
 using System.Net.Sockets;
-using System.Text;
 using System.Windows.Forms;
+using NetFwTypeLib;
 
 namespace RS
 {
@@ -24,13 +20,23 @@ namespace RS
             // Get current IP address
             this.IP = GetIPAddress();
             ipLabel.Text = this.IP;
+
+            AddPortToFirewall("WoWs RS", port);
         }
 
+        #region Button Clicks
         private void githubMenu_Click(object sender, EventArgs e)
         {
             Process.Start("https://github.com/HenryQuan/WoWs-RS");
         }
 
+        private void startBtn_Click(object sender, EventArgs e)
+        {
+            ipLabel.ForeColor = Color.Green;
+        }
+        #endregion
+
+        #region Utils
         private string GetIPAddress()
         {
             string localIP;
@@ -45,9 +51,37 @@ namespace RS
             return localIP;
         }
 
-        private void startBtn_Click(object sender, EventArgs e)
+        private void AddPortToFirewall(string name, int port)
         {
-            ipLabel.ForeColor = Color.Green;
+            try
+            {
+                Type TicfMgr = Type.GetTypeFromProgID("HNetCfg.FwMgr");
+                INetFwMgr icfMgr = (INetFwMgr)Activator.CreateInstance(TicfMgr);
+
+                // add a new port
+                Type TportClass = Type.GetTypeFromProgID("HNetCfg.FWOpenPort");
+                INetFwOpenPort portClass = (INetFwOpenPort)Activator.CreateInstance(TportClass);
+
+                // Get the current profile
+                INetFwProfile profile = icfMgr.LocalPolicy.CurrentProfile;
+
+                // Set the port properties
+                portClass.Scope = NetFwTypeLib.NET_FW_SCOPE_.NET_FW_SCOPE_ALL;
+                portClass.Enabled = true;
+                portClass.Protocol = NetFwTypeLib.NET_FW_IP_PROTOCOL_.NET_FW_IP_PROTOCOL_TCP;
+                // WoWs Info - 8605
+                portClass.Name = name;
+                portClass.Port = port;
+
+                // Add the port to the ICF Permissions List
+                profile.GloballyOpenPorts.Add(portClass);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Error", "Failed to add port to firewall. This is the error message.\n" + e.Message);
+                Application.ExitThread();
+            }
         }
+        #endregion
     }
 }
