@@ -47,9 +47,9 @@
             // startBtn
             // 
             this.startBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.startBtn.Location = new System.Drawing.Point(438, 142);
+            this.startBtn.Location = new System.Drawing.Point(402, 137);
             this.startBtn.Name = "startBtn";
-            this.startBtn.Size = new System.Drawing.Size(132, 38);
+            this.startBtn.Size = new System.Drawing.Size(121, 36);
             this.startBtn.TabIndex = 0;
             this.startBtn.Text = "Start";
             this.startBtn.UseVisualStyleBackColor = true;
@@ -62,9 +62,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ipLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 22.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ipLabel.ForeColor = System.Drawing.Color.Tomato;
-            this.ipLabel.Location = new System.Drawing.Point(12, 57);
+            this.ipLabel.Location = new System.Drawing.Point(11, 55);
             this.ipLabel.Name = "ipLabel";
-            this.ipLabel.Size = new System.Drawing.Size(556, 67);
+            this.ipLabel.Size = new System.Drawing.Size(510, 64);
             this.ipLabel.TabIndex = 1;
             this.ipLabel.Text = "0.0.0.0";
             this.ipLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -74,9 +74,9 @@
             this.pathBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pathBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pathBox.Location = new System.Drawing.Point(138, 142);
+            this.pathBox.Location = new System.Drawing.Point(136, 139);
             this.pathBox.Name = "pathBox";
-            this.pathBox.Size = new System.Drawing.Size(293, 38);
+            this.pathBox.Size = new System.Drawing.Size(260, 34);
             this.pathBox.TabIndex = 2;
             // 
             // menuStrip1
@@ -87,7 +87,7 @@
             this.languageToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(582, 40);
+            this.menuStrip1.Size = new System.Drawing.Size(534, 38);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -97,20 +97,20 @@
             this.checkForUpdateToolStripMenuItem,
             this.aboutMenu});
             this.githubToolStripMenuItem.Name = "githubToolStripMenuItem";
-            this.githubToolStripMenuItem.Size = new System.Drawing.Size(99, 36);
+            this.githubToolStripMenuItem.Size = new System.Drawing.Size(87, 34);
             this.githubToolStripMenuItem.Text = "Github";
             // 
             // checkForUpdateToolStripMenuItem
             // 
             this.checkForUpdateToolStripMenuItem.Name = "checkForUpdateToolStripMenuItem";
-            this.checkForUpdateToolStripMenuItem.Size = new System.Drawing.Size(298, 38);
+            this.checkForUpdateToolStripMenuItem.Size = new System.Drawing.Size(263, 34);
             this.checkForUpdateToolStripMenuItem.Text = "Check for update";
             this.checkForUpdateToolStripMenuItem.Click += new System.EventHandler(this.checkForUpdateToolStripMenuItem_Click);
             // 
             // aboutMenu
             // 
             this.aboutMenu.Name = "aboutMenu";
-            this.aboutMenu.Size = new System.Drawing.Size(298, 38);
+            this.aboutMenu.Size = new System.Drawing.Size(263, 34);
             this.aboutMenu.Text = "About";
             this.aboutMenu.Click += new System.EventHandler(this.githubMenu_Click);
             // 
@@ -121,45 +121,44 @@
             this.chineseToolStripMenuItem,
             this.japaneseToolStripMenuItem});
             this.languageToolStripMenuItem.Name = "languageToolStripMenuItem";
-            this.languageToolStripMenuItem.Size = new System.Drawing.Size(131, 36);
+            this.languageToolStripMenuItem.Size = new System.Drawing.Size(116, 34);
             this.languageToolStripMenuItem.Text = "Language";
             // 
             // englishToolStripMenuItem
             // 
             this.englishToolStripMenuItem.Name = "englishToolStripMenuItem";
-            this.englishToolStripMenuItem.Size = new System.Drawing.Size(214, 38);
+            this.englishToolStripMenuItem.Size = new System.Drawing.Size(192, 34);
             this.englishToolStripMenuItem.Text = "English";
             this.englishToolStripMenuItem.Click += new System.EventHandler(this.englishToolStripMenuItem_Click);
             // 
             // chineseToolStripMenuItem
             // 
             this.chineseToolStripMenuItem.Name = "chineseToolStripMenuItem";
-            this.chineseToolStripMenuItem.Size = new System.Drawing.Size(214, 38);
+            this.chineseToolStripMenuItem.Size = new System.Drawing.Size(192, 34);
             this.chineseToolStripMenuItem.Text = "简体中文";
             this.chineseToolStripMenuItem.Click += new System.EventHandler(this.chineseToolStripMenuItem_Click);
             // 
             // japaneseToolStripMenuItem
             // 
             this.japaneseToolStripMenuItem.Name = "japaneseToolStripMenuItem";
-            this.japaneseToolStripMenuItem.Size = new System.Drawing.Size(214, 38);
+            this.japaneseToolStripMenuItem.Size = new System.Drawing.Size(192, 34);
             this.japaneseToolStripMenuItem.Text = "日本語";
             this.japaneseToolStripMenuItem.Click += new System.EventHandler(this.japaneseToolStripMenuItem_Click);
             // 
             // pathLabel
             // 
             this.pathLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.pathLabel.AutoSize = true;
-            this.pathLabel.Location = new System.Drawing.Point(12, 149);
+            this.pathLabel.Location = new System.Drawing.Point(11, 146);
             this.pathLabel.Name = "pathLabel";
-            this.pathLabel.Size = new System.Drawing.Size(119, 25);
+            this.pathLabel.Size = new System.Drawing.Size(119, 24);
             this.pathLabel.TabIndex = 4;
             this.pathLabel.Text = "Game Path";
             // 
             // RS
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(582, 186);
+            this.ClientSize = new System.Drawing.Size(534, 185);
             this.Controls.Add(this.pathLabel);
             this.Controls.Add(this.pathBox);
             this.Controls.Add(this.ipLabel);
@@ -167,7 +166,7 @@
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.MinimumSize = new System.Drawing.Size(563, 257);
+            this.MinimumSize = new System.Drawing.Size(518, 249);
             this.Name = "RS";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "WoWs RS";
