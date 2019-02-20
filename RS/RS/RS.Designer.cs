@@ -33,15 +33,20 @@
             this.pathBox = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.githubToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.githubMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.checkForUpdateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.languageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.englishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.chineseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.japaneseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pathLabel = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // startBtn
             // 
             this.startBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.startBtn.Location = new System.Drawing.Point(393, 142);
+            this.startBtn.Location = new System.Drawing.Point(438, 142);
             this.startBtn.Name = "startBtn";
             this.startBtn.Size = new System.Drawing.Size(132, 38);
             this.startBtn.TabIndex = 0;
@@ -58,7 +63,7 @@
             this.ipLabel.ForeColor = System.Drawing.Color.Tomato;
             this.ipLabel.Location = new System.Drawing.Point(12, 57);
             this.ipLabel.Name = "ipLabel";
-            this.ipLabel.Size = new System.Drawing.Size(511, 67);
+            this.ipLabel.Size = new System.Drawing.Size(556, 67);
             this.ipLabel.TabIndex = 1;
             this.ipLabel.Text = "0.0.0.0";
             this.ipLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -68,19 +73,20 @@
             this.pathBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pathBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pathBox.Location = new System.Drawing.Point(13, 142);
+            this.pathBox.Location = new System.Drawing.Point(138, 142);
             this.pathBox.Name = "pathBox";
-            this.pathBox.Size = new System.Drawing.Size(373, 38);
+            this.pathBox.Size = new System.Drawing.Size(293, 38);
             this.pathBox.TabIndex = 2;
             // 
             // menuStrip1
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.githubToolStripMenuItem});
+            this.githubToolStripMenuItem,
+            this.languageToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(537, 42);
+            this.menuStrip1.Size = new System.Drawing.Size(582, 42);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -88,30 +94,72 @@
             // 
             this.githubToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.checkForUpdateToolStripMenuItem,
-            this.githubMenu});
+            this.aboutMenu});
             this.githubToolStripMenuItem.Name = "githubToolStripMenuItem";
-            this.githubToolStripMenuItem.Size = new System.Drawing.Size(92, 38);
-            this.githubToolStripMenuItem.Text = "About";
-            // 
-            // githubMenu
-            // 
-            this.githubMenu.Name = "githubMenu";
-            this.githubMenu.Size = new System.Drawing.Size(324, 38);
-            this.githubMenu.Text = "Github";
-            this.githubMenu.Click += new System.EventHandler(this.githubMenu_Click);
+            this.githubToolStripMenuItem.Size = new System.Drawing.Size(99, 38);
+            this.githubToolStripMenuItem.Text = "Github";
             // 
             // checkForUpdateToolStripMenuItem
             // 
             this.checkForUpdateToolStripMenuItem.Name = "checkForUpdateToolStripMenuItem";
-            this.checkForUpdateToolStripMenuItem.Size = new System.Drawing.Size(324, 38);
+            this.checkForUpdateToolStripMenuItem.Size = new System.Drawing.Size(298, 38);
             this.checkForUpdateToolStripMenuItem.Text = "Check for update";
             this.checkForUpdateToolStripMenuItem.Click += new System.EventHandler(this.checkForUpdateToolStripMenuItem_Click);
+            // 
+            // aboutMenu
+            // 
+            this.aboutMenu.Name = "aboutMenu";
+            this.aboutMenu.Size = new System.Drawing.Size(298, 38);
+            this.aboutMenu.Text = "About";
+            this.aboutMenu.Click += new System.EventHandler(this.githubMenu_Click);
+            // 
+            // languageToolStripMenuItem
+            // 
+            this.languageToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.englishToolStripMenuItem,
+            this.chineseToolStripMenuItem,
+            this.japaneseToolStripMenuItem});
+            this.languageToolStripMenuItem.Name = "languageToolStripMenuItem";
+            this.languageToolStripMenuItem.Size = new System.Drawing.Size(131, 38);
+            this.languageToolStripMenuItem.Text = "Language";
+            // 
+            // englishToolStripMenuItem
+            // 
+            this.englishToolStripMenuItem.Name = "englishToolStripMenuItem";
+            this.englishToolStripMenuItem.Size = new System.Drawing.Size(324, 38);
+            this.englishToolStripMenuItem.Text = "English";
+            this.englishToolStripMenuItem.Click += new System.EventHandler(this.englishToolStripMenuItem_Click);
+            // 
+            // chineseToolStripMenuItem
+            // 
+            this.chineseToolStripMenuItem.Name = "chineseToolStripMenuItem";
+            this.chineseToolStripMenuItem.Size = new System.Drawing.Size(324, 38);
+            this.chineseToolStripMenuItem.Text = "简体中文";
+            this.chineseToolStripMenuItem.Click += new System.EventHandler(this.chineseToolStripMenuItem_Click);
+            // 
+            // japaneseToolStripMenuItem
+            // 
+            this.japaneseToolStripMenuItem.Name = "japaneseToolStripMenuItem";
+            this.japaneseToolStripMenuItem.Size = new System.Drawing.Size(324, 38);
+            this.japaneseToolStripMenuItem.Text = "日本語";
+            this.japaneseToolStripMenuItem.Click += new System.EventHandler(this.japaneseToolStripMenuItem_Click);
+            // 
+            // pathLabel
+            // 
+            this.pathLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.pathLabel.AutoSize = true;
+            this.pathLabel.Location = new System.Drawing.Point(12, 149);
+            this.pathLabel.Name = "pathLabel";
+            this.pathLabel.Size = new System.Drawing.Size(119, 25);
+            this.pathLabel.TabIndex = 4;
+            this.pathLabel.Text = "Game Path";
             // 
             // RS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(537, 186);
+            this.ClientSize = new System.Drawing.Size(582, 186);
+            this.Controls.Add(this.pathLabel);
             this.Controls.Add(this.pathBox);
             this.Controls.Add(this.ipLabel);
             this.Controls.Add(this.startBtn);
@@ -121,6 +169,7 @@
             this.Name = "RS";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "WoWs RS";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.RS_FormClosing);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -135,8 +184,13 @@
         private System.Windows.Forms.TextBox pathBox;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem githubToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem githubMenu;
+        private System.Windows.Forms.ToolStripMenuItem aboutMenu;
         private System.Windows.Forms.ToolStripMenuItem checkForUpdateToolStripMenuItem;
+        private System.Windows.Forms.Label pathLabel;
+        private System.Windows.Forms.ToolStripMenuItem languageToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem englishToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem chineseToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem japaneseToolStripMenuItem;
     }
 }
 

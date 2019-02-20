@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Net;
 using System.Net.Sockets;
@@ -22,6 +23,13 @@ namespace RS
         public RS()
         {
             InitializeComponent();
+
+            Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo(Properties.Settings.Default.lang);
+            pathLabel.Text = Properties.strings.path;
+            startBtn.Text = Properties.strings.start;
+            aboutMenu.Text = Properties.strings.about;
+            checkForUpdateToolStripMenuItem.Text = Properties.strings.check_for_update;
+            languageToolStripMenuItem.Text = Properties.strings.language;
 
             pathBox.Text = Properties.Settings.Default.path;
 
@@ -67,10 +75,32 @@ namespace RS
             }
             else
             {
-                MessageBox.Show("Path is not valid", "Error",
+                MessageBox.Show(Properties.strings.invalid_path, Properties.strings.error_title,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void englishToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.lang = "en";
+            Properties.Settings.Default.Save();
+            Application.Restart();
+        }
+
+        private void chineseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.lang = "zh";
+            Properties.Settings.Default.Save();
+            Application.Restart();
+        }
+
+        private void japaneseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.lang = "ja";
+            Properties.Settings.Default.Save();
+            Application.Restart();
+        }
+
         #endregion
 
         #region Utils
@@ -188,11 +218,16 @@ namespace RS
             }
             catch (Exception e)
             {
-                MessageBox.Show("Failed to add port to firewall. This is the error message.\n" + e.Message, 
-                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(e.Message, Properties.strings.error_title, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.ExitThread();
             }
         }
         #endregion
+
+        private void RS_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            listener.Close();
+            Application.ExitThread();
+        }
     }
 }
