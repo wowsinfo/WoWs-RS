@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RS));
             this.startBtn = new System.Windows.Forms.Button();
             this.ipLabel = new System.Windows.Forms.Label();
             this.pathBox = new System.Windows.Forms.TextBox();
@@ -86,7 +87,7 @@
             this.languageToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(582, 42);
+            this.menuStrip1.Size = new System.Drawing.Size(582, 40);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -96,7 +97,7 @@
             this.checkForUpdateToolStripMenuItem,
             this.aboutMenu});
             this.githubToolStripMenuItem.Name = "githubToolStripMenuItem";
-            this.githubToolStripMenuItem.Size = new System.Drawing.Size(99, 38);
+            this.githubToolStripMenuItem.Size = new System.Drawing.Size(99, 36);
             this.githubToolStripMenuItem.Text = "Github";
             // 
             // checkForUpdateToolStripMenuItem
@@ -120,27 +121,27 @@
             this.chineseToolStripMenuItem,
             this.japaneseToolStripMenuItem});
             this.languageToolStripMenuItem.Name = "languageToolStripMenuItem";
-            this.languageToolStripMenuItem.Size = new System.Drawing.Size(131, 38);
+            this.languageToolStripMenuItem.Size = new System.Drawing.Size(131, 36);
             this.languageToolStripMenuItem.Text = "Language";
             // 
             // englishToolStripMenuItem
             // 
             this.englishToolStripMenuItem.Name = "englishToolStripMenuItem";
-            this.englishToolStripMenuItem.Size = new System.Drawing.Size(324, 38);
+            this.englishToolStripMenuItem.Size = new System.Drawing.Size(214, 38);
             this.englishToolStripMenuItem.Text = "English";
             this.englishToolStripMenuItem.Click += new System.EventHandler(this.englishToolStripMenuItem_Click);
             // 
             // chineseToolStripMenuItem
             // 
             this.chineseToolStripMenuItem.Name = "chineseToolStripMenuItem";
-            this.chineseToolStripMenuItem.Size = new System.Drawing.Size(324, 38);
+            this.chineseToolStripMenuItem.Size = new System.Drawing.Size(214, 38);
             this.chineseToolStripMenuItem.Text = "简体中文";
             this.chineseToolStripMenuItem.Click += new System.EventHandler(this.chineseToolStripMenuItem_Click);
             // 
             // japaneseToolStripMenuItem
             // 
             this.japaneseToolStripMenuItem.Name = "japaneseToolStripMenuItem";
-            this.japaneseToolStripMenuItem.Size = new System.Drawing.Size(324, 38);
+            this.japaneseToolStripMenuItem.Size = new System.Drawing.Size(214, 38);
             this.japaneseToolStripMenuItem.Text = "日本語";
             this.japaneseToolStripMenuItem.Click += new System.EventHandler(this.japaneseToolStripMenuItem_Click);
             // 
@@ -164,6 +165,7 @@
             this.Controls.Add(this.ipLabel);
             this.Controls.Add(this.startBtn);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(563, 257);
             this.Name = "RS";
