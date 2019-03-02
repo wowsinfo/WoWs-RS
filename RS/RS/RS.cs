@@ -72,6 +72,9 @@ namespace RS
 
                 ipLabel.ForeColor = Color.Green;
                 startBtn.Enabled = false;
+
+                // Hide window when RS is enabled
+                this.WindowState = FormWindowState.Minimized;
             }
             else
             {
