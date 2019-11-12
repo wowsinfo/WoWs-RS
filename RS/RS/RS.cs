@@ -30,6 +30,7 @@ namespace RS
             aboutMenu.Text = Properties.strings.about;
             checkForUpdateToolStripMenuItem.Text = Properties.strings.check_for_update;
             languageToolStripMenuItem.Text = Properties.strings.language;
+            aboutGamePathToolStripMenuItem.Text = Properties.strings.about_path;
 
             pathBox.Text = Properties.Settings.Default.path;
 
@@ -56,25 +57,30 @@ namespace RS
             // Deal with game path
             if (ValidatePath())
             {
-                // Make sure replay is on
-                EnableReplay();
+                try
+                {
+                    // Make sure replay is on
+                    EnableReplay();
 
-                var address = $"http://{this.IP}:{port}/";
-                // Add the address you want to use
-                listener.Prefixes.Add(address);
-                listener.Start(); // start server (Run application as Administrator!)
-                Console.WriteLine("IP Address -> " + this.IP);
-                // Start the game
-                Process.Start(gamePath + @"\WorldOfWarships.exe");
+                    var address = $"http://{this.IP}:{port}/";
+                    // Add the address you want to use
+                    listener.Prefixes.Add(address);
+                    listener.Start(); // start server (Run application as Administrator!)
+                    Console.WriteLine("IP Address -> " + this.IP);
+                    // Don't start the game anymore
+                    // Process.Start(gamePath + @"\WorldOfWarships.exe");
 
-                var response = new Thread(ResponseThread);
-                response.Start(); // start the response thread
+                    var response = new Thread(ResponseThread);
+                    response.Start(); // start the response thread
 
-                ipLabel.ForeColor = Color.Green;
-                startBtn.Enabled = false;
-
-                // Hide window when RS is enabled
-                this.WindowState = FormWindowState.Minimized;
+                    ipLabel.ForeColor = Color.Green;
+                    startBtn.Enabled = false;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(Properties.strings.invalid_path + "\n\n" + ex.Message, Properties.strings.error_title,
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             else
             {
@@ -138,12 +144,14 @@ namespace RS
             // Check if we have a game path
             gamePath = pathBox.Text;
             Console.WriteLine("-> " + gamePath);
-            if (File.Exists(gamePath + @"\WorldOfWarships.exe"))
+            if (File.Exists(gamePath + @"\WorldOfWarships.exe") || (gamePath.Contains("steamapps") && Directory.Exists(gamePath + @"\replays")))
             {
+                // Support steam or non steam
                 Properties.Settings.Default.path = gamePath;
                 Properties.Settings.Default.Save();
                 return true;
             }
+
             return false;
         }
 
@@ -231,6 +239,14 @@ namespace RS
         {
             listener.Close();
             Application.ExitThread();
+        }
+
+        private void AboutGamePathToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string content = Properties.strings.path_example;
+            content += "\nD:\\Games\\World_of_Warships\n";
+            content += "D:\\Games\\Steam\\steamapps\\common\\World_of_Warships";
+            MessageBox.Show(content, Properties.strings.about_path);
         }
     }
 }

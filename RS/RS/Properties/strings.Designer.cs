@@ -19,7 +19,7 @@ namespace RS.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class strings {
@@ -70,6 +70,15 @@ namespace RS.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to About game path.
+        /// </summary>
+        internal static string about_path {
+            get {
+                return ResourceManager.GetString("about_path", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Check for Update.
         /// </summary>
         internal static string check_for_update {
@@ -111,6 +120,15 @@ namespace RS.Properties {
         internal static string path {
             get {
                 return ResourceManager.GetString("path", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Game path looks like:.
+        /// </summary>
+        internal static string path_example {
+            get {
+                return ResourceManager.GetString("path_example", resourceCulture);
             }
         }
         
