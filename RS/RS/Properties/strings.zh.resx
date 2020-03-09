@@ -120,14 +120,14 @@
   <data name="about" xml:space="preserve">
     <value>关于</value>
   </data>
-  <data name="about_path" xml:space="preserve">
-    <value>关于游戏路径</value>
-  </data>
   <data name="check_for_update" xml:space="preserve">
     <value>检查更新</value>
   </data>
   <data name="error_title" xml:space="preserve">
     <value>错误</value>
+  </data>
+  <data name="how_to_use" xml:space="preserve">
+    <value>使用教程</value>
   </data>
   <data name="invalid_path" xml:space="preserve">
     <value>游戏路径无效</value>
@@ -137,9 +137,6 @@
   </data>
   <data name="path" xml:space="preserve">
     <value>游戏路径</value>
-  </data>
-  <data name="path_example" xml:space="preserve">
-    <value>游戏路径的格式例如：</value>
   </data>
   <data name="start" xml:space="preserve">
     <value>开始</value>

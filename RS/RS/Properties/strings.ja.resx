@@ -120,14 +120,14 @@
   <data name="about" xml:space="preserve">
     <value>RSについて</value>
   </data>
-  <data name="about_path" xml:space="preserve">
-    <value>ゲームパスについて</value>
-  </data>
   <data name="check_for_update" xml:space="preserve">
     <value>アップデートをチェック</value>
   </data>
   <data name="error_title" xml:space="preserve">
     <value>エラー</value>
+  </data>
+  <data name="how_to_use" xml:space="preserve">
+    <value>使い方</value>
   </data>
   <data name="invalid_path" xml:space="preserve">
     <value>パスは有効じゃない</value>
@@ -137,9 +137,6 @@
   </data>
   <data name="path" xml:space="preserve">
     <value>ゲームパス</value>
-  </data>
-  <data name="path_example" xml:space="preserve">
-    <value>ゲームパスの例</value>
   </data>
   <data name="start" xml:space="preserve">
     <value>スタート</value>

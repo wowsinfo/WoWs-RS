@@ -30,7 +30,7 @@ namespace RS
             aboutMenu.Text = Properties.strings.about;
             checkForUpdateToolStripMenuItem.Text = Properties.strings.check_for_update;
             languageToolStripMenuItem.Text = Properties.strings.language;
-            aboutGamePathToolStripMenuItem.Text = Properties.strings.about_path;
+            howToUseToolStripMenuItem.Text = Properties.strings.how_to_use;
 
             pathBox.Text = Properties.Settings.Default.path;
 
@@ -144,7 +144,8 @@ namespace RS
             // Check if we have a game path
             gamePath = pathBox.Text;
             Console.WriteLine("-> " + gamePath);
-            if (File.Exists(gamePath + @"\WorldOfWarships.exe") || (gamePath.Contains("steamapps") && Directory.Exists(gamePath + @"\replays")))
+            // Only check for perferences.xml (it should work for both steam and normal version)
+            if (File.Exists(gamePath + @"\preferences.xml"))
             {
                 // Support steam or non steam
                 Properties.Settings.Default.path = gamePath;
@@ -243,7 +244,7 @@ namespace RS
 
         private void AboutGamePathToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string content = Properties.strings.path_example;
+            string content = Properties.strings.how_to_use;
             content += "\nD:\\Games\\World_of_Warships\n";
             content += "D:\\Games\\Steam\\steamapps\\common\\World_of_Warships";
             MessageBox.Show(content, Properties.strings.about_path);

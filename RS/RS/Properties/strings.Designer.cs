@@ -70,15 +70,6 @@ namespace RS.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to About game path.
-        /// </summary>
-        internal static string about_path {
-            get {
-                return ResourceManager.GetString("about_path", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Check for Update.
         /// </summary>
         internal static string check_for_update {
@@ -93,6 +84,15 @@ namespace RS.Properties {
         internal static string error_title {
             get {
                 return ResourceManager.GetString("error_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to How to use.
+        /// </summary>
+        internal static string how_to_use {
+            get {
+                return ResourceManager.GetString("how_to_use", resourceCulture);
             }
         }
         
@@ -120,15 +120,6 @@ namespace RS.Properties {
         internal static string path {
             get {
                 return ResourceManager.GetString("path", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Game path looks like:.
-        /// </summary>
-        internal static string path_example {
-            get {
-                return ResourceManager.GetString("path_example", resourceCulture);
             }
         }
         
