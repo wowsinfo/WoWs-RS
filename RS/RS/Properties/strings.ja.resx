@@ -120,6 +120,9 @@
   <data name="about" xml:space="preserve">
     <value>RSについて</value>
   </data>
+  <data name="about_path" xml:space="preserve">
+    <value>ゲームパスについて</value>
+  </data>
   <data name="check_for_update" xml:space="preserve">
     <value>アップデートをチェック</value>
   </data>

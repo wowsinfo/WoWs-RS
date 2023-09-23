@@ -120,6 +120,9 @@
   <data name="about" xml:space="preserve">
     <value>About</value>
   </data>
+  <data name="about_path" xml:space="preserve">
+    <value>About game path</value>
+  </data>
   <data name="check_for_update" xml:space="preserve">
     <value>Check for Update</value>
   </data>
