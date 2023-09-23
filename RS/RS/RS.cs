@@ -8,17 +8,21 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
-using NetFwTypeLib;
+using RS.Service;
 
 namespace RS
 {
     public partial class RS : Form
     {
-        static HttpListener listener = new HttpListener();
+        private HttpListener listener = new HttpListener();
 
         private string IP = "0.0.0.0";
         private static int port = 8605;
         private string gamePath = "";
+
+        private PortService portService= new PortService();
+        private GamePathService gamePathService = new GamePathService();
+        private LocalServer localServer = null;
 
         public RS()
         {
@@ -38,7 +42,15 @@ namespace RS
             this.IP = GetIPAddress();
             ipLabel.Text = this.IP;
 
-            AddPortToFirewall("WoWs RS", port);
+            /*try
+            {
+                portService.RegisterPort("WoWs RS", port);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, Properties.strings.error_title, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.ExitThread();
+            }*/
         }
 
         #region Button Clicks
@@ -55,14 +67,19 @@ namespace RS
         private void startBtn_Click(object sender, EventArgs e)
         {
             // Deal with game path
-            if (ValidatePath())
+            gamePath = pathBox.Text;
+            if (gamePathService.ValidatePath(gamePath))
             {
                 try
                 {
                     // Make sure replay is on
-                    EnableReplay();
+                    gamePathService.EnableReplay(gamePath);
+                    if (localServer == null)
+                    {
+                        localServer = new LocalServer(gamePath);
+                    }
 
-                    var address = $"http://{this.IP}:{port}/";
+                    /*var address = $"http://{this.IP}:{port}/";
                     // Add the address you want to use
                     listener.Prefixes.Add(address);
                     listener.Start(); // start server (Run application as Administrator!)
@@ -71,7 +88,8 @@ namespace RS
                     // Process.Start(gamePath + @"\WorldOfWarships.exe");
 
                     var response = new Thread(ResponseThread);
-                    response.Start(); // start the response thread
+                    response.Start(); // start the response thread*/
+                    localServer.Start(port);
 
                     ipLabel.ForeColor = Color.Green;
                     startBtn.Enabled = false;
@@ -139,56 +157,6 @@ namespace RS
             }
         }
 
-        private bool ValidatePath()
-        {
-            // Check if we have a game path
-            gamePath = pathBox.Text;
-            Console.WriteLine("-> " + gamePath);
-            // Only check for perferences.xml (it should work for both steam and normal version)
-            if (File.Exists(gamePath + @"\preferences.xml"))
-            {
-                // Support steam or non steam
-                Properties.Settings.Default.path = gamePath;
-                Properties.Settings.Default.Save();
-                return true;
-            }
-
-            return false;
-        }
-
-        private void EnableReplay()
-        {
-            string path = gamePath + @"\preferences.xml";
-            var replay = false;
-            var scriptLine = 0;
-
-            // XmlDocument is so bad... I have to change it manually
-            var xml = File.ReadAllLines(path);
-            for (var i = 0; i < xml.Length; i++)
-            {
-                var line = xml[i];
-                if (line.Contains("<isReplayEnabled>"))
-                {
-                    // Replay is enabled
-                    replay = true;
-                    break;
-                }
-                else if (line.Contains("</scriptsPreferences>"))
-                {
-                    // Record this line to add our script later
-                    scriptLine = i;
-                    break;
-                }
-            }
-
-            if (!replay)
-            {
-                // Enable replay
-                xml[scriptLine] = "		<isReplayEnabled>	true	</isReplayEnabled>\n" + xml[scriptLine];
-                File.WriteAllLines(path, xml);
-            }
-        }
-
         private string GetIPAddress()
         {
             string localIP;
@@ -202,43 +170,12 @@ namespace RS
             }
             return localIP;
         }
-
-        private void AddPortToFirewall(string name, int port)
-        {
-            try
-            {
-                Type TicfMgr = Type.GetTypeFromProgID("HNetCfg.FwMgr");
-                INetFwMgr icfMgr = (INetFwMgr)Activator.CreateInstance(TicfMgr);
-
-                // add a new port
-                Type TportClass = Type.GetTypeFromProgID("HNetCfg.FWOpenPort");
-                INetFwOpenPort portClass = (INetFwOpenPort)Activator.CreateInstance(TportClass);
-
-                // Get the current profile
-                INetFwProfile profile = icfMgr.LocalPolicy.CurrentProfile;
-
-                // Set the port properties
-                portClass.Scope = NetFwTypeLib.NET_FW_SCOPE_.NET_FW_SCOPE_ALL;
-                portClass.Enabled = true;
-                portClass.Protocol = NetFwTypeLib.NET_FW_IP_PROTOCOL_.NET_FW_IP_PROTOCOL_TCP;
-                // WoWs Info - 8605
-                portClass.Name = name;
-                portClass.Port = port;
-
-                // Add the port to the ICF Permissions List
-                profile.GloballyOpenPorts.Add(portClass);
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message, Properties.strings.error_title, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Application.ExitThread();
-            }
-        }
         #endregion
 
         private void RS_FormClosing(object sender, FormClosingEventArgs e)
         {
             listener.Close();
+            localServer.Stop();
             Application.ExitThread();
         }
 
