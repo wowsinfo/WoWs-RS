@@ -20,7 +20,7 @@ namespace RS.Service
         /// <param name="name">The name of the entry</param>
         /// <param name="port">The port number</param>
         /// <exception cref="Exception">This can throw lots of exception, treat any as an error.</exception>
-        public void AddPortToFirewall(string name, int port) 
+        public void AddPortToFirewall(string name, int port)
         {
             Type TicfMgr = Type.GetTypeFromProgID("HNetCfg.FwMgr");
             INetFwMgr icfMgr = (INetFwMgr)Activator.CreateInstance(TicfMgr);
@@ -51,16 +51,39 @@ namespace RS.Service
         /// <param name="port">The port number</param>
         public void RegisterPort(string name, int port)
         {
-            string netshArguments = $"advfirewall firewall add rule name=\"{name} {port}\" dir=in action=allow protocol=TCP localport={port}";
-            Console.WriteLine(netshArguments);
+            if (FirewallRuleExists(name))
+            {
+                return;
+            }
+
+            string netshArguments = $"advfirewall firewall add rule name=\"{name}\" dir=in action=allow protocol=TCP localport={port}";
             using (Process netshProcess = new Process())
             {
                 netshProcess.StartInfo.FileName = "netsh";
                 netshProcess.StartInfo.Arguments = netshArguments;
-                netshProcess.StartInfo.UseShellExecute = true;
+                netshProcess.StartInfo.Verb = "runas";
 
                 netshProcess.Start();
                 netshProcess.WaitForExit();
+            }
+        }
+
+        private bool FirewallRuleExists(string ruleName)
+        {
+            using (Process process = new Process())
+            {
+                process.StartInfo.FileName = "netsh";
+                process.StartInfo.Arguments = $"advfirewall firewall show rule name=\"{ruleName}\"";
+                process.StartInfo.RedirectStandardOutput = true;
+                process.StartInfo.UseShellExecute = false;
+                process.StartInfo.CreateNoWindow = true;
+
+                process.Start();
+                string output = process.StandardOutput.ReadToEnd();
+                process.WaitForExit();
+
+                // Check if the rule exists in the output
+                return output.Contains(ruleName);
             }
         }
     }

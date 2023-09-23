@@ -20,7 +20,7 @@ namespace RS
         private static int port = 8605;
         private string gamePath = "";
 
-        private PortService portService= new PortService();
+        private PortService portService = new PortService();
         private GamePathService gamePathService = new GamePathService();
         private LocalServer localServer = null;
 
@@ -40,16 +40,6 @@ namespace RS
             // Get current IP address
             this.IP = GetIPAddress();
             ipLabel.Text = this.IP;
-
-            /*try
-            {
-                portService.RegisterPort("WoWs RS", port);
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message, Properties.strings.error_title, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Application.ExitThread();
-            }*/
         }
 
         #region Button Clicks
@@ -67,41 +57,30 @@ namespace RS
         {
             // Deal with game path
             gamePath = pathBox.Text;
-            if (gamePathService.ValidatePath(gamePath))
-            {
-                try
-                {
-                    // Make sure replay is on
-                    gamePathService.EnableReplay(gamePath);
-                    if (localServer == null)
-                    {
-                        localServer = new LocalServer(gamePath);
-                    }
-
-                    /*var address = $"http://{this.IP}:{port}/";
-                    // Add the address you want to use
-                    listener.Prefixes.Add(address);
-                    listener.Start(); // start server (Run application as Administrator!)
-                    Console.WriteLine("IP Address -> " + this.IP);
-                    // Don't start the game anymore
-                    // Process.Start(gamePath + @"\WorldOfWarships.exe");
-
-                    var response = new Thread(ResponseThread);
-                    response.Start(); // start the response thread*/
-                    localServer.Start(port);
-
-                    ipLabel.ForeColor = Color.Green;
-                    startBtn.Enabled = false;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(Properties.strings.invalid_path + "\n\n" + ex.Message, Properties.strings.error_title,
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            else
+            if (!gamePathService.ValidatePath(gamePath))
             {
                 MessageBox.Show(Properties.strings.invalid_path, Properties.strings.error_title,
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            try
+            {
+                // Make sure replay is on
+                gamePathService.EnableReplay(gamePath);
+                if (localServer == null)
+                {
+                    localServer = new LocalServer(gamePath);
+                }
+
+                portService.RegisterPort("WoWs RS", port);
+                localServer.Start(port);
+
+                ipLabel.ForeColor = Color.Green;
+                startBtn.Enabled = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Properties.strings.invalid_path + "\n\n" + ex.Message, Properties.strings.error_title,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -130,31 +109,6 @@ namespace RS
         #endregion
 
         #region Utils
-        private void ResponseThread()
-        {
-            var rand = new Random();
-            while (true)
-            {
-                Console.WriteLine("Request received");
-                var context = listener.GetContext();
-
-                var ARENA = gamePath + @"\replays\tempArenaInfo.json";
-                string json = "[]";
-
-                // Grab the file we want and send it
-                if (File.Exists(ARENA))
-                {
-                    var curr = File.GetLastWriteTime(ARENA).ToString();
-                    // Get this file and send it as bytes
-                    json = File.ReadAllText(ARENA);
-                }
-
-                byte[] responseArray = Encoding.UTF8.GetBytes(json); // get the bytes to response
-                context.Response.OutputStream.Write(responseArray, 0, responseArray.Length); // write bytes to the output stream
-                context.Response.KeepAlive = false; // set the KeepAlive bool to false
-                context.Response.Close(); // close the connection
-            }
-        }
 
         private string GetIPAddress()
         {

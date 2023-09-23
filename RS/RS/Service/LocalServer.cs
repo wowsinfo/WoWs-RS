@@ -14,14 +14,17 @@ namespace RS.Service
         private Thread response = null;
         private readonly string gamepath;
 
-        public LocalServer(string gamePath) {
+        private bool isGettingData = false;
+
+        public LocalServer(string gamePath)
+        {
             gamepath = gamePath;
         }
 
         public void Start(int port)
         {
             listener = new HttpListener();
-            listener.Prefixes.Add("http://*:8605/");
+            listener.Prefixes.Add($"http://+:{port}/");
             listener.Start();
 
             response = new Thread(ResponseThread);
@@ -45,9 +48,13 @@ namespace RS.Service
 
         private void ResponseThread()
         {
-            var rand = new Random();
             while (true)
             {
+                if (isGettingData)
+                {
+                    return;
+                }
+
                 Console.WriteLine("Request received");
 
                 var ARENA = gamepath + @"\replays\tempArenaInfo.json";
@@ -60,9 +67,9 @@ namespace RS.Service
                     // Get this file and send it as bytes
                     json = File.ReadAllText(ARENA);
                     Console.WriteLine("Reading the Arena file");
+                    isGettingData = true;
                 }
 
-                // return
                 try
                 {
                     var context = listener.GetContext();
@@ -76,6 +83,7 @@ namespace RS.Service
                     Console.WriteLine(ex.Message);
                     break;
                 }
+                isGettingData = false;
             }
         }
     }
