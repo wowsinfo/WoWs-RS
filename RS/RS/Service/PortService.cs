@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net.Sockets;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -51,11 +53,6 @@ namespace RS.Service
         /// <param name="port">The port number</param>
         public void RegisterPort(string name, int port)
         {
-            if (FirewallRuleExists(name))
-            {
-                return;
-            }
-
             string netshArguments = $"advfirewall firewall add rule name=\"{name}\" dir=in action=allow protocol=TCP localport={port}";
             using (Process netshProcess = new Process())
             {
@@ -68,7 +65,13 @@ namespace RS.Service
             }
         }
 
-        private bool FirewallRuleExists(string ruleName)
+
+        /// <summary>
+        /// Check if the rule has been added.
+        /// </summary>
+        /// <param name="ruleName">The name of the firewall rule</param>
+        /// <returns>True if the rule is found</returns>
+        public bool FirewallRuleExists(string ruleName)
         {
             using (Process process = new Process())
             {
@@ -85,6 +88,24 @@ namespace RS.Service
                 // Check if the rule exists in the output
                 return output.Contains(ruleName);
             }
+        }
+
+        /// <summary>
+        /// Get the IP address of the local machine
+        /// </summary>
+        /// <returns>The IP address (e.g. 192.168.1.100)</returns>
+        public string GetIPAddress()
+        {
+            string localIP;
+            using (Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, 0))
+            {
+                // It does not have to be valid since there is no real connection
+                socket.Connect("8.8.8.8", 65530);
+                // This gives the local address that would be used to connect to the specified remote host
+                IPEndPoint endPoint = socket.LocalEndPoint as IPEndPoint;
+                localIP = endPoint.Address.ToString();
+            }
+            return localIP;
         }
     }
 }

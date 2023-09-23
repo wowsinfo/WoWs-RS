@@ -144,4 +144,7 @@
   <data name="start" xml:space="preserve">
     <value>スタート</value>
   </data>
+  <data name="why_admin" xml:space="preserve">
+    <value>プログラムに管理者アクセスを許可するプロンプトが表示されます。これは機能を保証するための一度だけのリクエストです。この権限を許可しない場合、プログラムは終了します。</value>
+  </data>
 </root>

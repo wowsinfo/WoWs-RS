@@ -140,5 +140,14 @@ namespace RS.Properties {
                 return ResourceManager.GetString("start", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You will receive a prompt to grant the program Admin access. This is a one-time request to ensure the functionality. If you decide not to grant this permission, the program will exit..
+        /// </summary>
+        internal static string why_admin {
+            get {
+                return ResourceManager.GetString("why_admin", resourceCulture);
+            }
+        }
     }
 }

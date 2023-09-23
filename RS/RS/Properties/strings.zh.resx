@@ -144,4 +144,7 @@
   <data name="start" xml:space="preserve">
     <value>开始</value>
   </data>
+  <data name="why_admin" xml:space="preserve">
+    <value>您将收到一个提示，请求授予程序管理员权限。这是一次性的请求来确保功能正常运作。如果您选择不授予权限，程序将退出。</value>
+  </data>
 </root>

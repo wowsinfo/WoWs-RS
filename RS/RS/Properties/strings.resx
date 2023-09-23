@@ -144,4 +144,7 @@
   <data name="start" xml:space="preserve">
     <value>Start</value>
   </data>
+  <data name="why_admin" xml:space="preserve">
+    <value>You will receive a prompt to grant the program Admin access. This is a one-time request to ensure the functionality. If you decide not to grant this permission, the program will exit.</value>
+  </data>
 </root>
