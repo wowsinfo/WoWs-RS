@@ -36,11 +36,33 @@ namespace RS
             checkForUpdateToolStripMenuItem.Text = Properties.strings.check_for_update;
             languageToolStripMenuItem.Text = Properties.strings.language;
 
-            pathBox.Text = Properties.Settings.Default.path;
+            pathBox.Text = GetSavedPath();
 
             // Get current IP address
             IP = portService.GetIPAddress();
             ipLabel.Text = IP;
+        }
+
+        private string GetSavedPath()
+        {
+            var saved_path = Properties.Settings.Default.path;
+            if (saved_path.Trim() == "")
+            {
+                try
+                {
+                    var found_path = gamePathService.LocalGamePath();
+                    if (found_path != null)
+                    {
+                        saved_path = found_path;
+
+                    }
+                }
+                catch
+                {
+                    // Failed, it is fine
+                }
+            }
+            return saved_path;
         }
 
         #region Button Clicks
@@ -63,6 +85,10 @@ namespace RS
                 MessageBox.Show(Properties.strings.invalid_path, Properties.strings.error_title,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+            // save the game path
+            Properties.Settings.Default.path = gamePath;
+            Properties.Settings.Default.Save();
 
             try
             {

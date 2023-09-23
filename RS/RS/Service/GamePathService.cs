@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.IO;
+using System.Linq;
 
 namespace RS.Service
 {
@@ -17,15 +19,7 @@ namespace RS.Service
             // Check if we have a game path
             Console.WriteLine("-> " + gamePath);
             // Only check for perferences.xml (it should work for both steam and normal version)
-            if (File.Exists(gamePath + @"\preferences.xml"))
-            {
-                // Support steam or non steam
-                Properties.Settings.Default.path = gamePath;
-                Properties.Settings.Default.Save();
-                return true;
-            }
-
-            return false;
+            return File.Exists(gamePath + @"\preferences.xml");
         }
 
         /// <summary>
@@ -64,6 +58,31 @@ namespace RS.Service
                 xml[scriptLine] = "		<isReplayEnabled>	true	</isReplayEnabled>\n" + xml[scriptLine];
                 File.WriteAllLines(path, xml);
             }
+        }
+
+        /// <summary>
+        /// Search through the Registry and find the first valid game path
+        /// </summary>
+        /// <exception cref="Exception">This function can throw in case something is wrong</exception>
+        /// <returns>The game path if found</returns>
+        public string LocalGamePath()
+        {
+            RegistryKey currentUser = Registry.CurrentUser;
+            RegistryKey uninstall = currentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\");
+            string[] publishers = { "Wargaming.net", "Wargaming Group Limited" }; // we don't support the CN or RU server for now
+
+            // loop through all folders
+            foreach (var key in uninstall.GetSubKeyNames())
+            {
+                var folder = uninstall.OpenSubKey(key);
+                var publisher = folder.GetValue("Publisher").ToString();
+                if (publishers.Contains(publisher))
+                {
+                    return folder.GetValue("InstallLocation").ToString();
+                }
+            }
+
+            return null;
         }
     }
 }
