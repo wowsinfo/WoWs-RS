@@ -34,7 +34,6 @@ namespace RS
             aboutMenu.Text = Properties.strings.about;
             checkForUpdateToolStripMenuItem.Text = Properties.strings.check_for_update;
             languageToolStripMenuItem.Text = Properties.strings.language;
-            howToUseToolStripMenuItem.Text = Properties.strings.how_to_use;
 
             pathBox.Text = Properties.Settings.Default.path;
 
@@ -175,7 +174,10 @@ namespace RS
         private void RS_FormClosing(object sender, FormClosingEventArgs e)
         {
             listener.Close();
-            localServer.Stop();
+            if (localServer != null)
+            {
+                localServer.Stop();
+            }
             Application.ExitThread();
         }
 

@@ -40,7 +40,6 @@
             this.englishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.chineseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.japaneseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.howToUseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pathLabel = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -48,9 +47,10 @@
             // startBtn
             // 
             this.startBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.startBtn.Location = new System.Drawing.Point(496, 168);
+            this.startBtn.Location = new System.Drawing.Point(331, 108);
+            this.startBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.startBtn.Name = "startBtn";
-            this.startBtn.Size = new System.Drawing.Size(132, 37);
+            this.startBtn.Size = new System.Drawing.Size(88, 24);
             this.startBtn.TabIndex = 0;
             this.startBtn.Text = "Start";
             this.startBtn.UseVisualStyleBackColor = true;
@@ -63,9 +63,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ipLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 22.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ipLabel.ForeColor = System.Drawing.Color.Tomato;
-            this.ipLabel.Location = new System.Drawing.Point(12, 57);
+            this.ipLabel.Location = new System.Drawing.Point(8, 36);
+            this.ipLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.ipLabel.Name = "ipLabel";
-            this.ipLabel.Size = new System.Drawing.Size(613, 92);
+            this.ipLabel.Size = new System.Drawing.Size(409, 59);
             this.ipLabel.TabIndex = 1;
             this.ipLabel.Text = "0.0.0.0";
             this.ipLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -75,23 +76,22 @@
             this.pathBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pathBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pathBox.Location = new System.Drawing.Point(148, 170);
+            this.pathBox.Location = new System.Drawing.Point(99, 109);
+            this.pathBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pathBox.Name = "pathBox";
-            this.pathBox.Size = new System.Drawing.Size(340, 38);
+            this.pathBox.Size = new System.Drawing.Size(228, 27);
             this.pathBox.TabIndex = 2;
             // 
             // menuStrip1
             // 
-            this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.githubToolStripMenuItem,
-            this.languageToolStripMenuItem,
-            this.howToUseToolStripMenuItem});
+            this.languageToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(640, 48);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 1, 0, 1);
+            this.menuStrip1.Size = new System.Drawing.Size(427, 26);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -101,20 +101,20 @@
             this.checkForUpdateToolStripMenuItem,
             this.aboutMenu});
             this.githubToolStripMenuItem.Name = "githubToolStripMenuItem";
-            this.githubToolStripMenuItem.Size = new System.Drawing.Size(107, 44);
+            this.githubToolStripMenuItem.Size = new System.Drawing.Size(67, 24);
             this.githubToolStripMenuItem.Text = "Github";
             // 
             // checkForUpdateToolStripMenuItem
             // 
             this.checkForUpdateToolStripMenuItem.Name = "checkForUpdateToolStripMenuItem";
-            this.checkForUpdateToolStripMenuItem.Size = new System.Drawing.Size(333, 44);
+            this.checkForUpdateToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.checkForUpdateToolStripMenuItem.Text = "Check for update";
             this.checkForUpdateToolStripMenuItem.Click += new System.EventHandler(this.checkForUpdateToolStripMenuItem_Click);
             // 
             // aboutMenu
             // 
             this.aboutMenu.Name = "aboutMenu";
-            this.aboutMenu.Size = new System.Drawing.Size(333, 44);
+            this.aboutMenu.Size = new System.Drawing.Size(224, 26);
             this.aboutMenu.Text = "About";
             this.aboutMenu.Click += new System.EventHandler(this.githubMenu_Click);
             // 
@@ -125,50 +125,45 @@
             this.chineseToolStripMenuItem,
             this.japaneseToolStripMenuItem});
             this.languageToolStripMenuItem.Name = "languageToolStripMenuItem";
-            this.languageToolStripMenuItem.Size = new System.Drawing.Size(139, 44);
+            this.languageToolStripMenuItem.Size = new System.Drawing.Size(88, 24);
             this.languageToolStripMenuItem.Text = "Language";
             // 
             // englishToolStripMenuItem
             // 
             this.englishToolStripMenuItem.Name = "englishToolStripMenuItem";
-            this.englishToolStripMenuItem.Size = new System.Drawing.Size(249, 44);
+            this.englishToolStripMenuItem.Size = new System.Drawing.Size(156, 26);
             this.englishToolStripMenuItem.Text = "English";
             this.englishToolStripMenuItem.Click += new System.EventHandler(this.englishToolStripMenuItem_Click);
             // 
             // chineseToolStripMenuItem
             // 
             this.chineseToolStripMenuItem.Name = "chineseToolStripMenuItem";
-            this.chineseToolStripMenuItem.Size = new System.Drawing.Size(249, 44);
+            this.chineseToolStripMenuItem.Size = new System.Drawing.Size(156, 26);
             this.chineseToolStripMenuItem.Text = "简体中文";
             this.chineseToolStripMenuItem.Click += new System.EventHandler(this.chineseToolStripMenuItem_Click);
             // 
             // japaneseToolStripMenuItem
             // 
             this.japaneseToolStripMenuItem.Name = "japaneseToolStripMenuItem";
-            this.japaneseToolStripMenuItem.Size = new System.Drawing.Size(249, 44);
+            this.japaneseToolStripMenuItem.Size = new System.Drawing.Size(156, 26);
             this.japaneseToolStripMenuItem.Text = "日本語";
             this.japaneseToolStripMenuItem.Click += new System.EventHandler(this.japaneseToolStripMenuItem_Click);
-            // 
-            // howToUseToolStripMenuItem
-            // 
-            this.howToUseToolStripMenuItem.Name = "howToUseToolStripMenuItem";
-            this.howToUseToolStripMenuItem.Size = new System.Drawing.Size(156, 44);
-            this.howToUseToolStripMenuItem.Text = "How to use";
             // 
             // pathLabel
             // 
             this.pathLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.pathLabel.Location = new System.Drawing.Point(12, 177);
+            this.pathLabel.Location = new System.Drawing.Point(8, 113);
+            this.pathLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.pathLabel.Name = "pathLabel";
-            this.pathLabel.Size = new System.Drawing.Size(130, 25);
+            this.pathLabel.Size = new System.Drawing.Size(87, 16);
             this.pathLabel.TabIndex = 4;
             this.pathLabel.Text = "Game Path";
             // 
             // RS
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(640, 218);
+            this.ClientSize = new System.Drawing.Size(427, 140);
             this.Controls.Add(this.pathLabel);
             this.Controls.Add(this.pathBox);
             this.Controls.Add(this.ipLabel);
@@ -176,7 +171,8 @@
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.MaximumSize = new System.Drawing.Size(666, 289);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MaximumSize = new System.Drawing.Size(450, 202);
             this.Name = "RS";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "WoWs RS";
@@ -202,7 +198,6 @@
         private System.Windows.Forms.ToolStripMenuItem englishToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem chineseToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem japaneseToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem howToUseToolStripMenuItem;
     }
 }
 

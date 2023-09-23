@@ -2,6 +2,7 @@
 using System.IO;
 using System.Net;
 using System.Net.Sockets;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading;
 
@@ -9,7 +10,7 @@ namespace RS.Service
 {
     internal class LocalServer
     {
-        private TcpListener listener = null;
+        private HttpListener listener = null;
         private Thread response = null;
         private readonly string gamepath;
 
@@ -19,7 +20,8 @@ namespace RS.Service
 
         public void Start(int port)
         {
-            listener = new TcpListener(IPAddress.Any, port);
+            listener = new HttpListener();
+            listener.Prefixes.Add("http://*:8605/");
             listener.Start();
 
             response = new Thread(ResponseThread);
@@ -30,9 +32,12 @@ namespace RS.Service
         {
             if (listener != null)
             {
-                listener.Stop();
+                listener.Close();
                 listener = null;
+            }
 
+            if (response != null)
+            {
                 response.Join();
                 response = null;
             }
@@ -60,12 +65,11 @@ namespace RS.Service
                 // return
                 try
                 {
-                    var client = listener.AcceptTcpClient();
-                    var stream = client.GetStream();
+                    var context = listener.GetContext();
                     byte[] responseArray = Encoding.UTF8.GetBytes(json); // get the bytes to response
-                    stream.Write(responseArray, 0, responseArray.Length); // write bytes to the output stream
-                    stream.Flush();
-                    stream.Close();
+                    context.Response.OutputStream.Write(responseArray, 0, responseArray.Length); // write bytes to the output stream
+                    context.Response.KeepAlive = false; // set the KeepAlive bool to false
+                    context.Response.Close(); // close the connection
                 }
                 catch (Exception ex)
                 {
