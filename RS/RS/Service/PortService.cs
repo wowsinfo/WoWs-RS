@@ -22,6 +22,7 @@ namespace RS.Service
         /// <param name="name">The name of the entry</param>
         /// <param name="port">The port number</param>
         /// <exception cref="Exception">This can throw lots of exception, treat any as an error.</exception>
+        [Obsolete("Use RegisterPort instead to only grant Admin once")]
         public void AddPortToFirewall(string name, int port)
         {
             Type TicfMgr = Type.GetTypeFromProgID("HNetCfg.FwMgr");
