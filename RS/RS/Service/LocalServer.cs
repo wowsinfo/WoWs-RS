@@ -1,8 +1,6 @@
 ﻿using System;
 using System.IO;
 using System.Net;
-using System.Net.Sockets;
-using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading;
 
@@ -13,8 +11,6 @@ namespace RS.Service
         private HttpListener listener = null;
         private Thread response = null;
         private readonly string gamepath;
-
-        private bool isGettingData = false;
 
         public LocalServer(string gamePath)
         {
@@ -50,11 +46,6 @@ namespace RS.Service
         {
             while (true)
             {
-                if (isGettingData)
-                {
-                    return;
-                }
-
                 Console.WriteLine("Request received");
 
                 var ARENA = gamepath + @"\replays\tempArenaInfo.json";
@@ -67,7 +58,6 @@ namespace RS.Service
                     // Get this file and send it as bytes
                     json = File.ReadAllText(ARENA);
                     Console.WriteLine("Reading the Arena file");
-                    isGettingData = true;
                 }
 
                 try
@@ -83,7 +73,6 @@ namespace RS.Service
                     Console.WriteLine(ex.Message);
                     break;
                 }
-                isGettingData = false;
             }
         }
     }
