@@ -123,6 +123,9 @@
   <data name="about_path" xml:space="preserve">
     <value>ゲームパスについて</value>
   </data>
+  <data name="admin_needed" xml:space="preserve">
+    <value>管理者アクセスは必要です。</value>
+  </data>
   <data name="check_for_update" xml:space="preserve">
     <value>アップデートをチェック</value>
   </data>

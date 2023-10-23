@@ -117,7 +117,7 @@ namespace RS
             }
             catch (Exception ex)
             {
-                MessageBox.Show(Properties.strings.invalid_path + "\n\n" + ex.Message, Properties.strings.error_title,
+                MessageBox.Show(Properties.strings.admin_needed+ "\n" + ex.Message, Properties.strings.error_title,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

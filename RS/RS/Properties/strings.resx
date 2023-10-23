@@ -123,6 +123,9 @@
   <data name="about_path" xml:space="preserve">
     <value>About game path</value>
   </data>
+  <data name="admin_needed" xml:space="preserve">
+    <value>You may still need to run the app using the admin permission.</value>
+  </data>
   <data name="check_for_update" xml:space="preserve">
     <value>Check for Update</value>
   </data>

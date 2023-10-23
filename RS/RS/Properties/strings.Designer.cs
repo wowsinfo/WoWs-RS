@@ -79,6 +79,15 @@ namespace RS.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You may still need to run the app using the admin permission..
+        /// </summary>
+        internal static string admin_needed {
+            get {
+                return ResourceManager.GetString("admin_needed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Check for Update.
         /// </summary>
         internal static string check_for_update {

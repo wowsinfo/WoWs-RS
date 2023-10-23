@@ -123,6 +123,9 @@
   <data name="about_path" xml:space="preserve">
     <value>关于游戏路径</value>
   </data>
+  <data name="admin_needed" xml:space="preserve">
+    <value>您可能还是需要使用管理员权限来使用本应用。</value>
+  </data>
   <data name="check_for_update" xml:space="preserve">
     <value>检查更新</value>
   </data>
